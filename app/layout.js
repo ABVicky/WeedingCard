@@ -18,8 +18,8 @@ const serif = Cormorant_Garamond({
   variable: "--font-serif",
   display: "swap",
 });
-const caps = Cinzel({ subsets: ["latin"], weight: "400", variable: "--font-caps", display: "swap" });
-const deva = Noto_Serif_Devanagari({ subsets: ["devanagari"], weight: "500", variable: "--font-deva", display: "swap" });
+const caps = Cinzel({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-caps", display: "swap" });
+const deva = Noto_Serif_Devanagari({ subsets: ["devanagari"], weight: ["400", "500", "600", "700"], variable: "--font-deva", display: "swap" });
 
 export const metadata = {
   metadataBase: new URL(wedding.siteUrl),

@@ -154,19 +154,24 @@ const show = (revealed, delay) => ({
 
 function Person({ person, revealed, delay, relation }) {
   return (
-    <>
-      <motion.h2 {...show(revealed, delay)} className="gold-gradient-text font-names text-[44px] sm:text-[54px] leading-[1.2]">
+    <div className="flex flex-col items-center">
+      <motion.h2
+        {...show(revealed, delay)}
+        className="gold-gradient-text font-heading italic text-[36px] sm:text-[44px] font-semibold leading-[1.2] tracking-tight drop-shadow-[0_2px_12px_rgba(226,188,114,0.3)]"
+      >
         {person.name}
       </motion.h2>
-      <motion.div {...show(revealed, delay + 0.15)}>
-        <p className="mt-1 font-serif text-[14px] font-medium text-[#2E2220]">{person.parents}</p>
+      <motion.div {...show(revealed, delay + 0.15)} className="mt-2 max-w-[340px] px-2">
+        <p className="font-serif text-[15px] sm:text-[16px] font-medium leading-relaxed text-[#3D241E]">
+          {person.parents}
+        </p>
         {person.grandparents && (
-          <p className="mt-0.5 font-serif text-[12.5px] italic leading-snug text-[#3B2A24]" aria-label={relation}>
+          <p className="mt-1 font-serif text-[13px] italic leading-snug text-[#5A382E]" aria-label={relation}>
             {person.grandparents}
           </p>
         )}
       </motion.div>
-    </>
+    </div>
   );
 }
 
@@ -218,24 +223,35 @@ export default function Hero({ revealed }) {
           </motion.div>
         </motion.div>
 
-        <motion.div {...show(revealed, 0.4)} className="mt-5 font-deva text-[12.5px] font-medium leading-[1.6] tracking-[0.18em] text-[#9E242B]">
+        <motion.div {...show(revealed, 0.4)} className="mt-5 space-y-1 font-deva text-[13px] sm:text-[14px] font-semibold leading-[1.65] tracking-[0.14em] text-[#9E242B]">
           {wedding.shloka.map((l) => (
-            <p key={l}>{l}</p>
+            <p key={l} className="drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
+              ॥ {l} ॥
+            </p>
           ))}
         </motion.div>
 
-        <motion.p {...show(revealed, 0.55)} className="mx-auto mt-5 max-w-[330px] font-serif text-[16px] italic leading-[1.55] text-[#4A2F27]">
+        <motion.p
+          {...show(revealed, 0.55)}
+          className="mx-auto mt-5 max-w-[340px] font-serif text-[15.5px] sm:text-[16.5px] italic leading-[1.6] text-[#4A2F27]"
+        >
           {wedding.blessingLine}
         </motion.p>
+
+        <motion.div {...show(revealed, 0.65)} className="mx-auto mt-4 flex items-center justify-center gap-2.5 opacity-60" aria-hidden="true">
+          <span className="h-px w-10 bg-gold" />
+          <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
+          <span className="h-px w-10 bg-gold" />
+        </motion.div>
 
         <div className="mt-5">
           <Person person={wedding.groom} revealed={revealed} delay={0.75} relation="Groom" />
         </div>
 
-        <motion.div {...show(revealed, 1.05)} className="my-3 flex items-center justify-center gap-3" aria-hidden="true">
-          <span className="h-px w-[72px] bg-gold/50" />
-          <span className="gold-gradient-text font-heading text-[30px] leading-none">&amp;</span>
-          <span className="h-px w-[72px] bg-gold/50" />
+        <motion.div {...show(revealed, 1.05)} className="my-4 flex items-center justify-center gap-3" aria-hidden="true">
+          <span className="h-px w-16 bg-gradient-to-r from-transparent via-gold to-gold/70" />
+          <span className="gold-gradient-text font-heading italic text-[32px] sm:text-[36px] leading-none px-2">&amp;</span>
+          <span className="h-px w-16 bg-gradient-to-l from-transparent via-gold to-gold/70" />
         </motion.div>
 
         <Person person={wedding.bride} revealed={revealed} delay={1.2} relation="Bride" />

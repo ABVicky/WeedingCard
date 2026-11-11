@@ -120,9 +120,8 @@ function RoyalWaxSeal() {
   );
 }
 
-// Opening timeline (seconds after the tap). Only transform/opacity are animated
-// so it stays smooth on low-end phones.
-const T = { flap: 0.3, card: 1.2, reveal: 2.15, done: 3.1 };
+// Opening timeline (seconds after the tap). Refined for a regal, luxurious opening experience.
+const T = { flap: 0.5, card: 1.8, reveal: 5.4, done: 6.8 };
 const GLIDE = [0.22, 1, 0.36, 1];
 
 const rand = (i, salt) => {
@@ -139,32 +138,67 @@ const DUST = Array.from({ length: 16 }, (_, i) => ({
   "--delay": `-${rand(i, 7) * 10}s`,
 }));
 
-const line = {
-  hidden: { opacity: 0, y: 10 },
-  shown: { opacity: 1, y: 0, transition: { duration: 0.9, ease: GLIDE } },
-};
-
 function PreviewCard({ fading }) {
-  const date = wedding.scratch.map((s) => s.value).join(" · ");
   return (
-    <div className="relative h-full w-full rounded-[14px] bg-[#FFFDF9] shadow-[0_-6px_30px_rgba(40,10,8,0.35)]">
+    <div className="relative h-full w-full rounded-[14px] bg-[#FFFDF9] shadow-[0_-8px_35px_rgba(40,10,8,0.45),0_0_20px_rgba(226,188,114,0.25)] overflow-hidden">
       <motion.div
-        className="absolute inset-0 flex flex-col items-center pt-[8%] text-center"
+        className="absolute inset-0 flex flex-col items-center justify-between py-3.5 px-3 text-center"
         animate={{ opacity: fading ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.35 }}
       >
-        <div className="absolute inset-[6px] rounded-[10px] border border-gold/60" />
-        <div className="absolute inset-[9px] rounded-[8px] border border-gold/25" />
-        <p className="font-deva text-[11px] tracking-[0.25em] text-gold font-medium">॥ शुभ विवाह ॥</p>
-        <p className="gold-gradient-text mt-1 font-names text-[30px] leading-[1.2]">{wedding.groom.name}</p>
-        <p className="font-heading italic text-[18px] leading-none text-gold">&amp;</p>
-        <p className="gold-gradient-text font-names text-[30px] leading-[1.2]">{wedding.bride.name}</p>
-        <div className="mt-2 flex items-center gap-2" aria-hidden="true">
-          <span className="h-px w-8 bg-gold/60" />
-          <span className="h-1 w-1 rotate-45 bg-gold" />
-          <span className="h-px w-8 bg-gold/60" />
+        {/* Double ornate gold border */}
+        <div className="absolute inset-[6px] rounded-[10px] border border-gold/70 pointer-events-none" />
+        <div className="absolute inset-[9px] rounded-[8px] border border-gold/30 pointer-events-none" />
+
+        {/* 4 Corner brackets */}
+        <span className="pointer-events-none absolute top-3 left-3 h-2.5 w-2.5 border-t-2 border-l-2 border-gold/80" />
+        <span className="pointer-events-none absolute top-3 right-3 h-2.5 w-2.5 border-t-2 border-r-2 border-gold/80" />
+        <span className="pointer-events-none absolute bottom-3 left-3 h-2.5 w-2.5 border-b-2 border-l-2 border-gold/80" />
+        <span className="pointer-events-none absolute bottom-3 right-3 h-2.5 w-2.5 border-b-2 border-r-2 border-gold/80" />
+
+        {/* Top: Ganesha + Invocation */}
+        <div className="flex flex-col items-center mt-0.5">
+          <div className="relative h-5 w-5">
+            <Image
+              src="/images/ganesh_gold.png"
+              alt="Shri Ganesh"
+              fill
+              sizes="20px"
+              priority
+              className="object-contain"
+            />
+          </div>
+          <p className="mt-1 font-deva text-[10px] sm:text-[10.5px] font-semibold tracking-[0.2em] text-[#9E242B]">
+            ॥ श्री गणेशाय नमः ॥
+          </p>
+          <p className="mt-0.5 font-caps text-[8.5px] tracking-[0.28em] uppercase text-[#8A5A48] font-medium">
+            Save The Date
+          </p>
         </div>
-        <p className="mt-2 font-caps text-[10px] tracking-[0.25em] text-[#8A5A48]">{date}</p>
+
+        {/* Center: Couple Names */}
+        <div className="flex flex-col items-center my-auto w-full px-2">
+          <p className="gold-gradient-text font-heading italic text-[20px] sm:text-[23px] font-semibold leading-tight">
+            {wedding.groom.name}
+          </p>
+          <span className="font-serif italic text-gold text-[14px] leading-none my-0.5">&amp;</span>
+          <p className="gold-gradient-text font-heading italic text-[20px] sm:text-[23px] font-semibold leading-tight">
+            {wedding.bride.name}
+          </p>
+          <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold/70" />
+            <span className="h-1 w-1 rotate-45 bg-gold shadow-[0_0_4px_#E2BC72]" />
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/70" />
+          </div>
+          <p className="mt-0.5 font-serif italic text-[11px] text-[#5A382E]">
+            The Jaiswal &amp; Tibrewal Families
+          </p>
+        </div>
+
+        {/* Bottom: Date badge */}
+        <div className="mb-0.5 inline-flex items-center rounded-full border border-gold/50 bg-gold/15 px-3 py-0.5 font-caps text-[9px] font-semibold tracking-[0.2em] text-[#9E242B]">
+          04 · DECEMBER · 2026
+        </div>
       </motion.div>
     </div>
   );
@@ -181,7 +215,16 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
   const revealing = phase === "reveal";
 
   const handleTap = () => {
-    console.log("HANDLE TAP CALLED");
+    if (revealing) return;
+    // If card is already out and user taps, immediately advance to reveal
+    if (phase === "card") {
+      timers.current.forEach(clearTimeout);
+      timers.current = [];
+      setPhase("reveal");
+      onReveal();
+      timers.current.push(setTimeout(onDone, 1200));
+      return;
+    }
     if (opened) return;
     setPhase("open");
     navigator.vibrate?.(12);
@@ -200,7 +243,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
 
   // Every envelope layer drops away together during the reveal.
   const drop = { y: revealing ? "26%" : 0 };
-  const dropTransition = { y: { duration: 0.8, ease: [0.55, 0, 0.75, 0.2] } };
+  const dropTransition = { y: { duration: 1.0, ease: [0.33, 1, 0.68, 1] } };
 
   // The flap holds its slice of the full-screen emboss so the pattern lines up.
   const flapNoiseStyle = { left: 0, width: "100%", top: `${(-HINGE / FLAP_H) * 100}%`, height: `${(100 / FLAP_H) * 100}%` };
@@ -218,7 +261,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleTap()}
       initial={false}
       animate={{ opacity: revealing ? 0 : 1 }}
-      transition={{ duration: 0.6, delay: revealing ? 0.3 : 0, ease: "easeInOut" }}
+      transition={{ duration: 0.8, delay: revealing ? 0.2 : 0, ease: "easeInOut" }}
     >
       {/* Back of the envelope + paper grain */}
       <motion.div className="absolute inset-0" style={{ background: MAROON }} animate={drop} transition={dropTransition}>
@@ -254,7 +297,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         className="absolute left-[9%] right-[9%]"
         style={{ top: "57%", height: "38%", zIndex: 2, transformOrigin: "50% 0%" }}
         animate={revealing ? { y: "-116%", scaleX: 1.12, scaleY: 1.9 } : { y: cardOut ? "-104%" : 0, scaleX: 1, scaleY: 1 }}
-        transition={revealing ? { duration: 0.75, ease: GLIDE } : { duration: 1, ease: GLIDE }}
+        transition={revealing ? { duration: 0.9, ease: GLIDE } : { duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
       >
         <PreviewCard fading={revealing} />
       </motion.div>
@@ -303,7 +346,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
           willChange: "transform",
         }}
         animate={{ rotateX: opened ? 180 : 0, ...drop }}
-        transition={{ rotateX: { duration: 1, delay: opened ? T.flap : 0, ease: [0.45, 0, 0.3, 1] }, ...dropTransition }}
+        transition={{ rotateX: { duration: 1.3, delay: opened ? T.flap : 0, ease: [0.33, 1, 0.68, 1] }, ...dropTransition }}
       >
         <div
           className="absolute inset-0 overflow-hidden"
@@ -385,29 +428,33 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
       </motion.div>
 
       {/* Tap hint above seal */}
-      <motion.p
-        className="absolute inset-x-0 z-[5] text-center font-names text-[28px] sm:text-[30px] tracking-wide text-[#E8D4C3]"
-        style={{
-          top: "30%",
-          textShadow: "0 1px 3px rgba(0,0,0,0.7), 0 0 12px rgba(226,188,114,0.3)",
-        }}
-        initial={{ opacity: 0.9, y: 0 }}
+      <motion.div
+        className="pointer-events-none absolute inset-x-0 z-[5] flex flex-col items-center text-center px-4"
+        style={{ top: "27%" }}
+        initial={{ opacity: 0.95, y: 0 }}
         animate={
           opened
-            ? { opacity: 0, y: -10 }
-            : { opacity: [0.75, 1, 0.75], scale: [0.98, 1.02, 0.98] }
+            ? { opacity: 0, y: -12 }
+            : { opacity: [0.8, 1, 0.8], y: [0, -3, 0] }
         }
         transition={
           opened
-            ? { duration: 0.25 }
-            : {
-                opacity: { duration: 2.6, repeat: Infinity, ease: "easeInOut" },
-                scale: { duration: 2.6, repeat: Infinity, ease: "easeInOut" },
-              }
+            ? { duration: 0.3 }
+            : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
         }
       >
-        {wedding.envelope.tapText}
-      </motion.p>
+        <span className="font-caps text-[11.5px] sm:text-[12.5px] font-semibold tracking-[0.38em] uppercase text-[#E2BC72] drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">
+          A Sacred Union
+        </span>
+        <div className="my-1.5 flex items-center gap-2 opacity-85" aria-hidden="true">
+          <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
+          <span className="h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_6px_#E2BC72]" />
+          <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold" />
+        </div>
+        <span className="font-serif italic text-[15px] sm:text-[16px] text-[#F7E8D8] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
+          Tap the royal seal to open
+        </span>
+      </motion.div>
 
     </motion.div>
   );
