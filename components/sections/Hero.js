@@ -12,7 +12,6 @@ const show = (revealed, delay) => ({
 });
 
 // Aesthetic Royal Indian Wedding Backdrop
-// Subtle marigold & mogra garland framing, Rajput jharokha arch, and soft sacred mandala watermark
 function HeroBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 select-none overflow-hidden" aria-hidden="true">
@@ -53,7 +52,6 @@ function HeroBackdrop() {
           <circle r="70" strokeDasharray="2 4" />
           <circle r="45" />
           <circle r="20" fill="#C49A4A" fillOpacity="0.1" />
-          {/* 12 Floral Petals */}
           {Array.from({ length: 12 }, (_, i) => (
             <g key={i} transform={`rotate(${i * 30})`}>
               <path d="M0 -45 C15 -70 15 -95 0 -120 C-15 -95 -15 -70 0 -45 Z" fill="#C49A4A" fillOpacity="0.04" />
@@ -65,23 +63,18 @@ function HeroBackdrop() {
 
         {/* 2. Top Royal Rajput Jharokha Arch Framing */}
         <g stroke="url(#goldArchGrad)" strokeWidth="1.2">
-          {/* Outer elegant arch sweep */}
           <path d="M-10 120 C60 110 120 70 160 55 C180 40 200 15 200 10 C200 15 220 40 240 55 C280 70 340 110 410 120" />
-          {/* Inner double hairline arch */}
           <path d="M-10 135 C60 125 120 85 160 70 C180 55 200 30 200 25 C200 30 220 55 240 70 C280 85 340 125 410 135" strokeDasharray="3 4" strokeWidth="0.8" opacity="0.6" />
-          {/* Central crest finial */}
           <circle cx="200" cy="10" r="3" fill="#C49A4A" fillOpacity="0.6" />
           <path d="M197 6 L203 6 L200 0 Z" fill="#E2BC72" fillOpacity="0.8" />
         </g>
 
         {/* 3. Subtle hanging marigold & jasmine garlands with temple bells */}
-        {/* Left side garland cascade */}
         <g opacity="0.75">
           <line x1="25" y1="0" x2="25" y2="170" stroke="#C49A4A" strokeWidth="0.7" strokeOpacity="0.4" />
           <line x1="65" y1="0" x2="65" y2="120" stroke="#C49A4A" strokeWidth="0.7" strokeOpacity="0.35" />
           <line x1="105" y1="0" x2="105" y2="75" stroke="#C49A4A" strokeWidth="0.7" strokeOpacity="0.3" />
 
-          {/* Marigold and jasmine blossoms */}
           {[
             { x: 25, y: 35, r: 5.5, c: "#F39C12" },
             { x: 25, y: 55, r: 5.5, c: "#E67E22" },
@@ -107,7 +100,6 @@ function HeroBackdrop() {
             </g>
           ))}
 
-          {/* Golden temple bells */}
           <path d="M22 170 C22 166 28 166 28 170 L29 175 L21 175 Z" fill="#D4AF37" opacity="0.8" />
           <circle cx="25" cy="177" r="1.2" fill="#F1C40F" />
 
@@ -214,19 +206,65 @@ function Person({ person, revealed, delay, relation }) {
 
 export default function Hero({ revealed }) {
   return (
-    <section
-      id="hero"
-      className="relative min-h-[100svh] overflow-hidden px-4 pb-14 pt-8 xs:pt-10 sm:pt-12 flex flex-col items-center justify-between text-center"
-    >
+    <section id="hero" className="relative overflow-hidden text-center">
       {/* Aesthetic Indian Wedding Background */}
       <HeroBackdrop />
 
-      {/* Main invitation content rendered directly with clean, spacious elegance */}
-      <div className="relative z-10 flex flex-col items-center max-w-[380px] mx-auto w-full my-auto">
-        {/* Shri Ganesh at the very top */}
+      {/* ── Screen 1: Grand Royal Monogram Screen (When card opens, only logo2 is on the hero screen) ── */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-4 pb-8 pt-[8svh] xs:pt-[10svh]">
+        {/* Invisible spacer for vertical balance */}
+        <div className="h-2" />
+
+        {/* Only Logo2 on the Hero Screen */}
         <motion.div
           {...show(revealed, 0.2)}
-          className="h-[46px] w-[42px] xs:h-[50px] xs:w-[46px] mb-2 xs:mb-2.5"
+          className="relative mx-auto w-[210px] xs:w-[245px] sm:w-[285px] aspect-[2041/2803] my-auto"
+        >
+          <Image
+            src="/images/logo2.png"
+            alt="Aashutosh & Atisha Monogram Logo"
+            fill
+            sizes="(max-width: 640px) 250px, 300px"
+            priority
+            className="object-contain drop-shadow-[0_8px_28px_rgba(196,154,74,0.35)]"
+          />
+        </motion.div>
+
+        {/* Scroll indicator pointing to the invitation content right below */}
+        <motion.a
+          href="#invitation-details"
+          className="flex flex-col items-center text-[#6E5A50] hover:text-[#4A2F27] transition-colors"
+          initial={{ opacity: 0 }}
+          animate={revealed ? { opacity: 1 } : {}}
+          transition={{ delay: 1.4, duration: 1 }}
+          aria-label="Scroll to view invitation details"
+        >
+          <span className="font-caps text-[10px] tracking-[0.35em] uppercase text-gold">Scroll</span>
+          <motion.svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            className="mt-1 text-gold"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <path d="M12 4v16M6 14l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
+        </motion.a>
+      </div>
+
+      {/* ── Screen 2: All the content as it is, placed directly below logo2 ── */}
+      <div
+        id="invitation-details"
+        className="relative z-10 flex min-h-[90svh] flex-col items-center justify-center max-w-[380px] mx-auto w-full px-4 pt-10 pb-16"
+      >
+        {/* Shri Ganesh */}
+        <motion.div
+          {...show(revealed, 0.25)}
+          className="h-[52px] w-[48px] xs:h-[58px] xs:w-[54px]"
         >
           <motion.div
             className="relative h-full w-full"
@@ -244,7 +282,7 @@ export default function Hero({ revealed }) {
               src={wedding.images.ganesh}
               alt="Shri Ganesh"
               fill
-              sizes="50px"
+              sizes="54px"
               priority
               className="object-contain"
               unoptimized={wedding.images.ganesh.endsWith(".svg")}
@@ -252,24 +290,9 @@ export default function Hero({ revealed }) {
           </motion.div>
         </motion.div>
 
-        {/* Royal Monogram Logo2 below Ganesh */}
-        <motion.div
-          {...show(revealed, 0.32)}
-          className="relative mx-auto mb-3 xs:mb-3.5 w-[125px] xs:w-[145px] sm:w-[170px] aspect-[2041/2803]"
-        >
-          <Image
-            src="/images/logo2.png"
-            alt="Aashutosh & Atisha Monogram Logo"
-            fill
-            sizes="(max-width: 640px) 150px, 175px"
-            priority
-            className="object-contain drop-shadow-[0_4px_18px_rgba(196,154,74,0.35)]"
-          />
-        </motion.div>
-
         {/* Auspicious Shloka */}
         <motion.div
-          {...show(revealed, 0.45)}
+          {...show(revealed, 0.4)}
           className="mt-3.5 xs:mt-4 space-y-1 font-deva text-[13.5px] xs:text-[14.5px] font-bold leading-[1.65] tracking-[0.12em] text-[#9E242B]"
         >
           {wedding.shloka.map((l) => (
@@ -281,7 +304,7 @@ export default function Hero({ revealed }) {
 
         {/* Blessing Line */}
         <motion.p
-          {...show(revealed, 0.6)}
+          {...show(revealed, 0.55)}
           className="mt-3.5 xs:mt-4 max-w-[340px] font-serif text-[14.5px] xs:text-[15.5px] font-medium italic leading-[1.6] text-[#4A2F27] px-2"
         >
           {wedding.blessingLine}
@@ -289,7 +312,7 @@ export default function Hero({ revealed }) {
 
         {/* Flower & Gold Filigree Ornament */}
         <motion.div
-          {...show(revealed, 0.7)}
+          {...show(revealed, 0.65)}
           className="my-3.5 xs:my-4 flex items-center justify-center gap-2.5 opacity-70"
           aria-hidden="true"
         >
@@ -300,12 +323,12 @@ export default function Hero({ revealed }) {
 
         {/* Groom */}
         <div className="w-full">
-          <Person person={wedding.groom} revealed={revealed} delay={0.8} relation="Groom" />
+          <Person person={wedding.groom} revealed={revealed} delay={0.75} relation="Groom" />
         </div>
 
         {/* & Connector */}
         <motion.div
-          {...show(revealed, 1.1)}
+          {...show(revealed, 1.05)}
           className="my-3 xs:my-3.5 flex items-center justify-center gap-2.5"
           aria-hidden="true"
         >
@@ -316,34 +339,34 @@ export default function Hero({ revealed }) {
 
         {/* Bride */}
         <div className="w-full">
-          <Person person={wedding.bride} revealed={revealed} delay={1.25} relation="Bride" />
+          <Person person={wedding.bride} revealed={revealed} delay={1.2} relation="Bride" />
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.a
-        href="#save-the-date"
-        className="relative z-10 mt-6 flex flex-col items-center text-[#6E5A50]"
-        initial={{ opacity: 0 }}
-        animate={revealed ? { opacity: 1 } : {}}
-        transition={{ delay: 1.8, duration: 1 }}
-        aria-label="Scroll down"
-      >
-        <span className="font-caps text-[10px] tracking-[0.35em]">Scroll</span>
-        <motion.svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          className="mt-1"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        {/* Scroll indicator pointing to Save The Date */}
+        <motion.a
+          href="#save-the-date"
+          className="mt-8 flex flex-col items-center text-[#6E5A50]"
+          initial={{ opacity: 0 }}
+          animate={revealed ? { opacity: 1 } : {}}
+          transition={{ delay: 1.6, duration: 1 }}
+          aria-label="Scroll down to Save The Date"
         >
-          <path d="M12 4v16M6 14l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </motion.svg>
-      </motion.a>
+          <span className="font-caps text-[10px] tracking-[0.35em]">Scroll</span>
+          <motion.svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            className="mt-1"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <path d="M12 4v16M6 14l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
+        </motion.a>
+      </div>
     </section>
   );
 }
