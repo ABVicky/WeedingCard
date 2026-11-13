@@ -246,11 +246,11 @@ function PreviewCard({ fading }) {
 
         {/* Center: Couple Names in Millerstone */}
         <div className="flex flex-col items-center my-auto w-full px-2">
-          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight drop-shadow-[0_1px_6px_rgba(226,188,114,0.35)]">
+          <p className="font-names text-[24px] sm:text-[27px] font-normal leading-tight text-[#6A1220] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
             {wedding.groom.name}
           </p>
-          <span className="font-serif italic text-gold text-[14px] leading-none my-0.5">&amp;</span>
-          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight drop-shadow-[0_1px_6px_rgba(226,188,114,0.35)]">
+          <span className="font-serif italic text-[#801322] font-semibold text-[14px] leading-none my-0.5">&amp;</span>
+          <p className="font-names text-[24px] sm:text-[27px] font-normal leading-tight text-[#6A1220] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
             {wedding.bride.name}
           </p>
           <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
