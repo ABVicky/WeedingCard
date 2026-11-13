@@ -3,145 +3,252 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import wedding from "@/data/wedding";
-import { Butterfly, CornerBrackets, EASE } from "../ornaments";
+import { CornerBrackets, EASE } from "../ornaments";
 
-// Royal Indian wedding backdrop: festive marigold & jasmine garlands, palace mandap arch, and warm ambient sparkles.
+// Royal Indian Wedding Backdrop: Auspicious Marigold (Genda) & Mango Leaf (Aam Patta) Toran,
+// Hanging Brass Temple Bells (Pital Ghanti), Rajasthani Mehrab Arch & Sacred Golden Mandala.
 function Backdrop() {
-  const marigoldGarland = (x, y, count, len, angle = 0) => {
-    const spacing = len / count;
-    return (
-      <g transform={`translate(${x} ${y}) rotate(${angle})`}>
-        <line x1="0" y1="0" x2="0" y2={len} stroke="#B8860B" strokeWidth="0.8" opacity="0.4" />
-        {Array.from({ length: count }, (_, i) => {
-          const cy = (i + 0.5) * spacing;
-          const isJasmine = i % 3 === 2;
-          const isOrange = i % 2 === 1;
-          if (isJasmine) {
-            return (
-              <g key={i}>
-                <circle cx="0" cy={cy} r="3" fill="#FFFDF8" stroke="#EFE4CF" strokeWidth="0.5" />
-                <circle cx="0" cy={cy} r="1" fill="#E8CD82" />
-              </g>
-            );
-          }
-          return (
-            <g key={i}>
-              <circle cx="0" cy={cy} r="6.5" fill={isOrange ? "#E86A17" : "#F5B82E"} />
-              <circle cx="0" cy={cy} r="4.2" fill={isOrange ? "#C0392B" : "#F39C12"} opacity="0.65" />
-              <circle cx="0" cy={cy} r="2" fill="#FFF" opacity="0.3" />
-            </g>
-          );
-        })}
-        {/* Golden bell tassel */}
-        <path d={`M-3 ${len} L3 ${len} L2 ${len + 5} L-2 ${len + 5} Z`} fill="#D4AF37" />
-        <circle cx="0" cy={len + 6.5} r="1.5" fill="#F1C40F" />
-      </g>
-    );
-  };
-
-  const rose = (x, y, r, c1, c2) => (
-    <g transform={`translate(${x} ${y})`}>
-      <circle r={r} fill={c1} />
-      <path
-        d={`M${-r * 0.55} 0a${r * 0.55} ${r * 0.55} 0 1 1 ${r * 1.1} 0M${-r * 0.3} ${r * 0.1}a${r * 0.32} ${r * 0.3} 0 1 1 ${r * 0.62} 0M${-r * 0.75} ${r * 0.2}c${r * 0.2} ${r * 0.6} ${r * 1.3} ${r * 0.6} ${r * 1.5} 0`}
-        fill="none"
-        stroke={c2}
-        strokeWidth={r * 0.09}
-        strokeLinecap="round"
-      />
-    </g>
-  );
-
-  const leaf = (x, y, rot, s = 1) => (
-    <path d="M0 0C8-10 24-10 34 0 24 10 8 10 0 0Z" fill="#7FA469" opacity="0.85" transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`} />
-  );
-
   return (
     <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <linearGradient id="heroSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FBF2EB" />
-          <stop offset="0.4" stopColor="#FFF9F5" />
-          <stop offset="1" stopColor="#F6E7DB" />
+        <linearGradient id="heroBgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FFFBF5" />
+          <stop offset="35%" stopColor="#FAF2E4" />
+          <stop offset="70%" stopColor="#F5E4D0" />
+          <stop offset="100%" stopColor="#ECD2BC" />
         </linearGradient>
-        <filter id="soft">
-          <feGaussianBlur stdDeviation="1.6" />
-        </filter>
+
+        {/* Marigold flower radial gradients */}
+        <radialGradient id="orangeGenda" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#A81D1D" />
+          <stop offset="35%" stopColor="#D84315" />
+          <stop offset="70%" stopColor="#E65100" />
+          <stop offset="100%" stopColor="#F57C00" />
+        </radialGradient>
+
+        <radialGradient id="yellowGenda" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#E65100" />
+          <stop offset="35%" stopColor="#F9A825" />
+          <stop offset="75%" stopColor="#FBC02D" />
+          <stop offset="100%" stopColor="#FFF176" />
+        </radialGradient>
+
+        {/* Brass Bell gradient */}
+        <linearGradient id="brassBellGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#7A581F" />
+          <stop offset="25%" stopColor="#D4AF37" />
+          <stop offset="50%" stopColor="#FFF3B8" />
+          <stop offset="75%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#6E4A14" />
+        </linearGradient>
+
+        {/* Mango leaf gradient */}
+        <linearGradient id="mangoLeafGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#2D6A4F" />
+          <stop offset="100%" stopColor="#1B4332" />
+        </linearGradient>
+
+        {/* Diya flame gradient */}
+        <linearGradient id="diyaFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stopColor="#E65100" />
+          <stop offset="45%" stopColor="#F57C00" />
+          <stop offset="80%" stopColor="#FFD54F" />
+          <stop offset="100%" stopColor="#FFFFFF" />
+        </linearGradient>
+
+        {/* Genda flower symbols */}
+        <g id="genda-orange">
+          <circle cx="0" cy="0" r="10.5" fill="url(#orangeGenda)" />
+          <path d="M-10.5 0 Q-7.5 -5.5 0 -10.5 Q7.5 -5.5 10.5 0 Q7.5 5.5 0 10.5 Q-7.5 5.5 -10.5 0 Z" fill="#BF360C" opacity="0.45" />
+          <circle cx="0" cy="0" r="7.5" fill="#E65100" opacity="0.8" />
+          <circle cx="0" cy="0" r="5" fill="#F57C00" />
+          <circle cx="0" cy="0" r="2.8" fill="#FFE082" opacity="0.9" />
+          <circle cx="0" cy="0" r="1.3" fill="#B71C1C" />
+        </g>
+
+        <g id="genda-yellow">
+          <circle cx="0" cy="0" r="10.5" fill="url(#yellowGenda)" />
+          <path d="M-10.5 0 Q-7.5 -5.5 0 -10.5 Q7.5 -5.5 10.5 0 Q7.5 5.5 0 10.5 Q-7.5 5.5 -10.5 0 Z" fill="#E65100" opacity="0.4" />
+          <circle cx="0" cy="0" r="7.5" fill="#F9A825" opacity="0.8" />
+          <circle cx="0" cy="0" r="5" fill="#FBC02D" />
+          <circle cx="0" cy="0" r="2.8" fill="#FFFDE7" opacity="0.9" />
+          <circle cx="0" cy="0" r="1.3" fill="#E65100" />
+        </g>
+
+        {/* Mango leaf */}
+        <g id="mango-leaf">
+          <path d="M0 0 C-6 12 -8 28 0 46 C8 28 6 12 0 0 Z" fill="url(#mangoLeafGrad)" />
+          <path d="M0 0 L0 46" stroke="#95D5B2" strokeWidth="0.8" opacity="0.55" />
+          <path d="M0 12 L-4 18 M0 22 L-5 28 M0 32 L-4 38 M0 12 L4 18 M0 22 L5 28 M0 32 L4 38" stroke="#95D5B2" strokeWidth="0.5" opacity="0.35" />
+        </g>
+
+        {/* Hanging Brass Bell */}
+        <g id="brass-bell">
+          <line x1="0" y1="-18" x2="0" y2="0" stroke="#C0392B" strokeWidth="1.4" strokeDasharray="2 1" />
+          <circle cx="0" cy="0" r="2.2" fill="none" stroke="#7A581F" strokeWidth="1" />
+          <path d="M-2 2 C-2 5 -8 13 -9 17 C-7 18.5 7 18.5 9 17 C8 13 2 5 2 2 Z" fill="url(#brassBellGrad)" />
+          <ellipse cx="0" cy="17" rx="9" ry="2.2" fill="url(#brassBellGrad)" stroke="#6E4A14" strokeWidth="0.5" />
+          <circle cx="0" cy="20" r="2" fill="#F1C40F" stroke="#7A581F" strokeWidth="0.5" />
+          <circle cx="0" cy="22.5" r="1" fill="#D4AF37" />
+        </g>
       </defs>
-      <rect width="400" height="860" fill="url(#heroSky)" />
 
-      {/* Subtle royal mandala watermark in center */}
-      <g fill="none" stroke="#D4AF37" strokeWidth="0.8" opacity="0.14" transform="translate(200 430)">
-        <circle r="120" />
-        <circle r="95" strokeDasharray="3 4" />
-        <circle r="65" />
-        <circle r="35" />
-        {Array.from({ length: 12 }, (_, i) => (
-          <path key={i} d="M0 0 L0 120" transform={`rotate(${i * 30})`} />
-        ))}
-      </g>
+      {/* Warm Silk Background Canvas */}
+      <rect width="400" height="860" fill="url(#heroBgGrad)" />
 
-      {/* Floating golden sparkle / diya orbs */}
-      <g opacity="0.6">
-        {[
-          { cx: 35, cy: 220, r: 8, o: 0.4 },
-          { cx: 365, cy: 260, r: 10, o: 0.45 },
-          { cx: 50, cy: 420, r: 7, o: 0.35 },
-          { cx: 350, cy: 480, r: 9, o: 0.4 },
-          { cx: 25, cy: 620, r: 11, o: 0.5 },
-          { cx: 375, cy: 650, r: 12, o: 0.5 },
-        ].map((d, i) => (
-          <g key={i}>
-            <circle cx={d.cx} cy={d.cy} r={d.r * 1.8} fill="#FFE29A" opacity={d.o * 0.4} />
-            <circle cx={d.cx} cy={d.cy} r={d.r} fill="#F9A825" opacity={d.o} />
-            <circle cx={d.cx} cy={d.cy} r={d.r * 0.4} fill="#FFF9E6" />
+      {/* Ornate Royal Indian Mandala Watermark */}
+      <g fill="none" stroke="#D4AF37" strokeWidth="0.75" opacity="0.16" transform="translate(200 425)">
+        <circle r="145" />
+        <circle r="128" strokeDasharray="3 4" />
+        <circle r="106" />
+        <circle r="86" strokeDasharray="4 4" />
+        <circle r="60" />
+        <circle r="34" />
+        {Array.from({ length: 16 }, (_, i) => (
+          <g key={i} transform={`rotate(${i * 22.5})`}>
+            <path d="M0 -34 C-12 -65 12 -65 0 -34" fill="#D4AF37" fillOpacity="0.04" />
+            <path d="M0 -60 C-18 -106 18 -106 0 -60" />
           </g>
         ))}
       </g>
 
-      {/* Festive corner roses and mango leaves */}
-      <g filter="url(#soft)" opacity="0.75">
-        {leaf(-4, 35, -20, 1.4)}
-        {leaf(60, 16, 30)}
-        {leaf(150, 45, -40)}
-        {leaf(250, 18, 20, 1.2)}
-        {leaf(330, 50, -30, 1.3)}
-        {leaf(380, 25, 45, 1.2)}
-        {rose(20, 18, 28, "#F29B9B", "#D65A5A")}
-        {rose(95, 40, 22, "#F7BAA8", "#DF7A62")}
-        {rose(165, 10, 26, "#F5A3A3", "#D86060")}
-        {rose(240, 44, 20, "#FAC6B0", "#E5876E")}
-        {rose(305, 14, 28, "#F29999", "#D65555")}
-        {rose(380, 42, 24, "#F7BAAA", "#DE7864")}
+      {/* Royal Rajput / Mughal Cusped Mehrab Arch */}
+      <g fill="none" stroke="#D4AF37" strokeWidth="1.3" opacity="0.5">
+        <path d="M18 180 C18 95 80 38 200 38 C320 38 382 95 382 180" />
+        <path d="M24 180 C24 102 84 44 200 44 C316 44 376 102 376 180" strokeDasharray="3 3" strokeWidth="0.8" />
+        <path d="M200 22 L200 38 M196 30 L204 30" stroke="#D4AF37" strokeWidth="1.2" />
+        <circle cx="200" cy="20" r="2.2" fill="#D4AF37" />
       </g>
 
-      {/* Cascading Marigold & Jasmine garlands */}
-      <g filter="url(#soft)" opacity="0.88">
-        {marigoldGarland(16, 0, 14, 240, 3)}
-        {marigoldGarland(32, 0, 9, 150, -2)}
-        {marigoldGarland(384, 0, 14, 240, -3)}
-        {marigoldGarland(368, 0, 9, 150, 2)}
+      {/* Side Royal Lattice Lines */}
+      <g stroke="#D4AF37" strokeWidth="0.8" opacity="0.3">
+        <line x1="16" y1="0" x2="16" y2="860" />
+        <line x1="22" y1="0" x2="22" y2="860" strokeDasharray="2 3" />
+        <line x1="378" y1="0" x2="378" y2="860" strokeDasharray="2 3" />
+        <line x1="384" y1="0" x2="384" y2="860" />
       </g>
 
-      {/* Traditional Palace Mandap arch at bottom */}
-      <g opacity="0.45" filter="url(#soft)">
-        <path d="M0 860V680h35v180H0Z" fill="#E8D5C4" />
-        <path d="M400 860V680h-35v180H400Z" fill="#E8D5C4" />
-        <rect x="0" y="670" width="40" height="10" fill="#D4AF37" opacity="0.8" />
-        <rect x="360" y="670" width="40" height="10" fill="#D4AF37" opacity="0.8" />
-        <path
-          d="M35 680 C80 660 120 620 160 635 C180 610 200 580 200 575 C200 580 220 610 240 635 C280 620 320 660 365 680"
-          fill="none"
-          stroke="#D4AF37"
-          strokeWidth="3.5"
-        />
-        <circle cx="200" cy="565" r="4" fill="#C49A4A" />
-        <path d="M197 561 L203 561 L200 552 Z" fill="#E2BC72" />
-        <rect x="30" y="820" width="340" height="40" fill="#F0E2D4" opacity="0.8" />
-        <line x1="0" y1="820" x2="400" y2="820" stroke="#C49A4A" strokeWidth="2" opacity="0.5" />
+      {/* Auspicious Mango Leaves across Top Toran */}
+      <g>
+        {[
+          { x: 24, y: -10, r: 16, s: 0.85 },
+          { x: 54, y: -12, r: 8, s: 0.9 },
+          { x: 88, y: -14, r: -5, s: 0.9 },
+          { x: 122, y: -15, r: 12, s: 0.85 },
+          { x: 156, y: -15, r: -8, s: 0.9 },
+          { x: 188, y: -16, r: 5, s: 0.95 },
+          { x: 212, y: -16, r: -5, s: 0.95 },
+          { x: 244, y: -15, r: 8, s: 0.9 },
+          { x: 278, y: -15, r: -12, s: 0.85 },
+          { x: 312, y: -14, r: 5, s: 0.9 },
+          { x: 346, y: -12, r: -8, s: 0.9 },
+          { x: 376, y: -10, r: -16, s: 0.85 },
+        ].map((leaf, i) => (
+          <use key={i} href="#mango-leaf" x={leaf.x} y={leaf.y} transform={`rotate(${leaf.r} ${leaf.x} ${leaf.y}) scale(${leaf.s})`} />
+        ))}
       </g>
 
-      <rect width="400" height="860" fill="#FFF9F5" opacity="0.25" />
+      {/* Top Auspicious Marigold Bar */}
+      <g>
+        {Array.from({ length: 19 }, (_, i) => (
+          <use key={i} href={i % 2 === 0 ? "#genda-orange" : "#genda-yellow"} x={16 + i * 20.5} y={8} />
+        ))}
+      </g>
+
+      {/* Festive Marigold Garland Festoon (Left Loop) */}
+      <g>
+        <path d="M20 10 Q110 52 200 15" fill="none" stroke="#8D6E2F" strokeWidth="0.8" opacity="0.45" />
+        {[
+          [40, 23], [62, 34], [86, 41], [110, 44], [134, 41], [158, 34], [180, 23],
+        ].map(([x, y], i) => (
+          <use key={i} href={i % 2 === 0 ? "#genda-orange" : "#genda-yellow"} x={x} y={y} />
+        ))}
+      </g>
+
+      {/* Festive Marigold Garland Festoon (Right Loop) */}
+      <g>
+        <path d="M200 15 Q290 52 380 10" fill="none" stroke="#8D6E2F" strokeWidth="0.8" opacity="0.45" />
+        {[
+          [220, 23], [242, 34], [266, 41], [290, 44], [314, 41], [338, 34], [360, 23],
+        ].map(([x, y], i) => (
+          <use key={i} href={i % 2 === 0 ? "#genda-yellow" : "#genda-orange"} x={x} y={y} />
+        ))}
+      </g>
+
+      {/* Hanging Vertical Marigold Strands (Left) */}
+      <g>
+        <line x1="16" y1="10" x2="16" y2="255" stroke="#C0392B" strokeWidth="0.8" opacity="0.5" />
+        {Array.from({ length: 12 }, (_, k) => (
+          <use key={k} href={k % 2 === 0 ? "#genda-orange" : "#genda-yellow"} x="16" y={24 + k * 19} />
+        ))}
+        <use href="#brass-bell" x="16" y="258" />
+      </g>
+
+      {/* Hanging Vertical Marigold Strands (Right) */}
+      <g>
+        <line x1="384" y1="10" x2="384" y2="255" stroke="#C0392B" strokeWidth="0.8" opacity="0.5" />
+        {Array.from({ length: 12 }, (_, k) => (
+          <use key={k} href={k % 2 === 0 ? "#genda-orange" : "#genda-yellow"} x="384" y={24 + k * 19} />
+        ))}
+        <use href="#brass-bell" x="384" y="258" />
+      </g>
+
+      {/* Center Arch Bell */}
+      <g>
+        <use href="#brass-bell" x="200" y="44" />
+      </g>
+
+      {/* Inner Shorter Hanging Bells */}
+      <g>
+        <use href="#brass-bell" x="38" y="160" />
+        <use href="#brass-bell" x="362" y="160" />
+      </g>
+
+      {/* Floating Golden Sparkle / Diya Orbs */}
+      <g opacity="0.75">
+        {[
+          { cx: 38, cy: 360, r: 4 },
+          { cx: 362, cy: 380, r: 4.5 },
+          { cx: 32, cy: 530, r: 4 },
+          { cx: 368, cy: 560, r: 4.5 },
+          { cx: 30, cy: 700, r: 5 },
+          { cx: 370, cy: 710, r: 4 },
+        ].map((d, i) => (
+          <g key={i} transform={`translate(${d.cx} ${d.cy})`}>
+            <circle cx="0" cy="0" r={d.r * 2.2} fill="#FFD54F" opacity="0.18" />
+            <circle cx="0" cy="0" r={d.r} fill="#F57C00" opacity="0.45" />
+            <circle cx="0" cy="0" r={d.r * 0.4} fill="#FFFDE7" opacity="0.9" />
+          </g>
+        ))}
+      </g>
+
+      {/* Bottom Royal Mandap Rail & Sacred Diya */}
+      <g transform="translate(0 765)">
+        <line x1="18" y1="0" x2="382" y2="0" stroke="#D4AF37" strokeWidth="1.2" opacity="0.5" />
+        <line x1="18" y1="5" x2="382" y2="5" stroke="#D4AF37" strokeWidth="0.7" strokeDasharray="3 3" opacity="0.4" />
+
+        {/* Sacred Golden Diya at Center */}
+        <g transform="translate(200 46)">
+          <path d="M-18 6 C-14 18 14 18 18 6 C12 6 -12 6 -18 6 Z" fill="url(#brassBellGrad)" stroke="#7A581F" strokeWidth="0.8" />
+          <ellipse cx="0" cy="6" rx="16" ry="2.8" fill="#A07828" />
+          <path d="M0 -14 C-5 -4 -4 5 0 6 C4 5 5 -4 0 -14 Z" fill="url(#diyaFlameGrad)" />
+          <circle cx="0" cy="-4" r="14" fill="#FFD54F" opacity="0.22" />
+        </g>
+
+        {/* Delicate Golden Lotus Motifs */}
+        <g stroke="#D4AF37" strokeWidth="0.85" fill="none" opacity="0.5">
+          <g transform="translate(85 48)">
+            <path d="M0 0 C-7 -14 0 -22 0 -22 C0 -22 7 -14 0 0 Z" />
+            <path d="M-2 -2 C-13 -12 -7 -20 -7 -20 C-7 -20 -2 -14 -2 -2 Z" />
+            <path d="M2 -2 C13 -12 7 -20 7 -20 C7 -20 2 -14 2 -2 Z" />
+          </g>
+          <g transform="translate(315 48)">
+            <path d="M0 0 C-7 -14 0 -22 0 -22 C0 -22 7 -14 0 0 Z" />
+            <path d="M-2 -2 C-13 -12 -7 -20 -7 -20 C-7 -20 -2 -14 -2 -2 Z" />
+            <path d="M2 -2 C13 -12 7 -20 7 -20 C7 -20 2 -14 2 -2 Z" />
+          </g>
+        </g>
+      </g>
     </svg>
   );
 }
@@ -180,14 +287,6 @@ export default function Hero({ revealed }) {
     <section className="relative min-h-[100svh] overflow-hidden px-4 pb-28 pt-[13svh]">
       <Backdrop />
       <CornerBrackets inset={20} size={58} className="border-gold/70" />
-      <Butterfly color="#B9A6E8" className="left-[6%] top-[62%]" />
-      <motion.div
-        className="pointer-events-none absolute right-[8%] top-[24%]"
-        animate={{ x: [0, -14, 6, 0], y: [0, -18, -6, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Butterfly color="#F2A7A0" className="relative" />
-      </motion.div>
 
       <motion.div
         className="relative overflow-hidden rounded-[26px] bg-ivory/[0.93] px-3 pb-10 pt-8 text-center shadow-[0_20px_50px_-20px_rgba(120,40,40,0.35)] backdrop-blur-[2px]"
