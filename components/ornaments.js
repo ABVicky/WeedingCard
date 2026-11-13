@@ -34,6 +34,40 @@ export function CornerBrackets({ inset = 16, size = 30, className = "border-gold
   );
 }
 
+// Signature 5-petal flower motif matching the envelope floral design
+export function FloralBlossom({ size = 20, className = "" }) {
+  const r = size * 0.44;
+  return (
+    <svg width={size} height={size} viewBox="-15 -15 30 30" fill="none" stroke="#D4AF37" strokeWidth="1.2" className={className} aria-hidden="true">
+      {[0, 72, 144, 216, 288].map((a) => (
+        <ellipse key={a} cx="0" cy={-r} rx={r * 0.52} ry={r} transform={`rotate(${a})`} fill="rgba(226,188,114,0.16)" />
+      ))}
+      <circle r={r * 0.32} fill="#D4AF37" />
+    </svg>
+  );
+}
+
+export function FloralDivider({ className = "" }) {
+  return (
+    <div className={`flex items-center justify-center gap-3 ${className}`} aria-hidden="true">
+      <span className="h-px w-14 bg-gradient-to-r from-transparent via-gold to-gold/75" />
+      {/* Left leaf */}
+      <svg width="18" height="12" viewBox="0 0 24 16" fill="none" stroke="#D4AF37" strokeWidth="1.1" className="opacity-75">
+        <path d="M22 8 C16 2 8 2 2 8 C8 14 16 14 22 8 Z" fill="rgba(226,188,114,0.12)" />
+        <path d="M2 8 L22 8 M10 8 L6 4 M14 8 L10 4 M10 8 L6 12 M14 8 L10 12" />
+      </svg>
+      {/* Center signature 5-petal blossom */}
+      <FloralBlossom size={22} />
+      {/* Right leaf (flipped) */}
+      <svg width="18" height="12" viewBox="0 0 24 16" fill="none" stroke="#D4AF37" strokeWidth="1.1" className="opacity-75" style={{ transform: "scaleX(-1)" }}>
+        <path d="M22 8 C16 2 8 2 2 8 C8 14 16 14 22 8 Z" fill="rgba(226,188,114,0.12)" />
+        <path d="M2 8 L22 8 M10 8 L6 4 M14 8 L10 4 M10 8 L6 12 M14 8 L10 12" />
+      </svg>
+      <span className="h-px w-14 bg-gradient-to-l from-transparent via-gold to-gold/75" />
+    </div>
+  );
+}
+
 export function StarDivider({ className = "" }) {
   return (
     <div className={`flex items-center justify-center gap-2 ${className}`} aria-hidden="true">
@@ -85,7 +119,7 @@ export function SectionTitle({ label, lines, sub, divider = false }) {
       </Reveal>
       {divider && (
         <Reveal delay={0.2}>
-          <StarDivider className="mt-3" />
+          <FloralDivider className="mt-3.5" />
         </Reveal>
       )}
       {sub && (

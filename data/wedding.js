@@ -11,7 +11,7 @@ const wedding = {
   // ── Opening envelope ──
   envelope: {
     monogram: "AA", // embossed on the wax seal
-    tapText: "Tap to Reveal",
+    tapText: "Tap to Open",
   },
 
   // ── 1. Hero / blessings ──

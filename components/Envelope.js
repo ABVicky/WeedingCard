@@ -120,8 +120,8 @@ function RoyalWaxSeal() {
   );
 }
 
-// Opening timeline (seconds after the tap). Refined for a regal, luxurious opening experience.
-const T = { flap: 0.5, card: 1.8, reveal: 5.4, done: 6.8 };
+// Opening timeline (seconds after the tap). Slower, regal and cinematic pacing.
+const T = { flap: 0.6, card: 2.4, reveal: 7.0, done: 8.5 };
 const GLIDE = [0.22, 1, 0.36, 1];
 
 const rand = (i, salt) => {
@@ -243,7 +243,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
 
   // Every envelope layer drops away together during the reveal.
   const drop = { y: revealing ? "26%" : 0 };
-  const dropTransition = { y: { duration: 1.0, ease: [0.33, 1, 0.68, 1] } };
+  const dropTransition = { y: { duration: 1.2, ease: [0.33, 1, 0.68, 1] } };
 
   // The flap holds its slice of the full-screen emboss so the pattern lines up.
   const flapNoiseStyle = { left: 0, width: "100%", top: `${(-HINGE / FLAP_H) * 100}%`, height: `${(100 / FLAP_H) * 100}%` };
@@ -261,7 +261,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleTap()}
       initial={false}
       animate={{ opacity: revealing ? 0 : 1 }}
-      transition={{ duration: 0.8, delay: revealing ? 0.2 : 0, ease: "easeInOut" }}
+      transition={{ duration: 1.0, delay: revealing ? 0.2 : 0, ease: "easeInOut" }}
     >
       {/* Back of the envelope + paper grain */}
       <motion.div className="absolute inset-0" style={{ background: MAROON }} animate={drop} transition={dropTransition}>
@@ -297,7 +297,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         className="absolute left-[9%] right-[9%]"
         style={{ top: "57%", height: "38%", zIndex: 2, transformOrigin: "50% 0%" }}
         animate={revealing ? { y: "-116%", scaleX: 1.12, scaleY: 1.9 } : { y: cardOut ? "-104%" : 0, scaleX: 1, scaleY: 1 }}
-        transition={revealing ? { duration: 0.9, ease: GLIDE } : { duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={revealing ? { duration: 1.1, ease: GLIDE } : { duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
       >
         <PreviewCard fading={revealing} />
       </motion.div>
@@ -346,7 +346,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
           willChange: "transform",
         }}
         animate={{ rotateX: opened ? 180 : 0, ...drop }}
-        transition={{ rotateX: { duration: 1.3, delay: opened ? T.flap : 0, ease: [0.33, 1, 0.68, 1] }, ...dropTransition }}
+        transition={{ rotateX: { duration: 1.8, delay: opened ? T.flap : 0, ease: [0.33, 1, 0.68, 1] }, ...dropTransition }}
       >
         <div
           className="absolute inset-0 overflow-hidden"
@@ -430,12 +430,12 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
       {/* Tap hint above seal */}
       <motion.div
         className="pointer-events-none absolute inset-x-0 z-[5] flex flex-col items-center text-center px-4"
-        style={{ top: "27%" }}
+        style={{ top: "27.5%" }}
         initial={{ opacity: 0.95, y: 0 }}
         animate={
           opened
             ? { opacity: 0, y: -12 }
-            : { opacity: [0.8, 1, 0.8], y: [0, -3, 0] }
+            : { opacity: [0.85, 1, 0.85], y: [0, -3, 0] }
         }
         transition={
           opened
@@ -443,16 +443,16 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
             : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
         }
       >
-        <span className="font-caps text-[11.5px] sm:text-[12.5px] font-semibold tracking-[0.38em] uppercase text-[#E2BC72] drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">
-          A Sacred Union
+        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.32em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          You are invited
         </span>
-        <div className="my-1.5 flex items-center gap-2 opacity-85" aria-hidden="true">
+        <div className="my-1.5 flex items-center gap-2 opacity-80" aria-hidden="true">
           <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
           <span className="h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_6px_#E2BC72]" />
           <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold" />
         </div>
-        <span className="font-serif italic text-[15px] sm:text-[16px] text-[#F7E8D8] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
-          Tap the royal seal to open
+        <span className="font-serif italic text-[15px] sm:text-[16px] text-[#F7E8D8] tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
+          Tap to Open
         </span>
       </motion.div>
 
