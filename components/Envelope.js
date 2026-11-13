@@ -515,7 +515,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
       {/* Tap hint in lower section below seal */}
       <motion.div
         className="pointer-events-none absolute inset-x-0 z-[5] flex flex-col items-center text-center px-4"
-        style={{ top: "67.5%" }}
+        style={{ top: "73%" }}
         initial={{ opacity: 0.95, y: 0 }}
         animate={
           opened
