@@ -61,7 +61,7 @@ export default function Quiz({ onFinish }) {
 
   return (
     <section id="quiz" className="relative bg-blush-200/80 px-5 pb-24 pt-20">
-      <SectionTitle label="Join the Celebration" lines={["Celebrate", "With Us"]} sub="A few fun questions before the big day!" />
+      <SectionTitle label="Join the Celebration" lines={["Celebrate", "With Us"]} sub="A few fun questions before the big day!" divider />
 
       <Reveal delay={0.2} className="mx-auto mt-10 max-w-[360px]">
         <div className="relative min-h-[360px] overflow-hidden rounded-[24px] border border-[#F3E0D6] bg-white px-5 py-7 shadow-card">

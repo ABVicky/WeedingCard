@@ -225,7 +225,7 @@ export default function SaveTheDate() {
         </clipPath>
       </svg>
 
-      <SectionTitle label="Save The Date" lines={["Reveal Our", "Big Day"]} sub="Scratch the hearts to reveal" />
+      <SectionTitle label="Save The Date" lines={["Reveal Our", "Big Day"]} sub="Scratch the hearts to reveal" divider />
 
       <Reveal delay={0.25} className="mt-8 flex justify-center gap-3">
         {wedding.scratch.map((s) => (

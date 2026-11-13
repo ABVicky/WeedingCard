@@ -171,8 +171,8 @@ function PreviewCard({ fading }) {
           <p className="mt-1 font-deva text-[10px] sm:text-[10.5px] font-semibold tracking-[0.2em] text-[#9E242B]">
             ॥ श्री गणेशाय नमः ॥
           </p>
-          <p className="mt-0.5 font-caps text-[8.5px] tracking-[0.28em] uppercase text-[#8A5A48] font-medium">
-            Save The Date
+          <p className="mt-0.5 font-caps text-[8.5px] tracking-[0.28em] uppercase text-[#8A5A48] font-medium flex items-center gap-1.5">
+            <span className="text-[8px]">🌸</span> Save The Date <span className="text-[8px]">🌸</span>
           </p>
         </div>
 
@@ -187,7 +187,7 @@ function PreviewCard({ fading }) {
           </p>
           <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold/70" />
-            <span className="h-1 w-1 rotate-45 bg-gold shadow-[0_0_4px_#E2BC72]" />
+            <span className="text-[10px] leading-none">🌸</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/70" />
           </div>
           <p className="mt-0.5 font-serif italic text-[11px] text-[#5A382E]">
@@ -196,8 +196,10 @@ function PreviewCard({ fading }) {
         </div>
 
         {/* Bottom: Date badge */}
-        <div className="mb-0.5 inline-flex items-center rounded-full border border-gold/50 bg-gold/15 px-3 py-0.5 font-caps text-[9px] font-semibold tracking-[0.2em] text-[#9E242B]">
-          04 · DECEMBER · 2026
+        <div className="mb-0.5 inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-gold/15 px-3 py-0.5 font-caps text-[9px] font-semibold tracking-[0.2em] text-[#9E242B]">
+          <span className="text-[8.5px]">🌸</span>
+          <span>04 · DECEMBER · 2026</span>
+          <span className="text-[8.5px]">🌸</span>
         </div>
       </motion.div>
     </div>
@@ -443,12 +445,14 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
             : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
         }
       >
-        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.32em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-          You are invited
+        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.32em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] flex items-center justify-center gap-2">
+          <span className="text-[12px]">🌸</span>
+          <span>You are invited</span>
+          <span className="text-[12px]">🌸</span>
         </span>
         <div className="my-1.5 flex items-center gap-2 opacity-80" aria-hidden="true">
           <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
-          <span className="h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_6px_#E2BC72]" />
+          <span className="text-[10px] leading-none">🌸</span>
           <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold" />
         </div>
         <span className="font-serif italic text-[15px] sm:text-[16px] text-[#F7E8D8] tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">

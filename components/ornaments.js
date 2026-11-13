@@ -49,21 +49,21 @@ export function FloralBlossom({ size = 20, className = "" }) {
 
 export function FloralDivider({ className = "" }) {
   return (
-    <div className={`flex items-center justify-center gap-3 ${className}`} aria-hidden="true">
-      <span className="h-px w-14 bg-gradient-to-r from-transparent via-gold to-gold/75" />
+    <div className={`flex items-center justify-center gap-2.5 ${className}`} aria-hidden="true">
+      <span className="h-px w-12 bg-gradient-to-r from-transparent via-gold to-gold/75" />
       {/* Left leaf */}
       <svg width="18" height="12" viewBox="0 0 24 16" fill="none" stroke="#D4AF37" strokeWidth="1.1" className="opacity-75">
         <path d="M22 8 C16 2 8 2 2 8 C8 14 16 14 22 8 Z" fill="rgba(226,188,114,0.12)" />
         <path d="M2 8 L22 8 M10 8 L6 4 M14 8 L10 4 M10 8 L6 12 M14 8 L10 12" />
       </svg>
-      {/* Center signature 5-petal blossom */}
-      <FloralBlossom size={22} />
+      {/* Center 🌸 flower emoji */}
+      <span className="text-[17px] leading-none select-none drop-shadow-[0_1px_3px_rgba(226,188,114,0.4)]">🌸</span>
       {/* Right leaf (flipped) */}
       <svg width="18" height="12" viewBox="0 0 24 16" fill="none" stroke="#D4AF37" strokeWidth="1.1" className="opacity-75" style={{ transform: "scaleX(-1)" }}>
         <path d="M22 8 C16 2 8 2 2 8 C8 14 16 14 22 8 Z" fill="rgba(226,188,114,0.12)" />
         <path d="M2 8 L22 8 M10 8 L6 4 M14 8 L10 4 M10 8 L6 12 M14 8 L10 12" />
       </svg>
-      <span className="h-px w-14 bg-gradient-to-l from-transparent via-gold to-gold/75" />
+      <span className="h-px w-12 bg-gradient-to-l from-transparent via-gold to-gold/75" />
     </div>
   );
 }
@@ -83,21 +83,19 @@ export function StarDivider({ className = "" }) {
 export function DotDivider({ className = "" }) {
   return (
     <div className={`flex items-center justify-center gap-2.5 ${className}`} aria-hidden="true">
-      <span className="h-px w-14 bg-gold/70" />
-      <span className="h-1 w-1 rounded-full bg-gold" />
-      <span className="h-px w-14 bg-gold/70" />
+      <span className="h-px w-12 bg-gold/50" />
+      <span className="text-[13px] leading-none select-none opacity-85">🌸</span>
+      <span className="h-px w-12 bg-gold/50" />
     </div>
   );
 }
 
 export function HeartDivider({ className = "" }) {
   return (
-    <div className={`flex items-center justify-center gap-3 ${className}`} aria-hidden="true">
-      <span className="h-px w-16 bg-gold/50" />
-      <svg width="12" height="11" viewBox="0 0 24 22" className="fill-gold">
-        <path d="M12 22S0 14.5 0 6.6A6.4 6.4 0 0 1 12 3.3 6.4 6.4 0 0 1 24 6.6C24 14.5 12 22 12 22Z" />
-      </svg>
-      <span className="h-px w-16 bg-gold/50" />
+    <div className={`flex items-center justify-center gap-2.5 ${className}`} aria-hidden="true">
+      <span className="h-px w-14 bg-gold/50" />
+      <span className="text-[16px] leading-none select-none">🌸</span>
+      <span className="h-px w-14 bg-gold/50" />
     </div>
   );
 }
@@ -106,7 +104,11 @@ export function SectionTitle({ label, lines, sub, divider = false }) {
   return (
     <div className="text-center">
       <Reveal>
-        <p className="label-caps">{label}</p>
+        <p className="label-caps inline-flex items-center justify-center gap-2">
+          <span className="text-[12px] select-none" aria-hidden="true">🌸</span>
+          <span>{label}</span>
+          <span className="text-[12px] select-none" aria-hidden="true">🌸</span>
+        </p>
       </Reveal>
       <Reveal delay={0.1}>
         <h2 className="heading-script mt-3">
@@ -150,43 +152,39 @@ export function Butterfly({ color = "#B9A6E8", className = "", style }) {
   );
 }
 
-// Petal colours: authentic Indian wedding shower petals (marigold gold, saffron, and festive crimson roses).
-const PETAL_COLORS = ["#D93848", "#E67E22", "#F39C12", "#C0392B", "#F1C40F", "#E84393", "#FFA502", "#F8A5C2"];
-
 // Deterministic pseudo-random so server and client render the same petals.
 const rand = (i, salt) => {
   const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453;
   return x - Math.floor(x);
 };
 
-const PETALS = Array.from({ length: 16 }, (_, i) => ({
-  left: `${Math.round(rand(i, 1) * 100)}%`,
-  w: 5 + Math.round(rand(i, 2) * 6),
-  h: 8 + Math.round(rand(i, 3) * 8),
-  color: PETAL_COLORS[i % PETAL_COLORS.length],
-  dur: `${11 + Math.round(rand(i, 4) * 10)}s`,
+const PETALS = Array.from({ length: 18 }, (_, i) => ({
+  left: `${Math.round(rand(i, 1) * 92 + 4)}%`,
+  size: 13 + Math.round(rand(i, 2) * 11),
+  dur: `${11 + Math.round(rand(i, 4) * 9)}s`,
   delay: `-${Math.round(rand(i, 5) * 20)}s`,
-  drift: `${Math.round(rand(i, 6) * 80 - 40)}px`,
+  drift: `${Math.round(rand(i, 6) * 70 - 35)}px`,
+  opacity: 0.72 + rand(i, 7) * 0.22,
 }));
 
 export const FloatingPetals = memo(function FloatingPetals() {
   return (
-    <div className="phone-fixed overflow-hidden" aria-hidden="true">
+    <div className="phone-fixed overflow-hidden pointer-events-none z-30" aria-hidden="true">
       {PETALS.map((p, i) => (
         <span
           key={i}
-          className="petal rounded-[60%_40%_60%_40%]"
+          className="petal select-none"
           style={{
             left: p.left,
-            width: p.w,
-            height: p.h,
-            background: p.color,
-            opacity: 0.75,
+            fontSize: `${p.size}px`,
+            opacity: p.opacity,
             "--dur": p.dur,
             "--delay": p.delay,
             "--drift": p.drift,
           }}
-        />
+        >
+          🌸
+        </span>
       ))}
     </div>
   );
