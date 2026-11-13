@@ -26,11 +26,34 @@ export default function Gallery() {
     return () => clearTimeout(id);
   }, [index, paused, go]);
 
+  // Preload all gallery images into browser memory immediately
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    photos.forEach((p) => {
+      const img = new window.Image();
+      img.src = p.src;
+    });
+  }, []);
+
   const photo = photos[index];
 
   return (
     <section id="gallery" className="relative bg-gradient-to-b from-blush-200/80 to-blush-300/80 px-5 pb-20 pt-20">
       <SectionTitle label="A Glimpse of Us" lines={["Our Beautiful", "Moments"]} divider emoji="🌹" />
+
+      {/* Hidden preloader ensuring zero loading lag during transitions */}
+      <div className="hidden" aria-hidden="true">
+        {photos.map((p) => (
+          <Image
+            key={p.src}
+            src={p.src}
+            alt=""
+            width={340}
+            height={476}
+            priority
+          />
+        ))}
+      </div>
 
       <Reveal delay={0.2} y={40} className="mx-auto mt-10 w-[88%] max-w-[340px]">
         <div className="relative aspect-[5/7]">
