@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import wedding from "@/data/wedding";
 import { sfx } from "../audio";
@@ -38,6 +39,55 @@ function CardText({ ev, light }) {
   );
 }
 
+function EventMapViewer({ ev }) {
+  const [showMap, setShowMap] = useState(true);
+  const embedQuery = ev.venue || `${ev.name} Wedding Ceremony`;
+  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(embedQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+
+  return (
+    <div className="mt-3.5 w-full text-left">
+      <div className="mb-1.5 flex items-center justify-between px-1">
+        <span className="font-caps text-[10px] uppercase tracking-[0.2em] text-[#8C5832] font-semibold flex items-center gap-1.5">
+          <span>🗺️</span>
+          <span>Location Map</span>
+        </span>
+        <button
+          type="button"
+          onClick={() => {
+            sfx.click();
+            setShowMap((prev) => !prev);
+          }}
+          className="font-caps text-[9px] uppercase tracking-wider text-[#A26D3E] hover:text-terra transition-colors underline underline-offset-2"
+        >
+          {showMap ? "Hide Map" : "Show Map"}
+        </button>
+      </div>
+
+      {showMap && (
+        <div className="relative h-[160px] sm:h-[180px] w-full overflow-hidden rounded-xl border border-gold/50 bg-[#FAF4EB] shadow-[inset_0_2px_8px_rgba(0,0,0,0.06)]">
+          <iframe
+            title={`${ev.name} Location Map`}
+            src={embedUrl}
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          {/* Bottom Badge Bar */}
+          <div className="pointer-events-none absolute bottom-1.5 inset-x-2 flex items-center justify-between rounded-lg bg-white/95 px-2.5 py-1 text-[11px] font-serif text-[#4A2618] border border-gold/40 shadow-sm backdrop-blur-sm">
+            <span className="truncate flex items-center gap-1 font-semibold">
+              <span className="text-[12px] text-terra">📍</span>
+              <span className="truncate">{ev.venue || `${ev.name} Location`}</span>
+            </span>
+            <span className="shrink-0 ml-1 text-[9px] uppercase font-caps font-semibold tracking-wider text-[#8C5832]">
+              Interactive Map
+            </span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const EVENT_FLOWERS = {
   "Tilak & Sangeet": { left: "🌼", right: "🪻" },
   Wedding: { left: "🌹", right: "🪷" },
@@ -69,30 +119,64 @@ export default function Events() {
             </Reveal>
 
             <Reveal delay={0.15} className="mx-auto mt-4 w-[86%] max-w-[340px]">
-              <div className="rounded-2xl border border-gold/30 bg-white/95 px-4 py-4 text-center shadow-soft">
-                {ev.time && (
-                  <div className="mb-2 flex items-center justify-center gap-2 font-serif text-[15px] font-semibold text-[#4A2618]">
-                    <span>{ev.weekday}</span>
-                    <span className="h-3 w-px bg-gold/60" />
-                    <span className="text-terra">{ev.time}</span>
+              <div className="relative rounded-2xl border border-gold/50 bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-4 text-center shadow-soft">
+                {/* Corner gold brackets matching royal theme */}
+                <span className="pointer-events-none absolute top-2 left-2 h-2 w-2 border-t border-l border-gold/70" />
+                <span className="pointer-events-none absolute top-2 right-2 h-2 w-2 border-t border-r border-gold/70" />
+                <span className="pointer-events-none absolute bottom-2 left-2 h-2 w-2 border-b border-l border-gold/70" />
+                <span className="pointer-events-none absolute bottom-2 right-2 h-2 w-2 border-b border-r border-gold/70" />
+
+                {/* Date, Weekday & Time */}
+                <div className="flex flex-col items-center justify-center">
+                  <div className="flex items-center justify-center gap-2 font-serif text-[15.5px] font-bold text-[#5C2418]">
+                    <span className="text-[14px]">🗓️</span>
+                    <span>{ev.date}</span>
+                    <span className="text-[13px] font-normal text-[#8A5A48]">({ev.weekday})</span>
                   </div>
-                )}
-                {ev.venue ? (
-                  <p className="font-serif text-[15px] italic text-[#4A3328]">Venue: {ev.venue}</p>
-                ) : (
-                  <p className="font-caps text-[11px] uppercase tracking-[0.2em] text-[#8A5A48]">{ev.name} Location</p>
-                )}
+                  {ev.time && (
+                    <div className="mt-1 flex items-center justify-center gap-1.5 font-serif text-[14px] font-medium text-terra">
+                      <span className="text-[13px]">⏰</span>
+                      <span>{ev.time}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Ornate Gold Divider */}
+                <div className="my-3 mx-auto flex w-36 items-center gap-1.5 opacity-60" aria-hidden="true">
+                  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
+                  <span className="text-[10px] text-gold">✦</span>
+                  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
+                </div>
+
+                {/* Location / Venue Mention */}
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center gap-1.5 font-serif text-[15px] sm:text-[16px] font-semibold text-[#4A2618]">
+                    <span className="text-[16px] text-terra">📍</span>
+                    <span>{ev.venue || `${ev.name} Venue`}</span>
+                  </div>
+                  {ev.address && (
+                    <p className="mt-0.5 font-serif text-[12px] italic text-[#7C5A48] max-w-[280px]">
+                      {ev.address}
+                    </p>
+                  )}
+                </div>
+
+                {/* Short Map Viewer */}
+                <EventMapViewer ev={ev} />
+
+                {/* Action Button: Location Mentioned with the Button */}
                 <a
                   href={mapsUrl(ev)}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => sfx.click()}
-                  className="pill mt-2.5 inline-flex items-center gap-2 px-6 py-2.5 text-[10.5px]"
+                  className="pill mt-3.5 inline-flex w-full items-center justify-center gap-2 px-3.5 py-2.5 text-[11px] font-medium shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="h-4 w-4 text-gold-light shrink-0" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                   </svg>
-                  View on Google Maps
+                  <span className="truncate">View {ev.venue ? ev.venue : `${ev.name} Location`} on Google Maps</span>
+                  <span className="text-gold-light text-[11px] shrink-0">↗</span>
                 </a>
               </div>
             </Reveal>
