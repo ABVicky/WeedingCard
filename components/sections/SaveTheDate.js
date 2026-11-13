@@ -225,7 +225,7 @@ export default function SaveTheDate() {
         </clipPath>
       </svg>
 
-      <SectionTitle label="Save The Date" lines={["Reveal Our", "Big Day"]} sub="Scratch the hearts to reveal" divider />
+      <SectionTitle label="Save The Date" lines={["Reveal Our", "Big Day"]} sub="Scratch the hearts to reveal" divider emoji="💐" />
 
       <Reveal delay={0.25} className="mt-8 flex justify-center gap-3">
         {wedding.scratch.map((s) => (
@@ -236,7 +236,11 @@ export default function SaveTheDate() {
       <AnimatePresence>
         {allDone && (
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: EASE }}>
-            <p className="mt-10 whitespace-nowrap text-center font-heading font-serif italic text-[23px] sm:text-[26px] leading-tight text-terra">{wedding.journeyLine}</p>
+            <p className="mt-10 whitespace-nowrap text-center font-heading font-serif italic text-[23px] sm:text-[26px] leading-tight text-terra flex items-center justify-center gap-2">
+              <span className="text-[18px]">🌷</span>
+              <span>{wedding.journeyLine}</span>
+              <span className="text-[18px]">🌷</span>
+            </p>
             <Countdown />
           </motion.div>
         )}

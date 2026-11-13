@@ -47,7 +47,7 @@ export function FloralBlossom({ size = 20, className = "" }) {
   );
 }
 
-export function FloralDivider({ className = "" }) {
+export function FloralDivider({ emoji = "🌸", className = "" }) {
   return (
     <div className={`flex items-center justify-center gap-2.5 ${className}`} aria-hidden="true">
       <span className="h-px w-12 bg-gradient-to-r from-transparent via-gold to-gold/75" />
@@ -56,8 +56,8 @@ export function FloralDivider({ className = "" }) {
         <path d="M22 8 C16 2 8 2 2 8 C8 14 16 14 22 8 Z" fill="rgba(226,188,114,0.12)" />
         <path d="M2 8 L22 8 M10 8 L6 4 M14 8 L10 4 M10 8 L6 12 M14 8 L10 12" />
       </svg>
-      {/* Center 🌸 flower emoji */}
-      <span className="text-[17px] leading-none select-none drop-shadow-[0_1px_3px_rgba(226,188,114,0.4)]">🌸</span>
+      {/* Center flower emoji */}
+      <span className="text-[17px] leading-none select-none drop-shadow-[0_1px_3px_rgba(226,188,114,0.4)]">{emoji}</span>
       {/* Right leaf (flipped) */}
       <svg width="18" height="12" viewBox="0 0 24 16" fill="none" stroke="#D4AF37" strokeWidth="1.1" className="opacity-75" style={{ transform: "scaleX(-1)" }}>
         <path d="M22 8 C16 2 8 2 2 8 C8 14 16 14 22 8 Z" fill="rgba(226,188,114,0.12)" />
@@ -80,34 +80,34 @@ export function StarDivider({ className = "" }) {
   );
 }
 
-export function DotDivider({ className = "" }) {
+export function DotDivider({ emoji = "🌼", className = "" }) {
   return (
     <div className={`flex items-center justify-center gap-2.5 ${className}`} aria-hidden="true">
       <span className="h-px w-12 bg-gold/50" />
-      <span className="text-[13px] leading-none select-none opacity-85">🌸</span>
+      <span className="text-[14px] leading-none select-none opacity-90 drop-shadow-[0_1px_2px_rgba(226,188,114,0.3)]">{emoji}</span>
       <span className="h-px w-12 bg-gold/50" />
     </div>
   );
 }
 
-export function HeartDivider({ className = "" }) {
+export function HeartDivider({ emoji = "🪷", className = "" }) {
   return (
     <div className={`flex items-center justify-center gap-2.5 ${className}`} aria-hidden="true">
       <span className="h-px w-14 bg-gold/50" />
-      <span className="text-[16px] leading-none select-none">🌸</span>
+      <span className="text-[17px] leading-none select-none drop-shadow-[0_1px_3px_rgba(226,188,114,0.4)]">{emoji}</span>
       <span className="h-px w-14 bg-gold/50" />
     </div>
   );
 }
 
-export function SectionTitle({ label, lines, sub, divider = false }) {
+export function SectionTitle({ label, lines, sub, divider = false, emoji = "🌸" }) {
   return (
     <div className="text-center">
       <Reveal>
         <p className="label-caps inline-flex items-center justify-center gap-2">
-          <span className="text-[12px] select-none" aria-hidden="true">🌸</span>
+          <span className="text-[12px] select-none" aria-hidden="true">{emoji}</span>
           <span>{label}</span>
-          <span className="text-[12px] select-none" aria-hidden="true">🌸</span>
+          <span className="text-[12px] select-none" aria-hidden="true">{emoji}</span>
         </p>
       </Reveal>
       <Reveal delay={0.1}>
@@ -121,7 +121,7 @@ export function SectionTitle({ label, lines, sub, divider = false }) {
       </Reveal>
       {divider && (
         <Reveal delay={0.2}>
-          <FloralDivider className="mt-3.5" />
+          <FloralDivider emoji={emoji} className="mt-3.5" />
         </Reveal>
       )}
       {sub && (
@@ -152,19 +152,23 @@ export function Butterfly({ color = "#B9A6E8", className = "", style }) {
   );
 }
 
+// All celebratory Indian wedding flower emojis
+const FLOWER_VARIETIES = ["🌸", "🪷", "🌹", "🌼", "🌺", "🌻", "🪻", "🌷"];
+
 // Deterministic pseudo-random so server and client render the same petals.
 const rand = (i, salt) => {
   const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453;
   return x - Math.floor(x);
 };
 
-const PETALS = Array.from({ length: 18 }, (_, i) => ({
+const PETALS = Array.from({ length: 22 }, (_, i) => ({
   left: `${Math.round(rand(i, 1) * 92 + 4)}%`,
-  size: 13 + Math.round(rand(i, 2) * 11),
-  dur: `${11 + Math.round(rand(i, 4) * 9)}s`,
+  size: 14 + Math.round(rand(i, 2) * 10),
+  dur: `${10 + Math.round(rand(i, 4) * 10)}s`,
   delay: `-${Math.round(rand(i, 5) * 20)}s`,
   drift: `${Math.round(rand(i, 6) * 70 - 35)}px`,
-  opacity: 0.72 + rand(i, 7) * 0.22,
+  opacity: 0.72 + rand(i, 7) * 0.24,
+  emoji: FLOWER_VARIETIES[i % FLOWER_VARIETIES.length],
 }));
 
 export const FloatingPetals = memo(function FloatingPetals() {
@@ -183,7 +187,7 @@ export const FloatingPetals = memo(function FloatingPetals() {
             "--drift": p.drift,
           }}
         >
-          🌸
+          {p.emoji}
         </span>
       ))}
     </div>

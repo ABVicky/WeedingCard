@@ -172,7 +172,7 @@ function PreviewCard({ fading }) {
             ॥ श्री गणेशाय नमः ॥
           </p>
           <p className="mt-0.5 font-caps text-[8.5px] tracking-[0.28em] uppercase text-[#8A5A48] font-medium flex items-center gap-1.5">
-            <span className="text-[8px]">🌸</span> Save The Date <span className="text-[8px]">🌸</span>
+            <span className="text-[8.5px]">🪷</span> Save The Date <span className="text-[8.5px]">🪷</span>
           </p>
         </div>
 
@@ -187,7 +187,7 @@ function PreviewCard({ fading }) {
           </p>
           <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold/70" />
-            <span className="text-[10px] leading-none">🌸</span>
+            <span className="text-[10px] leading-none">🌹</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/70" />
           </div>
           <p className="mt-0.5 font-serif italic text-[11px] text-[#5A382E]">
@@ -197,9 +197,9 @@ function PreviewCard({ fading }) {
 
         {/* Bottom: Date badge */}
         <div className="mb-0.5 inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-gold/15 px-3 py-0.5 font-caps text-[9px] font-semibold tracking-[0.2em] text-[#9E242B]">
-          <span className="text-[8.5px]">🌸</span>
+          <span className="text-[8.5px]">🌼</span>
           <span>04 · DECEMBER · 2026</span>
-          <span className="text-[8.5px]">🌸</span>
+          <span className="text-[8.5px]">🌼</span>
         </div>
       </motion.div>
     </div>

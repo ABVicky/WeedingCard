@@ -61,7 +61,7 @@ export default function Quiz({ onFinish }) {
 
   return (
     <section id="quiz" className="relative bg-blush-200/80 px-5 pb-24 pt-20">
-      <SectionTitle label="Join the Celebration" lines={["Celebrate", "With Us"]} sub="A few fun questions before the big day!" divider />
+      <SectionTitle label="Join the Celebration" lines={["Celebrate", "With Us"]} sub="A few fun questions before the big day!" divider emoji="🌻" />
 
       <Reveal delay={0.2} className="mx-auto mt-10 max-w-[360px]">
         <div className="relative min-h-[360px] overflow-hidden rounded-[24px] border border-[#F3E0D6] bg-white px-5 py-7 shadow-card">
@@ -143,7 +143,11 @@ export default function Quiz({ onFinish }) {
                   {score}
                   <span className="text-[28px] text-[#C9A08F]"> / {questions.length}</span>
                 </p>
-                <p className="mt-4 font-heading italic text-[28px] sm:text-[32px] text-terra font-semibold">{result.title}</p>
+                <p className="mt-4 font-heading italic text-[28px] sm:text-[32px] text-terra font-semibold flex items-center justify-center gap-2">
+                  <span className="text-[20px]">🌻</span>
+                  <span>{result.title}</span>
+                  <span className="text-[20px]">🌻</span>
+                </p>
                 <p className="mt-1 font-serif text-[16px] italic text-cocoa-soft">{result.message}</p>
                 <div className="mt-7 flex gap-3">
                   <button type="button" onClick={begin} className="rounded-full border border-terra-btn px-5 py-2.5 font-caps text-[10px] uppercase tracking-[0.2em] text-terra active:scale-95">

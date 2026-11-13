@@ -30,7 +30,7 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="relative bg-gradient-to-b from-blush-200/80 to-blush-300/80 px-5 pb-20 pt-20">
-      <SectionTitle label="A Glimpse of Us" lines={["Our Beautiful", "Moments"]} divider />
+      <SectionTitle label="A Glimpse of Us" lines={["Our Beautiful", "Moments"]} divider emoji="🌹" />
 
       <Reveal delay={0.2} y={40} className="mx-auto mt-10 w-[88%] max-w-[340px]">
         <div className="relative aspect-[5/7]">
@@ -119,7 +119,11 @@ export default function Gallery() {
           </button>
         </div>
 
-        <p className="mt-4 text-center font-serif text-[15px] italic text-[#8A6A5A]">{caption}</p>
+        <p className="mt-4 text-center font-serif text-[15px] italic text-[#8A6A5A] flex items-center justify-center gap-2">
+          <span className="text-[13px]">🌹</span>
+          <span>{caption}</span>
+          <span className="text-[13px]">🌹</span>
+        </p>
       </Reveal>
     </section>
   );

@@ -286,7 +286,7 @@ export default function Hero({ revealed }) {
           aria-hidden="true"
         >
           <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold" />
-          <span className="text-[15px] leading-none drop-shadow-[0_1px_4px_rgba(226,188,114,0.4)]">🌸</span>
+          <span className="text-[17px] leading-none drop-shadow-[0_1px_4px_rgba(226,188,114,0.4)]">🪷</span>
           <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
         </motion.div>
 
@@ -302,9 +302,9 @@ export default function Hero({ revealed }) {
           aria-hidden="true"
         >
           <span className="h-px w-14 bg-gradient-to-r from-transparent via-gold to-gold/70" />
-          <span className="text-[13px] opacity-85">🌸</span>
+          <span className="text-[13px] opacity-85">🌹</span>
           <span className="gold-gradient-text font-heading italic text-[32px] sm:text-[36px] leading-none px-1">&amp;</span>
-          <span className="text-[13px] opacity-85">🌸</span>
+          <span className="text-[13px] opacity-85">🌹</span>
           <span className="h-px w-14 bg-gradient-to-l from-transparent via-gold to-gold/70" />
         </motion.div>
 

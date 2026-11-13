@@ -38,17 +38,26 @@ function CardText({ ev, light }) {
   );
 }
 
+const EVENT_FLOWERS = {
+  "Tilak & Sangeet": { left: "🌼", right: "🪻" },
+  Wedding: { left: "🌹", right: "🪷" },
+};
+
 export default function Events() {
   return (
     <section id="events" className="relative bg-blush-100/80 px-5 pb-16 pt-20">
-      <SectionTitle label="The Celebration Unfolds" lines={["Sacred", "Ceremonies"]} divider />
+      <SectionTitle label="The Celebration Unfolds" lines={["Sacred", "Ceremonies"]} divider emoji="🪷" />
 
       <div className="mt-6">
         {wedding.events.map((ev, i) => (
           <article key={ev.name} className="pt-10">
             <Reveal>
-              {i > 0 && <DotDivider className="mb-8" />}
-              <p className="text-center font-caps text-[12px] uppercase tracking-[0.3em] text-[#8A5A48]">{ev.date}</p>
+              {i > 0 && <DotDivider emoji="🌺" className="mb-8" />}
+              <p className="text-center font-caps text-[12px] uppercase tracking-[0.3em] text-[#8A5A48] flex items-center justify-center gap-2">
+                <span className="text-[12px]">{EVENT_FLOWERS[ev.name]?.left || "🌸"}</span>
+                <span>{ev.date}</span>
+                <span className="text-[12px]">{EVENT_FLOWERS[ev.name]?.right || "🌸"}</span>
+              </p>
               <h3 className="mt-1 text-center font-heading font-serif text-[34px] sm:text-[38px] italic leading-tight text-terra font-semibold">{ev.name}</h3>
             </Reveal>
 
