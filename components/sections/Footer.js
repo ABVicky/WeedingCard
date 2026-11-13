@@ -1,9 +1,9 @@
-import wedding from "@/data/wedding";
+import Image from "next/image";
 import { HeartDivider, Reveal } from "../ornaments";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-wine px-6 pb-28 pt-24 text-center">
+    <footer className="relative overflow-hidden bg-wine px-6 pb-28 pt-20 text-center">
       {/* Auspicious golden mandala arch in background */}
       <div className="pointer-events-none absolute inset-x-0 -top-6 flex justify-center opacity-25" aria-hidden="true">
         <svg width="260" height="130" viewBox="0 0 260 130" fill="none" stroke="#D4AF37">
@@ -15,11 +15,16 @@ export default function Footer() {
         </svg>
       </div>
       <Reveal>
-        <h2 className="font-names text-[46px] sm:text-[58px] leading-[1.2] text-gold-light">
-          <span className="block">{wedding.groom.name}</span>
-          <span className="block font-heading italic text-[28px] text-gold">&amp;</span>
-          <span className="block">{wedding.bride.name}</span>
-        </h2>
+        <div className="relative mx-auto w-[220px] sm:w-[260px] aspect-[2041/2803]">
+          <Image
+            src="/images/logo2.png"
+            alt="Aashutosh & Atisha Monogram Logo"
+            fill
+            sizes="(max-width: 640px) 240px, 280px"
+            className="object-contain drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]"
+            priority
+          />
+        </div>
       </Reveal>
       <Reveal delay={0.15}>
         <HeartDivider className="mt-6" />
