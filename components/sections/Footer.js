@@ -63,9 +63,9 @@ export default function Footer() {
 
       {/* 2 Cards: Groom & Bride in Royal Ivory & Gold Silk Stationery */}
       <Reveal delay={0.2}>
-        <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[580px] text-center">
+        <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[600px] text-center">
           {/* Groom Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-5 sm:p-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)]">
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -81,26 +81,29 @@ export default function Footer() {
               <span>The Groom</span>
             </span>
 
-            {/* Groom Name */}
-            <h4 className="relative z-10 mt-2 font-names text-[38px] sm:text-[42px] leading-[1.1] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-              {wedding.groom.name}
+            {/* Groom Name (First & Last name on balanced lines to prevent overflow) */}
+            <h4 className="relative z-10 mt-2.5 font-names text-[28px] sm:text-[32px] leading-[1.08] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+              <span className="block">{wedding.groom.name.split(" ")[0]}</span>
+              {wedding.groom.name.split(" ").length > 1 && (
+                <span className="block mt-0.5">{wedding.groom.name.split(" ").slice(1).join(" ")}</span>
+              )}
             </h4>
 
             {/* Small Gold Divider */}
-            <div className="relative z-10 my-2 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
+            <div className="relative z-10 my-2.5 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
               <span className="text-[8px] text-gold">✦</span>
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
             </div>
 
             {/* Parents Line */}
-            <p className="relative z-10 font-serif text-[13.5px] sm:text-[14px] font-medium leading-relaxed text-[#4A281E]">
+            <p className="relative z-10 font-serif text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
               {wedding.groom.parents}
             </p>
           </div>
 
           {/* Bride Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-5 sm:p-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)]">
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -116,20 +119,23 @@ export default function Footer() {
               <span>The Bride</span>
             </span>
 
-            {/* Bride Name */}
-            <h4 className="relative z-10 mt-2 font-names text-[38px] sm:text-[42px] leading-[1.1] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-              {wedding.bride.name}
+            {/* Bride Name (First & Last name on balanced lines to prevent overflow) */}
+            <h4 className="relative z-10 mt-2.5 font-names text-[28px] sm:text-[32px] leading-[1.08] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+              <span className="block">{wedding.bride.name.split(" ")[0]}</span>
+              {wedding.bride.name.split(" ").length > 1 && (
+                <span className="block mt-0.5">{wedding.bride.name.split(" ").slice(1).join(" ")}</span>
+              )}
             </h4>
 
             {/* Small Gold Divider */}
-            <div className="relative z-10 my-2 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
+            <div className="relative z-10 my-2.5 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
               <span className="text-[8px] text-gold">✦</span>
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
             </div>
 
             {/* Parents Line */}
-            <p className="relative z-10 font-serif text-[13.5px] sm:text-[14px] font-medium leading-relaxed text-[#4A281E]">
+            <p className="relative z-10 font-serif text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
               {wedding.bride.parents}
             </p>
           </div>
