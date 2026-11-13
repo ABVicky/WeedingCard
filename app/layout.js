@@ -1,13 +1,8 @@
-import localFont from "next/font/local";
 import { Great_Vibes, Playfair_Display, Cormorant_Garamond, Cinzel, Noto_Serif_Devanagari } from "next/font/google";
 import wedding from "@/data/wedding";
 import "./globals.css";
 
-const names = localFont({
-  src: "../public/fonts/SymphonyScript.ttf",
-  variable: "--font-names",
-  display: "swap",
-});
+const names = Great_Vibes({ subsets: ["latin"], weight: "400", variable: "--font-names", display: "swap" });
 const heading = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
