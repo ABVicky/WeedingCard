@@ -30,23 +30,9 @@ export default function Footer() {
         </svg>
       </div>
 
-      {/* Monogram Logo1 */}
-      <Reveal>
-        <div className="relative mx-auto w-[200px] xs:w-[230px] sm:w-[270px] aspect-[828/1103]">
-          <Image
-            src="/images/logo1.png"
-            alt="Aashutosh & Atisha Logo"
-            fill
-            sizes="(max-width: 640px) 230px, 270px"
-            className="object-contain drop-shadow-[0_6px_28px_rgba(0,0,0,0.5)]"
-            priority
-          />
-        </div>
-      </Reveal>
-
       {/* With Love & We await your noble presence */}
-      <Reveal delay={0.1}>
-        <div className="mt-8 text-center">
+      <Reveal>
+        <div className="text-center">
           <p className="font-heading font-serif italic text-[24px] xs:text-[26px] sm:text-[30px] leading-tight text-gold-light drop-shadow-sm">
             With Love
           </p>
@@ -61,8 +47,8 @@ export default function Footer() {
         </div>
       </Reveal>
 
-      {/* 2 Cards: Groom & Bride in Royal Ivory & Gold Silk Stationery */}
-      <Reveal delay={0.2}>
+      {/* 2 Cards: Groom & Bride in Royal Ivory & Gold Silk Stationery (Above Logo1) */}
+      <Reveal delay={0.1}>
         <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[600px] text-center">
           {/* Groom Card */}
           <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-3.5 py-4 xs:px-4 xs:py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
@@ -139,6 +125,20 @@ export default function Footer() {
               {wedding.bride.parents}
             </p>
           </div>
+        </div>
+      </Reveal>
+
+      {/* Monogram Logo1 below the Cards */}
+      <Reveal delay={0.2}>
+        <div className="relative mx-auto mt-10 xs:mt-12 w-[200px] xs:w-[230px] sm:w-[270px] aspect-[828/1103]">
+          <Image
+            src="/images/logo1.png"
+            alt="Aashutosh & Atisha Logo"
+            fill
+            sizes="(max-width: 640px) 230px, 270px"
+            className="object-contain drop-shadow-[0_6px_28px_rgba(0,0,0,0.5)]"
+            priority
+          />
         </div>
       </Reveal>
 
