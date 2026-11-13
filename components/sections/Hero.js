@@ -211,50 +211,54 @@ export default function Hero({ revealed }) {
       <HeroBackdrop />
 
       {/* ── Screen 1: Grand Royal Monogram Screen (When card opens, only logo2 is on the hero screen) ── */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-4 pb-8 pt-[8svh] xs:pt-[10svh]">
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-4 pb-8 xs:pb-10 pt-[6svh] xs:pt-[8svh]">
         {/* Invisible spacer for vertical balance */}
         <div className="h-2" />
 
         {/* Only Logo2 on the Hero Screen */}
         <motion.div
           {...show(revealed, 0.2)}
-          className="relative mx-auto w-[210px] xs:w-[245px] sm:w-[285px] aspect-[2041/2803] my-auto"
+          className="relative mx-auto w-[200px] xs:w-[235px] sm:w-[275px] aspect-[2041/2803] my-auto"
         >
           <Image
             src="/images/logo2.png"
             alt="Aashutosh & Atisha Monogram Logo"
             fill
-            sizes="(max-width: 640px) 250px, 300px"
+            sizes="(max-width: 640px) 240px, 280px"
             priority
             className="object-contain drop-shadow-[0_8px_28px_rgba(196,154,74,0.35)]"
           />
         </motion.div>
 
-        {/* Bold High-Visibility Scroll Indicator */}
+        {/* Bold, prominent scroll indicator pointing to the invitation content right below */}
         <motion.a
           href="#invitation-details"
-          className="group inline-flex flex-col items-center gap-1.5 rounded-full border border-gold/75 bg-[#FFFDF9]/95 px-5 py-2 shadow-[0_4px_16px_rgba(158,36,43,0.18),0_1px_6px_rgba(196,154,74,0.3)] backdrop-blur-sm transition-all duration-300 hover:scale-105 active:scale-95 mb-4 xs:mb-6"
-          initial={{ opacity: 0, y: 15 }}
+          className="group relative z-20 flex flex-col items-center gap-1 transition-transform hover:scale-105 active:scale-95"
+          initial={{ opacity: 0, y: 12 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1.0, duration: 0.8 }}
           aria-label="Scroll to view invitation details"
         >
-          <div className="flex items-center gap-2">
-            <span className="text-[12px]">🌸</span>
-            <span className="font-caps text-[11px] xs:text-[12px] font-bold tracking-[0.25em] uppercase text-[#801322] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-              Scroll To View
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/80 bg-gradient-to-r from-[#FFF4DF] via-[#FAF0DA] to-[#FFF4DF] px-4 xs:px-5 py-2 shadow-[0_4px_16px_rgba(196,154,74,0.35),0_1px_4px_rgba(0,0,0,0.1)]">
+            <span className="font-caps text-[11px] xs:text-[12px] font-bold tracking-[0.24em] uppercase text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+              Scroll
             </span>
-            <span className="text-[12px]">🌸</span>
+            <motion.svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#7D1422"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-[#7D1422]"
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <path d="M12 5v14M6 13l6 6 6-6" />
+            </motion.svg>
           </div>
-          <motion.div
-            className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-b from-[#E2BC72] to-[#C49A4A] shadow-sm text-[#4A0F1A]"
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </motion.div>
         </motion.a>
       </div>
 
@@ -344,31 +348,34 @@ export default function Hero({ revealed }) {
           <Person person={wedding.bride} revealed={revealed} delay={1.2} relation="Bride" />
         </div>
 
-        {/* Bold High-Visibility Scroll Indicator to Save The Date */}
+        {/* Bold scroll indicator pointing to Save The Date */}
         <motion.a
           href="#save-the-date"
-          className="mt-10 group inline-flex flex-col items-center gap-1.5 rounded-full border border-gold/75 bg-[#FFFDF9]/95 px-5 py-2 shadow-[0_4px_16px_rgba(158,36,43,0.18),0_1px_6px_rgba(196,154,74,0.3)] backdrop-blur-sm transition-all duration-300 hover:scale-105 active:scale-95"
-          initial={{ opacity: 0, y: 15 }}
+          className="mt-10 flex flex-col items-center gap-1 transition-transform hover:scale-105 active:scale-95"
+          initial={{ opacity: 0, y: 10 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1.4, duration: 0.8 }}
           aria-label="Scroll down to Save The Date"
         >
-          <div className="flex items-center gap-2">
-            <span className="text-[12px]">✨</span>
-            <span className="font-caps text-[11px] xs:text-[12px] font-bold tracking-[0.25em] uppercase text-[#801322] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-              Save The Date
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/70 bg-gradient-to-r from-[#FFF6E6] via-[#FAF0DA] to-[#FFF6E6] px-4 xs:px-5 py-2 shadow-[0_3px_12px_rgba(196,154,74,0.25)]">
+            <span className="font-caps text-[11px] xs:text-[12px] font-bold tracking-[0.22em] uppercase text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+              Scroll
             </span>
-            <span className="text-[12px]">✨</span>
+            <motion.svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#7D1422"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              animate={{ y: [0, 4, 0] }}
+              transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <path d="M12 5v14M6 13l6 6 6-6" />
+            </motion.svg>
           </div>
-          <motion.div
-            className="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-b from-[#E2BC72] to-[#C49A4A] shadow-sm text-[#4A0F1A]"
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </motion.div>
         </motion.a>
       </div>
     </section>
