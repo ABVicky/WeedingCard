@@ -32,13 +32,13 @@ export default function Footer() {
 
       {/* Monogram Logo2 */}
       <Reveal>
-        <div className="relative mx-auto w-[200px] sm:w-[240px] aspect-[2041/2803]">
+        <div className="relative mx-auto w-[275px] sm:w-[330px] aspect-[2041/2803]">
           <Image
             src="/images/logo2.png"
             alt="Aashutosh & Atisha Monogram Logo"
             fill
-            sizes="(max-width: 640px) 200px, 240px"
-            className="object-contain drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]"
+            sizes="(max-width: 640px) 280px, 340px"
+            className="object-contain drop-shadow-[0_6px_28px_rgba(0,0,0,0.5)]"
             priority
           />
         </div>
@@ -50,10 +50,10 @@ export default function Footer() {
           <p className="font-heading font-serif italic text-[26px] sm:text-[30px] leading-tight text-gold-light drop-shadow-sm">
             With Love
           </p>
-          <p className="mt-1.5 font-serif text-[15px] sm:text-[16px] text-[#F7E7D4]/95 tracking-wide">
+          <p className="mt-1 font-serif text-[15px] sm:text-[16px] italic text-[#FDF4E7]/90 tracking-wide">
             We await your noble presence
           </p>
-          <div className="mx-auto mt-3.5 flex w-32 items-center gap-1.5 opacity-60" aria-hidden="true">
+          <div className="mx-auto mt-3 flex w-32 items-center gap-1.5 opacity-60" aria-hidden="true">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
             <span className="text-[10px] text-gold">✦</span>
             <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
@@ -61,43 +61,75 @@ export default function Footer() {
         </div>
       </Reveal>
 
-      {/* 2 Cards: Groom & Bride */}
+      {/* 2 Cards: Groom & Bride in Royal Ivory & Gold Silk Stationery */}
       <Reveal delay={0.2}>
-        <div className="mx-auto mt-7 grid w-full max-w-[340px] sm:max-w-[580px] grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+        <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[580px] text-center">
           {/* Groom Card */}
-          <div className="relative rounded-2xl border border-gold/45 bg-gradient-to-b from-[#581520]/90 to-[#430F17]/95 p-5 shadow-[0_10px_28px_rgba(0,0,0,0.35)] backdrop-blur">
-            {/* Corner brackets */}
-            <span className="pointer-events-none absolute top-2 left-2 h-2 w-2 border-t border-l border-gold/70" />
-            <span className="pointer-events-none absolute top-2 right-2 h-2 w-2 border-t border-r border-gold/70" />
-            <span className="pointer-events-none absolute bottom-2 left-2 h-2 w-2 border-b border-l border-gold/70" />
-            <span className="pointer-events-none absolute bottom-2 right-2 h-2 w-2 border-b border-r border-gold/70" />
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-5 sm:p-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)]">
+            {/* Inner fine gold filigree border */}
+            <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
-            <span className="inline-block rounded-full border border-gold/40 bg-gold/15 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] text-gold-light font-semibold">
-              The Groom
+            {/* Corner gold brackets */}
+            <span className="pointer-events-none absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-gold/90" />
+            <span className="pointer-events-none absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-gold/90" />
+            <span className="pointer-events-none absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-gold/90" />
+            <span className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-gold/90" />
+
+            {/* Role Badge */}
+            <span className="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-[#F4E6D2]/80 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] font-semibold text-[#8C5832]">
+              <span>👑</span>
+              <span>The Groom</span>
             </span>
-            <h4 className="mt-2.5 font-names text-[34px] sm:text-[38px] leading-tight text-[#FFE8B8]">
+
+            {/* Groom Name */}
+            <h4 className="relative z-10 mt-2 font-names text-[38px] sm:text-[42px] leading-[1.1] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
               {wedding.groom.name}
             </h4>
-            <p className="mt-2 font-serif text-[13px] sm:text-[13.5px] leading-relaxed text-[#F3E2CF]/85">
+
+            {/* Small Gold Divider */}
+            <div className="relative z-10 my-2 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
+              <span className="text-[8px] text-gold">✦</span>
+              <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
+            </div>
+
+            {/* Parents Line */}
+            <p className="relative z-10 font-serif text-[13.5px] sm:text-[14px] font-medium leading-relaxed text-[#4A281E]">
               {wedding.groom.parents}
             </p>
           </div>
 
           {/* Bride Card */}
-          <div className="relative rounded-2xl border border-gold/45 bg-gradient-to-b from-[#581520]/90 to-[#430F17]/95 p-5 shadow-[0_10px_28px_rgba(0,0,0,0.35)] backdrop-blur">
-            {/* Corner brackets */}
-            <span className="pointer-events-none absolute top-2 left-2 h-2 w-2 border-t border-l border-gold/70" />
-            <span className="pointer-events-none absolute top-2 right-2 h-2 w-2 border-t border-r border-gold/70" />
-            <span className="pointer-events-none absolute bottom-2 left-2 h-2 w-2 border-b border-l border-gold/70" />
-            <span className="pointer-events-none absolute bottom-2 right-2 h-2 w-2 border-b border-r border-gold/70" />
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-5 sm:p-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)]">
+            {/* Inner fine gold filigree border */}
+            <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
-            <span className="inline-block rounded-full border border-gold/40 bg-gold/15 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] text-gold-light font-semibold">
-              The Bride
+            {/* Corner gold brackets */}
+            <span className="pointer-events-none absolute top-2 left-2 h-2.5 w-2.5 border-t border-l border-gold/90" />
+            <span className="pointer-events-none absolute top-2 right-2 h-2.5 w-2.5 border-t border-r border-gold/90" />
+            <span className="pointer-events-none absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-gold/90" />
+            <span className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-gold/90" />
+
+            {/* Role Badge */}
+            <span className="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-[#F4E6D2]/80 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] font-semibold text-[#8C5832]">
+              <span>👰</span>
+              <span>The Bride</span>
             </span>
-            <h4 className="mt-2.5 font-names text-[34px] sm:text-[38px] leading-tight text-[#FFE8B8]">
+
+            {/* Bride Name */}
+            <h4 className="relative z-10 mt-2 font-names text-[38px] sm:text-[42px] leading-[1.1] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
               {wedding.bride.name}
             </h4>
-            <p className="mt-2 font-serif text-[13px] sm:text-[13.5px] leading-relaxed text-[#F3E2CF]/85">
+
+            {/* Small Gold Divider */}
+            <div className="relative z-10 my-2 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
+              <span className="text-[8px] text-gold">✦</span>
+              <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
+            </div>
+
+            {/* Parents Line */}
+            <p className="relative z-10 font-serif text-[13.5px] sm:text-[14px] font-medium leading-relaxed text-[#4A281E]">
               {wedding.bride.parents}
             </p>
           </div>
