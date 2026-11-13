@@ -44,11 +44,11 @@ const wedding = {
     caption: "A moment captured in time, forever in our hearts",
     autoplayMs: 4000,
     photos: [
-      { src: "/images/gallery-1.jpg", alt: "Aashutosh & Atisha — Royal Love" },
-      { src: "/images/gallery-2.jpg", alt: "Aashutosh & Atisha — Endless Smiles" },
-      { src: "/images/gallery-3.jpg", alt: "Aashutosh & Atisha — Sacred Vows" },
-      { src: "/images/gallery-4.jpg", alt: "Aashutosh & Atisha — Moments Together" },
-      { src: "/images/gallery-5.jpg", alt: "Aashutosh & Atisha — Joyful Journey" },
+      { src: "/images/gallery-1.jpeg", alt: "Aashutosh & Atisha — Royal Love" },
+      { src: "/images/gallery-2.jpeg", alt: "Aashutosh & Atisha — Endless Smiles" },
+      { src: "/images/gallery-3.jpeg", alt: "Aashutosh & Atisha — Sacred Vows" },
+      { src: "/images/gallery-4.jpeg", alt: "Aashutosh & Atisha — Moments Together" },
+      { src: "/images/gallery-5.jpeg", alt: "Aashutosh & Atisha — Joyful Journey" },
     ],
   },
 
