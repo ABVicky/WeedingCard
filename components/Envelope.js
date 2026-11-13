@@ -202,20 +202,87 @@ const DUST = Array.from({ length: 16 }, (_, i) => ({
   "--delay": `-${rand(i, 7) * 10}s`,
 }));
 
-// Preview Card synchronized with the restored Ivory & Ganesh Hero Section
+// Preview Card: Authentic royal wedding invitation card that slides out from the envelope
 function PreviewCard({ fading }) {
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-[18px] bg-ivory/[0.96] p-2 text-center shadow-[0_12px_28px_rgba(0,0,0,0.35)]">
-      <div className="pointer-events-none absolute inset-1.5 rounded-[12px] border border-gold/40" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-transparent via-[#E67E22] to-transparent opacity-60" />
-      <motion.div animate={{ opacity: fading ? 0 : 1 }} transition={{ duration: 0.4 }} className="flex h-full flex-col items-center justify-between py-1">
-        <div className="h-6 w-6">
-          <Image src={wedding.images.ganesh} alt="" width={24} height={24} className="h-full w-full object-contain" priority />
+    <div className="relative h-full w-full rounded-[16px] bg-[#FFFDF9] shadow-[0_-10px_35px_rgba(40,10,8,0.45),0_0_24px_rgba(226,188,114,0.3)] overflow-hidden">
+      {/* Paper texture overlay */}
+      <div className="paper-noise absolute inset-0 opacity-40 pointer-events-none" />
+
+      {/* Double ornate gold border */}
+      <div className="absolute inset-[6px] rounded-[12px] border border-gold/75 pointer-events-none" />
+      <div className="absolute inset-[9px] rounded-[10px] border border-gold/35 pointer-events-none" />
+
+      {/* 4 Ornate corner brackets */}
+      <span className="pointer-events-none absolute top-3 left-3 h-3 w-3 border-t-2 border-l-2 border-gold/85" />
+      <span className="pointer-events-none absolute top-3 right-3 h-3 w-3 border-t-2 border-r-2 border-gold/85" />
+      <span className="pointer-events-none absolute bottom-3 left-3 h-3 w-3 border-b-2 border-l-2 border-gold/85" />
+      <span className="pointer-events-none absolute bottom-3 right-3 h-3 w-3 border-b-2 border-r-2 border-gold/85" />
+
+      {/* Top marigold & gold floral toran header */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-2.5 bg-gradient-to-r from-transparent via-[#E67E22] to-transparent opacity-70" />
+
+      <motion.div
+        className="absolute inset-0 flex flex-col items-center justify-between py-3 px-3 text-center"
+        animate={{ opacity: fading ? 0 : 1 }}
+        transition={{ duration: 0.35 }}
+      >
+        {/* Top: Ganesha + Auspicious Invocation */}
+        <div className="flex flex-col items-center mt-0.5">
+          <div className="relative h-6 w-6 drop-shadow-[0_2px_4px_rgba(196,154,74,0.4)]">
+            <Image
+              src="/images/ganesh_gold.png"
+              alt="Shri Ganesh"
+              fill
+              sizes="24px"
+              priority
+              className="object-contain"
+            />
+          </div>
+          <p className="mt-1 font-deva text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.2em] text-[#9E242B] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+            ॥ श्री गणेशाय नमः ॥
+          </p>
+          <p className="mt-0.5 font-caps text-[8.5px] sm:text-[9px] tracking-[0.28em] uppercase text-[#8A5A48] font-semibold">
+            Wedding Invitation
+          </p>
         </div>
-        <p className="font-deva text-[8.5px] font-semibold text-terra">॥ {wedding.shloka[0]} ॥</p>
-        <div>
-          <p className="font-heading italic text-[14px] leading-tight text-terra">{wedding.groom.name.split(" ")[0]} &amp; {wedding.bride.name.split(" ")[0]}</p>
-          <p className="font-caps text-[6.5px] uppercase tracking-[0.25em] text-gold">{wedding.scratch[0].value} · {wedding.scratch[1].value} · {wedding.scratch[2].value}</p>
+
+        {/* Center: Couple Names & Family Honors */}
+        <div className="flex flex-col items-center my-auto w-full px-2">
+          <p className="font-serif italic text-[10.5px] sm:text-[11px] text-[#5A382E] leading-tight">
+            Together with their families
+          </p>
+          <p className="gold-gradient-text font-heading italic text-[22px] sm:text-[25px] font-bold leading-tight mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
+            {wedding.groom.name}
+          </p>
+          <div className="my-0.5 flex items-center justify-center gap-2" aria-hidden="true">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold/75" />
+            <span className="font-heading italic text-[16px] text-gold leading-none px-1">&amp;</span>
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/75" />
+          </div>
+          <p className="gold-gradient-text font-heading italic text-[22px] sm:text-[25px] font-bold leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
+            {wedding.bride.name}
+          </p>
+          <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold/70" />
+            <span className="h-1 w-1 rotate-45 bg-gold shadow-[0_0_4px_#E2BC72]" />
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/70" />
+          </div>
+          <p className="mt-0.5 font-serif italic text-[11px] text-[#5A382E] font-medium">
+            The Jaiswal &amp; Tibrewal Families
+          </p>
+        </div>
+
+        {/* Bottom: Date badge + Shubh Vivah */}
+        <div className="mb-0.5 flex flex-col items-center">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-gold/60 bg-gradient-to-r from-[#FFF6E6] via-[#FDF0D5] to-[#FFF6E6] px-3.5 py-0.5 font-caps text-[9px] sm:text-[9.5px] font-bold tracking-[0.22em] text-[#9E242B] shadow-[0_1px_4px_rgba(196,154,74,0.2)]">
+            <span className="text-[9px]">🌸</span>
+            <span>04 · DECEMBER · 2026</span>
+            <span className="text-[9px]">🌸</span>
+          </div>
+          <p className="mt-0.5 font-deva text-[8.5px] font-semibold tracking-wider text-[#A9772F]">
+            ॥ शुभ विवाह ॥
+          </p>
         </div>
       </motion.div>
     </div>
@@ -251,6 +318,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
     const at = (sec, fn) => timers.current.push(setTimeout(fn, sec * 1000));
     at(T.card, () => {
       setPhase("card");
+      sfx.whoosh();
     });
     at(T.reveal, () => {
       setPhase("reveal");
@@ -312,10 +380,10 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
 
       {/* Invitation card, tucked inside the pocket until it slides out */}
       <motion.div
-        className="absolute left-[9%] right-[9%]"
-        style={{ top: "57%", height: "38%", zIndex: 2, transformOrigin: "50% 0%" }}
-        animate={revealing ? { y: "-116%", scaleX: 1.12, scaleY: 1.9 } : { y: cardOut ? "-104%" : 0, scaleX: 1, scaleY: 1 }}
-        transition={revealing ? { duration: 1.1, ease: GLIDE } : { duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute left-[7.5%] right-[7.5%]"
+        style={{ top: "55%", height: "42%", zIndex: 2, transformOrigin: "50% 0%" }}
+        animate={revealing ? { y: "-116%", scaleX: 1.12, scaleY: 1.9 } : { y: cardOut ? "-102%" : 0, scaleX: 1, scaleY: 1 }}
+        transition={revealing ? { duration: 1.1, ease: GLIDE } : { duration: 1.9, ease: [0.22, 1, 0.36, 1] }}
       >
         <PreviewCard fading={revealing} />
       </motion.div>
