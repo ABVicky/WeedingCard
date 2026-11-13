@@ -284,81 +284,98 @@ function Person({ person, revealed, delay, relation }) {
 
 export default function Hero({ revealed }) {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden px-4 pb-28 pt-[13svh]">
+    <section className="relative min-h-[100svh] overflow-hidden px-4 pb-16 pt-20 flex flex-col items-center justify-between text-center">
       <Backdrop />
-      <CornerBrackets inset={20} size={58} className="border-gold/70" />
+      <CornerBrackets inset={16} size={48} className="border-gold/60" />
 
-      <motion.div
-        className="relative overflow-hidden rounded-[26px] bg-ivory/[0.93] px-3 pb-10 pt-8 text-center shadow-[0_20px_50px_-20px_rgba(120,40,40,0.35)] backdrop-blur-[2px]"
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={revealed ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.2, ease: EASE }}
-      >
-        <CornerBrackets inset={16} size={30} className="border-gold/60" />
-
-        {/* Auspicious marigold & gold floral toran header */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-4" aria-hidden="true">
-          <svg className="h-full w-full" viewBox="0 0 400 16" preserveAspectRatio="none">
-            {[0, 40, 80, 120, 160, 200, 240, 280, 320, 360].map((x) => (
-              <g key={x}>
-                <path d={`M${x} 0 Q${x + 20} 11 ${x + 40} 0`} fill="none" stroke="#E67E22" strokeWidth="1.8" strokeDasharray="2 3" strokeLinecap="round" opacity="0.85" />
-                <circle cx={x + 20} cy="8" r="2.2" fill="#F1C40F" />
-                <circle cx={x + 20} cy="12" r="1.3" fill="#C0392B" />
-              </g>
-            ))}
-          </svg>
-        </div>
-
+      {/* Main invitation content placed directly on the royal Indian background */}
+      <div className="relative z-10 flex flex-col items-center max-w-[360px] mx-auto w-full my-auto">
+        {/* Shri Ganesh */}
         <motion.div
           {...show(revealed, 0.25)}
-          className="mx-auto h-[54px] w-[50px]"
+          className="h-[58px] w-[54px]"
         >
           <motion.div
             className="relative h-full w-full"
-            animate={{ y: [0, -3, 0], filter: ["drop-shadow(0 0 0 rgba(226,188,114,0))", "drop-shadow(0 0 8px rgba(226,188,114,0.9))", "drop-shadow(0 0 0 rgba(226,188,114,0))"] }}
+            animate={{
+              y: [0, -3, 0],
+              filter: [
+                "drop-shadow(0 0 0 rgba(226,188,114,0))",
+                "drop-shadow(0 0 10px rgba(226,188,114,0.9))",
+                "drop-shadow(0 0 0 rgba(226,188,114,0))",
+              ],
+            }}
             transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Image src={wedding.images.ganesh} alt="Shri Ganesh" fill sizes="50px" priority className="object-contain" unoptimized={wedding.images.ganesh.endsWith(".svg")} />
+            <Image
+              src={wedding.images.ganesh}
+              alt="Shri Ganesh"
+              fill
+              sizes="54px"
+              priority
+              className="object-contain"
+              unoptimized={wedding.images.ganesh.endsWith(".svg")}
+            />
           </motion.div>
         </motion.div>
 
-        <motion.div {...show(revealed, 0.4)} className="mt-5 space-y-1 font-deva text-[13px] sm:text-[14px] font-semibold leading-[1.65] tracking-[0.14em] text-[#9E242B]">
+        {/* Auspicious Shloka */}
+        <motion.div
+          {...show(revealed, 0.4)}
+          className="mt-4 space-y-1 font-deva text-[13.5px] sm:text-[14.5px] font-semibold leading-[1.65] tracking-[0.14em] text-[#9E242B]"
+        >
           {wedding.shloka.map((l) => (
-            <p key={l} className="drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
+            <p key={l} className="drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
               ॥ {l} ॥
             </p>
           ))}
         </motion.div>
 
+        {/* Blessing Line */}
         <motion.p
           {...show(revealed, 0.55)}
-          className="mx-auto mt-5 max-w-[340px] font-serif text-[15.5px] sm:text-[16.5px] italic leading-[1.6] text-[#4A2F27]"
+          className="mt-4 max-w-[330px] font-serif text-[15px] sm:text-[16px] italic leading-[1.6] text-[#4A2F27]"
         >
           {wedding.blessingLine}
         </motion.p>
 
-        <motion.div {...show(revealed, 0.65)} className="mx-auto mt-4 flex items-center justify-center gap-2.5 opacity-60" aria-hidden="true">
-          <span className="h-px w-10 bg-gold" />
-          <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
-          <span className="h-px w-10 bg-gold" />
+        {/* Gold Diamond Ornament */}
+        <motion.div
+          {...show(revealed, 0.65)}
+          className="my-3.5 flex items-center justify-center gap-2.5 opacity-70"
+          aria-hidden="true"
+        >
+          <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold" />
+          <span className="h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_4px_#E2BC72]" />
+          <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
         </motion.div>
 
-        <div className="mt-5">
+        {/* Groom */}
+        <div className="w-full">
           <Person person={wedding.groom} revealed={revealed} delay={0.75} relation="Groom" />
         </div>
 
-        <motion.div {...show(revealed, 1.05)} className="my-4 flex items-center justify-center gap-3" aria-hidden="true">
+        {/* & Connector */}
+        <motion.div
+          {...show(revealed, 1.05)}
+          className="my-3.5 flex items-center justify-center gap-3"
+          aria-hidden="true"
+        >
           <span className="h-px w-16 bg-gradient-to-r from-transparent via-gold to-gold/70" />
           <span className="gold-gradient-text font-heading italic text-[32px] sm:text-[36px] leading-none px-2">&amp;</span>
           <span className="h-px w-16 bg-gradient-to-l from-transparent via-gold to-gold/70" />
         </motion.div>
 
-        <Person person={wedding.bride} revealed={revealed} delay={1.2} relation="Bride" />
-      </motion.div>
+        {/* Bride */}
+        <div className="w-full">
+          <Person person={wedding.bride} revealed={revealed} delay={1.2} relation="Bride" />
+        </div>
+      </div>
 
+      {/* Scroll indicator */}
       <motion.a
         href="#save-the-date"
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center text-[#6E5A50]"
+        className="relative z-10 mt-4 flex flex-col items-center text-[#6E5A50]"
         initial={{ opacity: 0 }}
         animate={revealed ? { opacity: 1 } : {}}
         transition={{ delay: 1.8, duration: 1 }}
