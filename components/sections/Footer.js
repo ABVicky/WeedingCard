@@ -68,7 +68,7 @@ export default function Footer() {
             </span>
 
             {/* Groom Name (First & Last name on balanced lines to prevent overflow) */}
-            <h4 className="relative z-10 mt-2.5 font-heading italic text-[21px] xs:text-[23px] sm:text-[26px] font-semibold leading-[1.12] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            <h4 className="relative z-10 mt-2.5 font-names text-[26px] xs:text-[28px] sm:text-[32px] font-normal leading-[1.12] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
               <span className="block">{wedding.groom.name.split(" ")[0]}</span>
               {wedding.groom.name.split(" ").length > 1 && (
                 <span className="block mt-0.5">{wedding.groom.name.split(" ").slice(1).join(" ")}</span>
@@ -106,7 +106,7 @@ export default function Footer() {
             </span>
 
             {/* Bride Name (First & Last name on balanced lines to prevent overflow) */}
-            <h4 className="relative z-10 mt-2.5 font-heading italic text-[21px] xs:text-[23px] sm:text-[26px] font-semibold leading-[1.12] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            <h4 className="relative z-10 mt-2.5 font-names text-[26px] xs:text-[28px] sm:text-[32px] font-normal leading-[1.12] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
               <span className="block">{wedding.bride.name.split(" ")[0]}</span>
               {wedding.bride.name.split(" ").length > 1 && (
                 <span className="block mt-0.5">{wedding.bride.name.split(" ").slice(1).join(" ")}</span>
