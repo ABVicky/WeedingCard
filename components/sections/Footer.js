@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import wedding from "@/data/wedding";
 import { sfx } from "../audio";
 import { HeartDivider, Reveal } from "../ornaments";
 
@@ -28,24 +29,87 @@ export default function Footer() {
           <circle cx="130" cy="0" r="18" strokeWidth="1" />
         </svg>
       </div>
+
+      {/* Monogram Logo2 */}
       <Reveal>
-        <div className="relative mx-auto w-[220px] sm:w-[260px] aspect-[2041/2803]">
+        <div className="relative mx-auto w-[200px] sm:w-[240px] aspect-[2041/2803]">
           <Image
             src="/images/logo2.png"
             alt="Aashutosh & Atisha Monogram Logo"
             fill
-            sizes="(max-width: 640px) 240px, 280px"
+            sizes="(max-width: 640px) 200px, 240px"
             className="object-contain drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]"
             priority
           />
         </div>
       </Reveal>
-      <Reveal delay={0.15}>
-        <HeartDivider className="mt-6" />
+
+      {/* With Love & We await your noble presence */}
+      <Reveal delay={0.1}>
+        <div className="mt-8 text-center">
+          <p className="font-heading font-serif italic text-[26px] sm:text-[30px] leading-tight text-gold-light drop-shadow-sm">
+            With Love
+          </p>
+          <p className="mt-1.5 font-serif text-[15px] sm:text-[16px] text-[#F7E7D4]/95 tracking-wide">
+            We await your noble presence
+          </p>
+          <div className="mx-auto mt-3.5 flex w-32 items-center gap-1.5 opacity-60" aria-hidden="true">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
+            <span className="text-[10px] text-gold">✦</span>
+            <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
+          </div>
+        </div>
+      </Reveal>
+
+      {/* 2 Cards: Groom & Bride */}
+      <Reveal delay={0.2}>
+        <div className="mx-auto mt-7 grid w-full max-w-[340px] sm:max-w-[580px] grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+          {/* Groom Card */}
+          <div className="relative rounded-2xl border border-gold/45 bg-gradient-to-b from-[#581520]/90 to-[#430F17]/95 p-5 shadow-[0_10px_28px_rgba(0,0,0,0.35)] backdrop-blur">
+            {/* Corner brackets */}
+            <span className="pointer-events-none absolute top-2 left-2 h-2 w-2 border-t border-l border-gold/70" />
+            <span className="pointer-events-none absolute top-2 right-2 h-2 w-2 border-t border-r border-gold/70" />
+            <span className="pointer-events-none absolute bottom-2 left-2 h-2 w-2 border-b border-l border-gold/70" />
+            <span className="pointer-events-none absolute bottom-2 right-2 h-2 w-2 border-b border-r border-gold/70" />
+
+            <span className="inline-block rounded-full border border-gold/40 bg-gold/15 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] text-gold-light font-semibold">
+              The Groom
+            </span>
+            <h4 className="mt-2.5 font-names text-[34px] sm:text-[38px] leading-tight text-[#FFE8B8]">
+              {wedding.groom.name}
+            </h4>
+            <p className="mt-2 font-serif text-[13px] sm:text-[13.5px] leading-relaxed text-[#F3E2CF]/85">
+              {wedding.groom.parents}
+            </p>
+          </div>
+
+          {/* Bride Card */}
+          <div className="relative rounded-2xl border border-gold/45 bg-gradient-to-b from-[#581520]/90 to-[#430F17]/95 p-5 shadow-[0_10px_28px_rgba(0,0,0,0.35)] backdrop-blur">
+            {/* Corner brackets */}
+            <span className="pointer-events-none absolute top-2 left-2 h-2 w-2 border-t border-l border-gold/70" />
+            <span className="pointer-events-none absolute top-2 right-2 h-2 w-2 border-t border-r border-gold/70" />
+            <span className="pointer-events-none absolute bottom-2 left-2 h-2 w-2 border-b border-l border-gold/70" />
+            <span className="pointer-events-none absolute bottom-2 right-2 h-2 w-2 border-b border-r border-gold/70" />
+
+            <span className="inline-block rounded-full border border-gold/40 bg-gold/15 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] text-gold-light font-semibold">
+              The Bride
+            </span>
+            <h4 className="mt-2.5 font-names text-[34px] sm:text-[38px] leading-tight text-[#FFE8B8]">
+              {wedding.bride.name}
+            </h4>
+            <p className="mt-2 font-serif text-[13px] sm:text-[13.5px] leading-relaxed text-[#F3E2CF]/85">
+              {wedding.bride.parents}
+            </p>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.25}>
+        <HeartDivider className="mt-9" />
       </Reveal>
 
       {/* Tap button to directly go to the hero section */}
-      <Reveal delay={0.25}>
+      <Reveal delay={0.3}>
         <a
           href="#hero"
           onClick={scrollToTop}
