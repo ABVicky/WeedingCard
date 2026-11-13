@@ -218,15 +218,15 @@ export default function Hero({ revealed }) {
         {/* Only Logo2 on the Hero Screen */}
         <motion.div
           {...show(revealed, 0.2)}
-          className="relative mx-auto w-[250px] xs:w-[295px] sm:w-[350px] max-w-[84vw] aspect-[2041/2803] my-auto"
+          className="relative mx-auto w-[295px] xs:w-[340px] sm:w-[400px] max-w-[88vw] max-h-[62svh] aspect-[2041/2803] my-auto"
         >
           <Image
             src="/images/logo2.png"
             alt="Aashutosh & Atisha Monogram Logo"
             fill
-            sizes="(max-width: 640px) 300px, 360px"
+            sizes="(max-width: 640px) 350px, 420px"
             priority
-            className="object-contain drop-shadow-[0_10px_32px_rgba(196,154,74,0.4)]"
+            className="object-contain drop-shadow-[0_12px_36px_rgba(196,154,74,0.45)]"
           />
         </motion.div>
 
