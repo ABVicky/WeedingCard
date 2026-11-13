@@ -216,17 +216,32 @@ export default function Hero({ revealed }) {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] overflow-hidden px-4 pb-14 pt-[9vh] xs:pt-[11vh] sm:pt-[13vh] flex flex-col items-center justify-between text-center"
+      className="relative min-h-[100svh] overflow-hidden px-4 pb-14 pt-8 xs:pt-10 sm:pt-12 flex flex-col items-center justify-between text-center"
     >
       {/* Aesthetic Indian Wedding Background */}
       <HeroBackdrop />
 
       {/* Main invitation content rendered directly with clean, spacious elegance */}
       <div className="relative z-10 flex flex-col items-center max-w-[380px] mx-auto w-full my-auto">
+        {/* Royal Monogram Logo2 at Top */}
+        <motion.div
+          {...show(revealed, 0.15)}
+          className="relative mx-auto mb-2.5 xs:mb-3 w-[125px] xs:w-[145px] sm:w-[170px] aspect-[2041/2803]"
+        >
+          <Image
+            src="/images/logo2.png"
+            alt="Aashutosh & Atisha Monogram Logo"
+            fill
+            sizes="(max-width: 640px) 150px, 175px"
+            priority
+            className="object-contain drop-shadow-[0_4px_18px_rgba(196,154,74,0.35)]"
+          />
+        </motion.div>
+
         {/* Shri Ganesh */}
         <motion.div
-          {...show(revealed, 0.25)}
-          className="h-[52px] w-[48px] xs:h-[58px] xs:w-[54px]"
+          {...show(revealed, 0.3)}
+          className="h-[48px] w-[44px] xs:h-[54px] xs:w-[50px]"
         >
           <motion.div
             className="relative h-full w-full"
@@ -254,7 +269,7 @@ export default function Hero({ revealed }) {
 
         {/* Auspicious Shloka */}
         <motion.div
-          {...show(revealed, 0.4)}
+          {...show(revealed, 0.45)}
           className="mt-3.5 xs:mt-4 space-y-1 font-deva text-[13.5px] xs:text-[14.5px] font-bold leading-[1.65] tracking-[0.12em] text-[#9E242B]"
         >
           {wedding.shloka.map((l) => (
@@ -266,7 +281,7 @@ export default function Hero({ revealed }) {
 
         {/* Blessing Line */}
         <motion.p
-          {...show(revealed, 0.55)}
+          {...show(revealed, 0.6)}
           className="mt-3.5 xs:mt-4 max-w-[340px] font-serif text-[14.5px] xs:text-[15.5px] font-medium italic leading-[1.6] text-[#4A2F27] px-2"
         >
           {wedding.blessingLine}
@@ -274,7 +289,7 @@ export default function Hero({ revealed }) {
 
         {/* Flower & Gold Filigree Ornament */}
         <motion.div
-          {...show(revealed, 0.65)}
+          {...show(revealed, 0.7)}
           className="my-3.5 xs:my-4 flex items-center justify-center gap-2.5 opacity-70"
           aria-hidden="true"
         >
@@ -285,12 +300,12 @@ export default function Hero({ revealed }) {
 
         {/* Groom */}
         <div className="w-full">
-          <Person person={wedding.groom} revealed={revealed} delay={0.75} relation="Groom" />
+          <Person person={wedding.groom} revealed={revealed} delay={0.8} relation="Groom" />
         </div>
 
         {/* & Connector */}
         <motion.div
-          {...show(revealed, 1.05)}
+          {...show(revealed, 1.1)}
           className="my-3 xs:my-3.5 flex items-center justify-center gap-2.5"
           aria-hidden="true"
         >
@@ -301,7 +316,7 @@ export default function Hero({ revealed }) {
 
         {/* Bride */}
         <div className="w-full">
-          <Person person={wedding.bride} revealed={revealed} delay={1.2} relation="Bride" />
+          <Person person={wedding.bride} revealed={revealed} delay={1.25} relation="Bride" />
         </div>
       </div>
 
