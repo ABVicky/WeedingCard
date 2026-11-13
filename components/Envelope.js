@@ -15,29 +15,32 @@ const EMBOSS_H = 46; // the embossed flowers cover the top of the envelope
 
 const MAROON = "#58141F";
 
-// Line-art flowers that get "embossed" into the paper.
+const flower = (x, y, r, rot = 0) => (
+  <g key={`${x}-${y}`} transform={`translate(${x} ${y}) rotate(${rot})`}>
+    {[0, 72, 144, 216, 288].map((a) => (
+      <ellipse key={a} cx="0" cy={-r} rx={r * 0.55} ry={r} transform={`rotate(${a})`} />
+    ))}
+    <circle r={r * 0.32} />
+  </g>
+);
+
+const leaf = (x, y, s, rot) => (
+  <g key={`l-${x}-${y}`} transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
+    <path d="M0 0C10-12 30-12 42 0 30 12 10 12 0 0Z" />
+    <path d="M2 0h36M12 0l7-5M22 0l7-5M12 0l7 5M22 0l7 5" />
+  </g>
+);
+
+const bud = (x, y, s, rot) => (
+  <g key={`b-${x}-${y}`} transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
+    <path d="M0 0C-12-6-12-24 0-34 12-24 12-6 0 0Z" />
+    <path d="M0 0C-5-10-5-20 0-34M0 0C5-10 5-20 0-34" />
+    <path d="M0 0c-2 18 0 34 6 50" />
+  </g>
+);
+
+// Line-art flowers that get "embossed" into the paper (top section).
 function FlowerArt() {
-  const flower = (x, y, r, rot = 0) => (
-    <g transform={`translate(${x} ${y}) rotate(${rot})`}>
-      {[0, 72, 144, 216, 288].map((a) => (
-        <ellipse key={a} cx="0" cy={-r} rx={r * 0.55} ry={r} transform={`rotate(${a})`} />
-      ))}
-      <circle r={r * 0.32} />
-    </g>
-  );
-  const leaf = (x, y, s, rot) => (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
-      <path d="M0 0C10-12 30-12 42 0 30 12 10 12 0 0Z" />
-      <path d="M2 0h36M12 0l7-5M22 0l7-5M12 0l7 5M22 0l7 5" />
-    </g>
-  );
-  const bud = (x, y, s, rot) => (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
-      <path d="M0 0C-12-6-12-24 0-34 12-24 12-6 0 0Z" />
-      <path d="M0 0C-5-10-5-20 0-34M0 0C5-10 5-20 0-34" />
-      <path d="M0 0c-2 18 0 34 6 50" />
-    </g>
-  );
   return (
     <>
       {flower(92, 128, 15, 10)}
@@ -59,7 +62,42 @@ function FlowerArt() {
   );
 }
 
-// Same artwork drawn three times (shadow, highlight, face) = letterpress emboss.
+// Line-art flowers embossed into the lower pocket section.
+function BottomFlowerArt() {
+  return (
+    <>
+      {flower(72, 185, 14, 15)}
+      {flower(42, 115, 11, -20)}
+      {flower(95, 250, 10, 30)}
+      {leaf(26, 150, 0.85, -45)}
+      {leaf(85, 220, 0.8, 35)}
+      {leaf(45, 235, 0.8, -60)}
+      {bud(50, 75, 0.75, -20)}
+      {bud(110, 175, 0.7, 25)}
+      <path d="M72 200 c-6 30 2 55 18 80 M42 128 c8 25 5 45 -8 70 M95 260 c-3 15 -1 28 5 36" />
+
+      {flower(328, 185, 14, -15)}
+      {flower(358, 115, 11, 20)}
+      {flower(305, 250, 10, -30)}
+      {leaf(374, 150, 0.85, 45)}
+      {leaf(315, 220, 0.8, -35)}
+      {leaf(355, 235, 0.8, 60)}
+      {bud(350, 75, 0.75, 20)}
+      {bud(290, 175, 0.7, -25)}
+      <path d="M328 200 c6 30 -2 55 -18 80 M358 128 c-8 25 -5 45 8 70 M305 260 c3 15 1 28 -5 36" />
+
+      <circle cx="200" cy="280" r="3" />
+      <circle cx="186" cy="286" r="2" />
+      <circle cx="214" cy="286" r="2" />
+      <circle cx="135" cy="145" r="2.5" />
+      <circle cx="265" cy="145" r="2.5" />
+      <circle cx="55" cy="85" r="2" />
+      <circle cx="345" cy="85" r="2" />
+    </>
+  );
+}
+
+// Letterpress emboss for top section.
 function Emboss({ className = "", style }) {
   return (
     <svg
@@ -80,6 +118,32 @@ function Emboss({ className = "", style }) {
       </g>
       <g stroke={MAROON} strokeWidth="1.4">
         <FlowerArt />
+      </g>
+    </svg>
+  );
+}
+
+// Letterpress emboss for bottom pocket section.
+function BottomEmboss({ className = "", style }) {
+  return (
+    <svg
+      className={`pointer-events-none absolute ${className}`}
+      style={style}
+      viewBox="0 0 400 310"
+      preserveAspectRatio="xMidYMax slice"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <g stroke="rgba(20,3,3,0.65)" strokeWidth="2.2" transform="translate(1.2 1.6)">
+        <BottomFlowerArt />
+      </g>
+      <g stroke="rgba(255,215,160,0.18)" strokeWidth="1.6" transform="translate(-0.8 -0.9)">
+        <BottomFlowerArt />
+      </g>
+      <g stroke={MAROON} strokeWidth="1.4">
+        <BottomFlowerArt />
       </g>
     </svg>
   );
@@ -316,6 +380,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         transition={dropTransition}
       >
         <div className="paper-noise absolute inset-0 opacity-60" />
+        <BottomEmboss className="inset-x-0 bottom-0 w-full h-[58%]" />
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <path d={`M0 ${SIDE + 30} L50 ${TIP + 10} L100 ${SIDE + 30}`} fill="none" stroke="rgba(226,188,114,0.2)" strokeWidth="0.5" vectorEffect="non-scaling-stroke" />
         </svg>
@@ -429,14 +494,14 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         ))}
       </motion.div>
 
-      {/* Tap hint above seal */}
+      {/* Tap hint in lower section below seal */}
       <motion.div
         className="pointer-events-none absolute inset-x-0 z-[5] flex flex-col items-center text-center px-4"
-        style={{ top: "27.5%" }}
+        style={{ top: "67.5%" }}
         initial={{ opacity: 0.95, y: 0 }}
         animate={
           opened
-            ? { opacity: 0, y: -12 }
+            ? { opacity: 0, y: 16 }
             : { opacity: [0.85, 1, 0.85], y: [0, -3, 0] }
         }
         transition={
@@ -445,7 +510,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
             : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
         }
       >
-        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.32em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] flex items-center justify-center gap-2">
+        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.32em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] flex items-center justify-center gap-2">
           <span className="text-[12px]">🌸</span>
           <span>You are invited</span>
           <span className="text-[12px]">🌸</span>
