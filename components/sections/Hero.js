@@ -223,25 +223,10 @@ export default function Hero({ revealed }) {
 
       {/* Main invitation content rendered directly with clean, spacious elegance */}
       <div className="relative z-10 flex flex-col items-center max-w-[380px] mx-auto w-full my-auto">
-        {/* Royal Monogram Logo2 at Top */}
+        {/* Shri Ganesh at the very top */}
         <motion.div
-          {...show(revealed, 0.15)}
-          className="relative mx-auto mb-2.5 xs:mb-3 w-[125px] xs:w-[145px] sm:w-[170px] aspect-[2041/2803]"
-        >
-          <Image
-            src="/images/logo2.png"
-            alt="Aashutosh & Atisha Monogram Logo"
-            fill
-            sizes="(max-width: 640px) 150px, 175px"
-            priority
-            className="object-contain drop-shadow-[0_4px_18px_rgba(196,154,74,0.35)]"
-          />
-        </motion.div>
-
-        {/* Shri Ganesh */}
-        <motion.div
-          {...show(revealed, 0.3)}
-          className="h-[48px] w-[44px] xs:h-[54px] xs:w-[50px]"
+          {...show(revealed, 0.2)}
+          className="h-[46px] w-[42px] xs:h-[50px] xs:w-[46px] mb-2 xs:mb-2.5"
         >
           <motion.div
             className="relative h-full w-full"
@@ -259,12 +244,27 @@ export default function Hero({ revealed }) {
               src={wedding.images.ganesh}
               alt="Shri Ganesh"
               fill
-              sizes="54px"
+              sizes="50px"
               priority
               className="object-contain"
               unoptimized={wedding.images.ganesh.endsWith(".svg")}
             />
           </motion.div>
+        </motion.div>
+
+        {/* Royal Monogram Logo2 below Ganesh */}
+        <motion.div
+          {...show(revealed, 0.32)}
+          className="relative mx-auto mb-3 xs:mb-3.5 w-[125px] xs:w-[145px] sm:w-[170px] aspect-[2041/2803]"
+        >
+          <Image
+            src="/images/logo2.png"
+            alt="Aashutosh & Atisha Monogram Logo"
+            fill
+            sizes="(max-width: 640px) 150px, 175px"
+            priority
+            className="object-contain drop-shadow-[0_4px_18px_rgba(196,154,74,0.35)]"
+          />
         </motion.div>
 
         {/* Auspicious Shloka */}
