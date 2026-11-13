@@ -17,15 +17,8 @@ function Backdrop() {
         priority
         className="object-cover object-top"
       />
-      {/* Soft luminous center aura so all invitation text is razor-sharp and effortlessly readable */}
-      <div
-        className="absolute inset-x-0 top-[26%] bottom-10 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 95% 80% at 50% 50%, rgba(255, 253, 247, 0.92) 0%, rgba(255, 251, 242, 0.82) 55%, rgba(255, 248, 235, 0) 100%)",
-        }}
-      />
-      {/* Soft gradient wash at the bottom to blend seamlessly into the next section */}
-      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-blush-50 to-transparent" />
+      {/* Soft gradient wash at the very bottom to blend seamlessly into the next section */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-blush-50 to-transparent" />
     </div>
   );
 }
@@ -61,7 +54,7 @@ function Person({ person, revealed, delay, relation }) {
 
 export default function Hero({ revealed }) {
   return (
-    <section id="hero" className="relative min-h-[100svh] overflow-hidden px-4 pb-14 pt-[27vh] sm:pt-[29vh] flex flex-col items-center justify-between text-center">
+    <section id="hero" className="relative min-h-[100svh] overflow-hidden px-4 pb-12 pt-[22vh] sm:pt-[24vh] flex flex-col items-center justify-between text-center">
       <Backdrop />
 
       {/* Main invitation content placed cleanly below the garlands and bells */}
