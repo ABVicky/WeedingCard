@@ -276,9 +276,7 @@ function PreviewCard({ fading }) {
         {/* Bottom: Date badge + Shubh Vivah */}
         <div className="mb-0.5 flex flex-col items-center">
           <div className="inline-flex items-center gap-1.5 rounded-full border border-gold/60 bg-gradient-to-r from-[#FFF6E6] via-[#FDF0D5] to-[#FFF6E6] px-3.5 py-0.5 font-caps text-[9px] sm:text-[9.5px] font-bold tracking-[0.22em] text-[#9E242B] shadow-[0_1px_4px_rgba(196,154,74,0.2)]">
-            <span className="text-[9px]">🌸</span>
             <span>04 · DECEMBER · 2026</span>
-            <span className="text-[9px]">🌸</span>
           </div>
           <p className="mt-0.5 font-deva text-[8.5px] font-semibold tracking-wider text-[#A9772F]">
             ॥ शुभ विवाह ॥
@@ -530,14 +528,12 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
             : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
         }
       >
-        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.32em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] flex items-center justify-center gap-2">
-          <span className="text-[12px]">🌸</span>
-          <span>You are invited</span>
-          <span className="text-[12px]">🌸</span>
+        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.35em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+          You are invited
         </span>
         <div className="my-1.5 flex items-center gap-2 opacity-80" aria-hidden="true">
           <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
-          <span className="text-[10px] leading-none">🌸</span>
+          <span className="h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_6px_#E2BC72]" />
           <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold" />
         </div>
         <span className="font-serif italic text-[15px] sm:text-[16px] text-[#F7E8D8] tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
