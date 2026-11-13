@@ -204,22 +204,26 @@ const DUST = Array.from({ length: 16 }, (_, i) => ({
 
 function PreviewCard({ fading }) {
   return (
-    <div className="relative h-full w-full rounded-[14px] bg-[#FFFDF9] shadow-[0_-8px_35px_rgba(40,10,8,0.45),0_0_20px_rgba(226,188,114,0.25)] overflow-hidden">
+    <div className="relative h-full w-full rounded-[14px] shadow-[0_-8px_35px_rgba(40,10,8,0.45),0_0_20px_rgba(226,188,114,0.25)] overflow-hidden">
+      {/* Synchronized Real Indian Wedding Hero Background Frame */}
+      <div className="absolute inset-0 pointer-events-none select-none">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Royal Indian Wedding Background"
+          fill
+          sizes="(max-width: 480px) 380px, 420px"
+          priority
+          className="object-cover object-top"
+        />
+        {/* Subtle luminous wash for typography clarity */}
+        <div className="absolute inset-0 bg-white/25" />
+      </div>
+
       <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-between py-3.5 px-3 text-center"
+        className="relative z-10 h-full w-full flex flex-col items-center justify-between py-3.5 px-3 text-center"
         animate={{ opacity: fading ? 0 : 1 }}
         transition={{ duration: 0.35 }}
       >
-        {/* Double ornate gold border */}
-        <div className="absolute inset-[6px] rounded-[10px] border border-gold/70 pointer-events-none" />
-        <div className="absolute inset-[9px] rounded-[8px] border border-gold/30 pointer-events-none" />
-
-        {/* 4 Corner brackets */}
-        <span className="pointer-events-none absolute top-3 left-3 h-2.5 w-2.5 border-t-2 border-l-2 border-gold/80" />
-        <span className="pointer-events-none absolute top-3 right-3 h-2.5 w-2.5 border-t-2 border-r-2 border-gold/80" />
-        <span className="pointer-events-none absolute bottom-3 left-3 h-2.5 w-2.5 border-b-2 border-l-2 border-gold/80" />
-        <span className="pointer-events-none absolute bottom-3 right-3 h-2.5 w-2.5 border-b-2 border-r-2 border-gold/80" />
-
         {/* Top: Ganesha + Invocation */}
         <div className="flex flex-col items-center mt-0.5">
           <div className="relative h-5 w-5">
@@ -229,24 +233,24 @@ function PreviewCard({ fading }) {
               fill
               sizes="20px"
               priority
-              className="object-contain"
+              className="object-contain drop-shadow-[0_1px_4px_rgba(226,188,114,0.6)]"
             />
           </div>
-          <p className="mt-1 font-deva text-[10px] sm:text-[10.5px] font-semibold tracking-[0.2em] text-[#9E242B]">
+          <p className="mt-1 font-deva text-[10px] sm:text-[10.5px] font-semibold tracking-[0.2em] text-[#9E242B] drop-shadow-[0_1px_1px_rgba(255,255,255,0.95)]">
             ॥ श्री गणेशाय नमः ॥
           </p>
-          <p className="mt-0.5 font-caps text-[8.5px] tracking-[0.28em] uppercase text-[#8A5A48] font-medium flex items-center gap-1.5">
+          <p className="mt-0.5 font-caps text-[8.5px] tracking-[0.28em] uppercase text-[#8A5A48] font-medium flex items-center gap-1.5 drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
             <span className="text-[8.5px]">🪷</span> Save The Date <span className="text-[8.5px]">🪷</span>
           </p>
         </div>
 
-        {/* Center: Couple Names */}
+        {/* Center: Couple Names in Millerstone */}
         <div className="flex flex-col items-center my-auto w-full px-2">
-          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight">
+          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight drop-shadow-[0_1px_6px_rgba(226,188,114,0.35)]">
             {wedding.groom.name}
           </p>
           <span className="font-serif italic text-gold text-[14px] leading-none my-0.5">&amp;</span>
-          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight">
+          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight drop-shadow-[0_1px_6px_rgba(226,188,114,0.35)]">
             {wedding.bride.name}
           </p>
           <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
@@ -254,13 +258,13 @@ function PreviewCard({ fading }) {
             <span className="text-[10px] leading-none">🌹</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/70" />
           </div>
-          <p className="mt-0.5 font-serif italic text-[11px] text-[#5A382E]">
+          <p className="mt-0.5 font-serif italic text-[11px] text-[#5A382E] drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
             The Jaiswal &amp; Tibrewal Families
           </p>
         </div>
 
         {/* Bottom: Date badge */}
-        <div className="mb-0.5 inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-gold/15 px-3 py-0.5 font-caps text-[9px] font-semibold tracking-[0.2em] text-[#9E242B]">
+        <div className="mb-0.5 inline-flex items-center gap-1.5 rounded-full border border-gold/60 bg-gold/20 backdrop-blur-[2px] px-3 py-0.5 font-caps text-[9px] font-semibold tracking-[0.2em] text-[#9E242B] shadow-sm">
           <span className="text-[8.5px]">🌼</span>
           <span>04 · DECEMBER · 2026</span>
           <span className="text-[8.5px]">🌼</span>
