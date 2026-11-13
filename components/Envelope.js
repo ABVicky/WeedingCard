@@ -15,29 +15,32 @@ const EMBOSS_H = 46; // the embossed flowers cover the top of the envelope
 
 const MAROON = "#58141F";
 
-// Line-art flowers that get "embossed" into the paper.
+const flower = (x, y, r, rot = 0) => (
+  <g key={`${x}-${y}`} transform={`translate(${x} ${y}) rotate(${rot})`}>
+    {[0, 72, 144, 216, 288].map((a) => (
+      <ellipse key={a} cx="0" cy={-r} rx={r * 0.55} ry={r} transform={`rotate(${a})`} />
+    ))}
+    <circle r={r * 0.32} />
+  </g>
+);
+
+const leaf = (x, y, s, rot) => (
+  <g key={`l-${x}-${y}`} transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
+    <path d="M0 0C10-12 30-12 42 0 30 12 10 12 0 0Z" />
+    <path d="M2 0h36M12 0l7-5M22 0l7-5M12 0l7 5M22 0l7 5" />
+  </g>
+);
+
+const bud = (x, y, s, rot) => (
+  <g key={`b-${x}-${y}`} transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
+    <path d="M0 0C-12-6-12-24 0-34 12-24 12-6 0 0Z" />
+    <path d="M0 0C-5-10-5-20 0-34M0 0C5-10 5-20 0-34" />
+    <path d="M0 0c-2 18 0 34 6 50" />
+  </g>
+);
+
+// Line-art flowers that get "embossed" into the paper (top section).
 function FlowerArt() {
-  const flower = (x, y, r, rot = 0) => (
-    <g transform={`translate(${x} ${y}) rotate(${rot})`}>
-      {[0, 72, 144, 216, 288].map((a) => (
-        <ellipse key={a} cx="0" cy={-r} rx={r * 0.55} ry={r} transform={`rotate(${a})`} />
-      ))}
-      <circle r={r * 0.32} />
-    </g>
-  );
-  const leaf = (x, y, s, rot) => (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
-      <path d="M0 0C10-12 30-12 42 0 30 12 10 12 0 0Z" />
-      <path d="M2 0h36M12 0l7-5M22 0l7-5M12 0l7 5M22 0l7 5" />
-    </g>
-  );
-  const bud = (x, y, s, rot) => (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
-      <path d="M0 0C-12-6-12-24 0-34 12-24 12-6 0 0Z" />
-      <path d="M0 0C-5-10-5-20 0-34M0 0C5-10 5-20 0-34" />
-      <path d="M0 0c-2 18 0 34 6 50" />
-    </g>
-  );
   return (
     <>
       {flower(92, 128, 15, 10)}
@@ -59,7 +62,42 @@ function FlowerArt() {
   );
 }
 
-// Same artwork drawn three times (shadow, highlight, face) = letterpress emboss.
+// Line-art flowers embossed into the lower pocket section.
+function BottomFlowerArt() {
+  return (
+    <>
+      {flower(72, 185, 14, 15)}
+      {flower(42, 115, 11, -20)}
+      {flower(95, 250, 10, 30)}
+      {leaf(26, 150, 0.85, -45)}
+      {leaf(85, 220, 0.8, 35)}
+      {leaf(45, 235, 0.8, -60)}
+      {bud(50, 75, 0.75, -20)}
+      {bud(110, 175, 0.7, 25)}
+      <path d="M72 200 c-6 30 2 55 18 80 M42 128 c8 25 5 45 -8 70 M95 260 c-3 15 -1 28 5 36" />
+
+      {flower(328, 185, 14, -15)}
+      {flower(358, 115, 11, 20)}
+      {flower(305, 250, 10, -30)}
+      {leaf(374, 150, 0.85, 45)}
+      {leaf(315, 220, 0.8, -35)}
+      {leaf(355, 235, 0.8, 60)}
+      {bud(350, 75, 0.75, 20)}
+      {bud(290, 175, 0.7, -25)}
+      <path d="M328 200 c6 30 -2 55 -18 80 M358 128 c-8 25 -5 45 8 70 M305 260 c3 15 1 28 -5 36" />
+
+      <circle cx="200" cy="280" r="3" />
+      <circle cx="186" cy="286" r="2" />
+      <circle cx="214" cy="286" r="2" />
+      <circle cx="135" cy="145" r="2.5" />
+      <circle cx="265" cy="145" r="2.5" />
+      <circle cx="55" cy="85" r="2" />
+      <circle cx="345" cy="85" r="2" />
+    </>
+  );
+}
+
+// Same artwork drawn three times (shadow, highlight, face) = letterpress emboss for top section.
 function Emboss({ className = "", style }) {
   return (
     <svg
@@ -72,14 +110,40 @@ function Emboss({ className = "", style }) {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <g stroke="rgba(20,3,3,0.65)" strokeWidth="2.2" transform="translate(1.2 1.6)">
+      <g stroke="rgba(20,3,3,0.7)" strokeWidth="2.2" transform="translate(1.2 1.6)">
         <FlowerArt />
       </g>
-      <g stroke="rgba(255,215,160,0.18)" strokeWidth="1.6" transform="translate(-0.8 -0.9)">
+      <g stroke="rgba(255,215,160,0.2)" strokeWidth="1.6" transform="translate(-0.8 -0.9)">
         <FlowerArt />
       </g>
       <g stroke={MAROON} strokeWidth="1.4">
         <FlowerArt />
+      </g>
+    </svg>
+  );
+}
+
+// Letterpress emboss for bottom pocket section.
+function BottomEmboss({ className = "", style }) {
+  return (
+    <svg
+      className={`pointer-events-none absolute ${className}`}
+      style={style}
+      viewBox="0 0 400 310"
+      preserveAspectRatio="xMidYMax slice"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <g stroke="rgba(20,3,3,0.65)" strokeWidth="2.2" transform="translate(1.2 1.6)">
+        <BottomFlowerArt />
+      </g>
+      <g stroke="rgba(255,215,160,0.18)" strokeWidth="1.6" transform="translate(-0.8 -0.9)">
+        <BottomFlowerArt />
+      </g>
+      <g stroke={MAROON} strokeWidth="1.4">
+        <BottomFlowerArt />
       </g>
     </svg>
   );
@@ -120,7 +184,7 @@ function RoyalWaxSeal() {
   );
 }
 
-// Opening timeline (seconds after the tap). Refined for a regal, luxurious opening experience.
+// Opening timeline (seconds after the tap).
 const T = { flap: 0.5, card: 1.8, reveal: 5.4, done: 6.8 };
 const GLIDE = [0.22, 1, 0.36, 1];
 
@@ -138,66 +202,20 @@ const DUST = Array.from({ length: 16 }, (_, i) => ({
   "--delay": `-${rand(i, 7) * 10}s`,
 }));
 
+// Preview Card synchronized with the restored Ivory & Ganesh Hero Section
 function PreviewCard({ fading }) {
   return (
-    <div className="relative h-full w-full rounded-[14px] bg-[#FFFDF9] shadow-[0_-8px_35px_rgba(40,10,8,0.45),0_0_20px_rgba(226,188,114,0.25)] overflow-hidden">
-      <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-between py-3.5 px-3 text-center"
-        animate={{ opacity: fading ? 0 : 1 }}
-        transition={{ duration: 0.35 }}
-      >
-        {/* Double ornate gold border */}
-        <div className="absolute inset-[6px] rounded-[10px] border border-gold/70 pointer-events-none" />
-        <div className="absolute inset-[9px] rounded-[8px] border border-gold/30 pointer-events-none" />
-
-        {/* 4 Corner brackets */}
-        <span className="pointer-events-none absolute top-3 left-3 h-2.5 w-2.5 border-t-2 border-l-2 border-gold/80" />
-        <span className="pointer-events-none absolute top-3 right-3 h-2.5 w-2.5 border-t-2 border-r-2 border-gold/80" />
-        <span className="pointer-events-none absolute bottom-3 left-3 h-2.5 w-2.5 border-b-2 border-l-2 border-gold/80" />
-        <span className="pointer-events-none absolute bottom-3 right-3 h-2.5 w-2.5 border-b-2 border-r-2 border-gold/80" />
-
-        {/* Top: Ganesha + Invocation */}
-        <div className="flex flex-col items-center mt-0.5">
-          <div className="relative h-5 w-5">
-            <Image
-              src="/images/ganesh_gold.png"
-              alt="Shri Ganesh"
-              fill
-              sizes="20px"
-              priority
-              className="object-contain"
-            />
-          </div>
-          <p className="mt-1 font-deva text-[10px] sm:text-[10.5px] font-semibold tracking-[0.2em] text-[#9E242B]">
-            ॥ श्री गणेशाय नमः ॥
-          </p>
-          <p className="mt-0.5 font-caps text-[8.5px] tracking-[0.28em] uppercase text-[#8A5A48] font-medium">
-            Save The Date
-          </p>
+    <div className="relative h-full w-full overflow-hidden rounded-[18px] bg-ivory/[0.96] p-2 text-center shadow-[0_12px_28px_rgba(0,0,0,0.35)]">
+      <div className="pointer-events-none absolute inset-1.5 rounded-[12px] border border-gold/40" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-transparent via-[#E67E22] to-transparent opacity-60" />
+      <motion.div animate={{ opacity: fading ? 0 : 1 }} transition={{ duration: 0.4 }} className="flex h-full flex-col items-center justify-between py-1">
+        <div className="h-6 w-6">
+          <Image src={wedding.images.ganesh} alt="" width={24} height={24} className="h-full w-full object-contain" priority />
         </div>
-
-        {/* Center: Couple Names */}
-        <div className="flex flex-col items-center my-auto w-full px-2">
-          <p className="gold-gradient-text font-heading italic text-[20px] sm:text-[23px] font-semibold leading-tight">
-            {wedding.groom.name}
-          </p>
-          <span className="font-serif italic text-gold text-[14px] leading-none my-0.5">&amp;</span>
-          <p className="gold-gradient-text font-heading italic text-[20px] sm:text-[23px] font-semibold leading-tight">
-            {wedding.bride.name}
-          </p>
-          <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
-            <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold/70" />
-            <span className="h-1 w-1 rotate-45 bg-gold shadow-[0_0_4px_#E2BC72]" />
-            <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/70" />
-          </div>
-          <p className="mt-0.5 font-serif italic text-[11px] text-[#5A382E]">
-            The Jaiswal &amp; Tibrewal Families
-          </p>
-        </div>
-
-        {/* Bottom: Date badge */}
-        <div className="mb-0.5 inline-flex items-center rounded-full border border-gold/50 bg-gold/15 px-3 py-0.5 font-caps text-[9px] font-semibold tracking-[0.2em] text-[#9E242B]">
-          04 · DECEMBER · 2026
+        <p className="font-deva text-[8.5px] font-semibold text-terra">॥ {wedding.shloka[0]} ॥</p>
+        <div>
+          <p className="font-heading italic text-[14px] leading-tight text-terra">{wedding.groom.name.split(" ")[0]} &amp; {wedding.bride.name.split(" ")[0]}</p>
+          <p className="font-caps text-[6.5px] uppercase tracking-[0.25em] text-gold">{wedding.scratch[0].value} · {wedding.scratch[1].value} · {wedding.scratch[2].value}</p>
         </div>
       </motion.div>
     </div>
@@ -228,11 +246,11 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
     if (opened) return;
     setPhase("open");
     navigator.vibrate?.(12);
-    onOpen(); // inside the tap handler so audio is allowed to start
-    const at = (s, fn) => timers.current.push(setTimeout(fn, s * 1000));
+    onOpen?.();
+
+    const at = (sec, fn) => timers.current.push(setTimeout(fn, sec * 1000));
     at(T.card, () => {
       setPhase("card");
-      sfx.whoosh();
     });
     at(T.reveal, () => {
       setPhase("reveal");
@@ -243,7 +261,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
 
   // Every envelope layer drops away together during the reveal.
   const drop = { y: revealing ? "26%" : 0 };
-  const dropTransition = { y: { duration: 1.0, ease: [0.33, 1, 0.68, 1] } };
+  const dropTransition = { y: { duration: 1.2, ease: [0.33, 1, 0.68, 1] } };
 
   // The flap holds its slice of the full-screen emboss so the pattern lines up.
   const flapNoiseStyle = { left: 0, width: "100%", top: `${(-HINGE / FLAP_H) * 100}%`, height: `${(100 / FLAP_H) * 100}%` };
@@ -261,7 +279,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && handleTap()}
       initial={false}
       animate={{ opacity: revealing ? 0 : 1 }}
-      transition={{ duration: 0.8, delay: revealing ? 0.2 : 0, ease: "easeInOut" }}
+      transition={{ duration: 1.0, delay: revealing ? 0.2 : 0, ease: "easeInOut" }}
     >
       {/* Back of the envelope + paper grain */}
       <motion.div className="absolute inset-0" style={{ background: MAROON }} animate={drop} transition={dropTransition}>
@@ -297,12 +315,12 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         className="absolute left-[9%] right-[9%]"
         style={{ top: "57%", height: "38%", zIndex: 2, transformOrigin: "50% 0%" }}
         animate={revealing ? { y: "-116%", scaleX: 1.12, scaleY: 1.9 } : { y: cardOut ? "-104%" : 0, scaleX: 1, scaleY: 1 }}
-        transition={revealing ? { duration: 0.9, ease: GLIDE } : { duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={revealing ? { duration: 1.1, ease: GLIDE } : { duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
       >
         <PreviewCard fading={revealing} />
       </motion.div>
 
-      {/* Front pocket */}
+      {/* Front pocket with bottom embossed floral artwork */}
       <motion.div
         className="absolute inset-0"
         style={{
@@ -314,6 +332,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         transition={dropTransition}
       >
         <div className="paper-noise absolute inset-0 opacity-60" />
+        <BottomEmboss className="inset-x-0 bottom-0 w-full h-[58%]" />
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <path d={`M0 ${SIDE + 30} L50 ${TIP + 10} L100 ${SIDE + 30}`} fill="none" stroke="rgba(226,188,114,0.2)" strokeWidth="0.5" vectorEffect="non-scaling-stroke" />
         </svg>
@@ -346,7 +365,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
           willChange: "transform",
         }}
         animate={{ rotateX: opened ? 180 : 0, ...drop }}
-        transition={{ rotateX: { duration: 1.3, delay: opened ? T.flap : 0, ease: [0.33, 1, 0.68, 1] }, ...dropTransition }}
+        transition={{ rotateX: { duration: 1.8, delay: opened ? T.flap : 0, ease: [0.33, 1, 0.68, 1] }, ...dropTransition }}
       >
         <div
           className="absolute inset-0 overflow-hidden"
@@ -427,15 +446,15 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         ))}
       </motion.div>
 
-      {/* Tap hint above seal */}
+      {/* Tap hint in lower section below seal */}
       <motion.div
         className="pointer-events-none absolute inset-x-0 z-[5] flex flex-col items-center text-center px-4"
-        style={{ top: "27%" }}
+        style={{ top: "67.5%" }}
         initial={{ opacity: 0.95, y: 0 }}
         animate={
           opened
-            ? { opacity: 0, y: -12 }
-            : { opacity: [0.8, 1, 0.8], y: [0, -3, 0] }
+            ? { opacity: 0, y: 16 }
+            : { opacity: [0.85, 1, 0.85], y: [0, -3, 0] }
         }
         transition={
           opened
@@ -443,16 +462,18 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
             : { duration: 3.2, repeat: Infinity, ease: "easeInOut" }
         }
       >
-        <span className="font-caps text-[11.5px] sm:text-[12.5px] font-semibold tracking-[0.38em] uppercase text-[#E2BC72] drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">
-          A Sacred Union
+        <span className="font-caps text-[12px] sm:text-[13px] font-semibold tracking-[0.32em] uppercase text-[#E2BC72] drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] flex items-center justify-center gap-2">
+          <span className="text-[12px]">🌸</span>
+          <span>You are invited</span>
+          <span className="text-[12px]">🌸</span>
         </span>
-        <div className="my-1.5 flex items-center gap-2 opacity-85" aria-hidden="true">
+        <div className="my-1.5 flex items-center gap-2 opacity-80" aria-hidden="true">
           <span className="h-px w-8 bg-gradient-to-r from-transparent to-gold" />
-          <span className="h-1.5 w-1.5 rotate-45 bg-gold shadow-[0_0_6px_#E2BC72]" />
+          <span className="text-[10px] leading-none">🌸</span>
           <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold" />
         </div>
-        <span className="font-serif italic text-[15px] sm:text-[16px] text-[#F7E8D8] tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)]">
-          Tap the royal seal to open
+        <span className="font-serif italic text-[15px] sm:text-[16px] text-[#F7E8D8] tracking-wide drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
+          Tap to Open
         </span>
       </motion.div>
 
