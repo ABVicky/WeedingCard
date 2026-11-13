@@ -43,13 +43,14 @@ function EventMapViewer({ ev }) {
   const [showMap, setShowMap] = useState(true);
   const embedQuery = ev.venue || `${ev.name} Wedding Ceremony`;
   const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(embedQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+  const targetUrl = mapsUrl(ev);
 
   return (
     <div className="mt-3.5 w-full text-left">
       <div className="mb-1.5 flex items-center justify-between px-1">
         <span className="font-caps text-[10px] uppercase tracking-[0.2em] text-[#8C5832] font-semibold flex items-center gap-1.5">
           <span>🗺️</span>
-          <span>Location Map</span>
+          <span>Venue Map</span>
         </span>
         <button
           type="button"
@@ -64,25 +65,44 @@ function EventMapViewer({ ev }) {
       </div>
 
       {showMap && (
-        <div className="relative h-[160px] sm:h-[180px] w-full overflow-hidden rounded-xl border border-gold/50 bg-[#FAF4EB] shadow-[inset_0_2px_8px_rgba(0,0,0,0.06)]">
+        <a
+          href={targetUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => sfx.click()}
+          className="group relative block h-[165px] sm:h-[185px] w-full overflow-hidden rounded-xl border border-gold/50 bg-[#FAF4EB] shadow-[inset_0_2px_8px_rgba(0,0,0,0.06)] cursor-pointer transition-transform hover:scale-[1.01] active:scale-[0.99]"
+          title="Click to open venue in Google Maps"
+        >
           <iframe
             title={`${ev.name} Location Map`}
             src={embedUrl}
-            className="h-full w-full border-0"
+            className="pointer-events-none h-full w-full border-0 scale-105"
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+            tabIndex={-1}
+            aria-hidden="true"
           />
+
+          {/* Hover / Tap shimmer overlay */}
+          <div className="absolute inset-0 bg-transparent group-hover:bg-black/10 transition-colors pointer-events-none" />
+
+          {/* Top-right "Open Map ↗" badge */}
+          <div className="pointer-events-none absolute top-2 right-2 rounded-full bg-white/95 backdrop-blur-sm px-2.5 py-1 text-[9.5px] font-caps font-semibold tracking-wider text-[#7D1422] border border-gold/50 shadow-sm flex items-center gap-1">
+            <span>Open Map</span>
+            <span className="text-[10px]">↗</span>
+          </div>
+
           {/* Bottom Badge Bar */}
-          <div className="pointer-events-none absolute bottom-1.5 inset-x-2 flex items-center justify-between rounded-lg bg-white/95 px-2.5 py-1 text-[11px] font-serif text-[#4A2618] border border-gold/40 shadow-sm backdrop-blur-sm">
-            <span className="truncate flex items-center gap-1 font-semibold">
-              <span className="text-[12px] text-terra">📍</span>
+          <div className="pointer-events-none absolute bottom-1.5 inset-x-2 flex items-center justify-between rounded-lg bg-white/95 px-2.5 py-1.5 text-[11px] font-serif text-[#4A2618] border border-gold/40 shadow-sm backdrop-blur-sm">
+            <span className="truncate flex items-center gap-1.5 font-semibold">
+              <span className="text-[13px] text-terra">📍</span>
               <span className="truncate">{ev.venue || `${ev.name} Location`}</span>
             </span>
-            <span className="shrink-0 ml-1 text-[9px] uppercase font-caps font-semibold tracking-wider text-[#8C5832]">
-              Interactive Map
+            <span className="shrink-0 ml-1.5 text-[9.5px] uppercase font-caps font-semibold tracking-wider text-[#8C5832] flex items-center gap-0.5">
+              <span>Directions</span>
+              <span>↗</span>
             </span>
           </div>
-        </div>
+        </a>
       )}
     </div>
   );
