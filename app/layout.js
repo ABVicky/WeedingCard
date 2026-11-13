@@ -4,7 +4,7 @@ import wedding from "@/data/wedding";
 import "./globals.css";
 
 const names = localFont({
-  src: "../public/fonts/Millerstone-DEMO.ttf",
+  src: "../public/fonts/StylishCalligraphy-DEMO.ttf",
   variable: "--font-names",
   display: "swap",
 });

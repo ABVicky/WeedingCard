@@ -252,7 +252,7 @@ function PreviewCard({ fading }) {
           <p className="font-serif italic text-[10.5px] sm:text-[11px] text-[#5A382E] leading-tight">
             Together with their families
           </p>
-          <p className="gold-gradient-text font-heading italic text-[22px] sm:text-[25px] font-bold leading-tight mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
+          <p className="gold-gradient-text font-names text-[26px] sm:text-[30px] font-normal leading-tight mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
             {wedding.groom.name}
           </p>
           <div className="my-0.5 flex items-center justify-center gap-2" aria-hidden="true">
@@ -260,7 +260,7 @@ function PreviewCard({ fading }) {
             <span className="font-heading italic text-[16px] text-gold leading-none px-1">&amp;</span>
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-gold/75" />
           </div>
-          <p className="gold-gradient-text font-heading italic text-[22px] sm:text-[25px] font-bold leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
+          <p className="gold-gradient-text font-names text-[26px] sm:text-[30px] font-normal leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
             {wedding.bride.name}
           </p>
           <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
