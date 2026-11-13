@@ -3,6 +3,9 @@ module.exports = {
   content: ["./app/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        xs: "375px",
+      },
       colors: {
         wine: { DEFAULT: "#4A0F1A", deep: "#320810" },
         envelope: { DEFAULT: "#58141F", dark: "#420D16", light: "#6B1D2C" },

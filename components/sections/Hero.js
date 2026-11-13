@@ -34,16 +34,16 @@ function Person({ person, revealed, delay, relation }) {
     <div className="flex flex-col items-center">
       <motion.h2
         {...show(revealed, delay)}
-        className="font-names text-[46px] sm:text-[54px] font-normal leading-[1.12] tracking-wide text-[#6A1220] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
+        className="font-names text-[38px] xs:text-[44px] sm:text-[52px] font-normal leading-[1.12] tracking-wide text-[#6A1220] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
       >
         {person.name}
       </motion.h2>
-      <motion.div {...show(revealed, delay + 0.15)} className="mt-1.5 max-w-[340px] px-2">
-        <p className="font-serif text-[15px] sm:text-[16px] font-semibold leading-relaxed text-[#2C140D] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+      <motion.div {...show(revealed, delay + 0.15)} className="mt-1 xs:mt-1.5 max-w-[340px] px-2">
+        <p className="font-serif text-[13.5px] xs:text-[15px] sm:text-[16px] font-semibold leading-relaxed text-[#2C140D] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
           {person.parents}
         </p>
         {person.grandparents && (
-          <p className="mt-0.5 font-serif text-[13.5px] italic font-medium leading-snug text-[#4A261B] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]" aria-label={relation}>
+          <p className="mt-0.5 font-serif text-[12.5px] xs:text-[13.5px] italic font-medium leading-snug text-[#4A261B] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]" aria-label={relation}>
             {person.grandparents}
           </p>
         )}
@@ -54,7 +54,7 @@ function Person({ person, revealed, delay, relation }) {
 
 export default function Hero({ revealed }) {
   return (
-    <section id="hero" className="relative min-h-[100svh] overflow-hidden px-4 pb-12 pt-[22vh] sm:pt-[24vh] flex flex-col items-center justify-between text-center">
+    <section id="hero" className="relative min-h-[100svh] overflow-hidden px-3 xs:px-4 pb-8 xs:pb-12 pt-[18vh] xs:pt-[21vh] sm:pt-[24vh] flex flex-col items-center justify-between text-center">
       <Backdrop />
 
       {/* Main invitation content placed cleanly below the garlands and bells */}
@@ -62,7 +62,7 @@ export default function Hero({ revealed }) {
         {/* Shri Ganesh */}
         <motion.div
           {...show(revealed, 0.25)}
-          className="h-[54px] w-[50px]"
+          className="h-[46px] w-[42px] xs:h-[54px] xs:w-[50px]"
         >
           <motion.div
             className="relative h-full w-full"
@@ -91,7 +91,7 @@ export default function Hero({ revealed }) {
         {/* Auspicious Shloka */}
         <motion.div
           {...show(revealed, 0.4)}
-          className="mt-3 space-y-1 font-deva text-[14px] sm:text-[15px] font-bold leading-[1.65] tracking-[0.14em] text-[#801322] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
+          className="mt-2.5 xs:mt-3 space-y-0.5 xs:space-y-1 font-deva text-[13px] xs:text-[14px] sm:text-[15px] font-bold leading-[1.6] xs:leading-[1.65] tracking-[0.1em] xs:tracking-[0.14em] text-[#801322] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
         >
           {wedding.shloka.map((l) => (
             <p key={l}>
@@ -103,7 +103,7 @@ export default function Hero({ revealed }) {
         {/* Blessing Line */}
         <motion.p
           {...show(revealed, 0.55)}
-          className="mt-3 max-w-[330px] font-serif text-[15px] sm:text-[16px] font-semibold italic leading-[1.6] text-[#361B13] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
+          className="mt-2.5 xs:mt-3 max-w-[330px] font-serif text-[14px] xs:text-[15px] sm:text-[16px] font-semibold italic leading-[1.55] xs:leading-[1.6] text-[#361B13] drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] px-2"
         >
           {wedding.blessingLine}
         </motion.p>
@@ -111,7 +111,7 @@ export default function Hero({ revealed }) {
         {/* Flower & Gold Filigree Ornament */}
         <motion.div
           {...show(revealed, 0.65)}
-          className="my-3 flex items-center justify-center gap-2.5"
+          className="my-2 xs:my-3 flex items-center justify-center gap-2.5"
           aria-hidden="true"
         >
           <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#8A5A30]" />
@@ -127,12 +127,12 @@ export default function Hero({ revealed }) {
         {/* & Connector */}
         <motion.div
           {...show(revealed, 1.05)}
-          className="my-2.5 flex items-center justify-center gap-2.5"
+          className="my-2 xs:my-2.5 flex items-center justify-center gap-2.5"
           aria-hidden="true"
         >
           <span className="h-px w-14 bg-gradient-to-r from-transparent via-[#8A5A30] to-[#8A5A30]" />
           <span className="text-[13px] opacity-90">🌹</span>
-          <span className="font-heading italic text-[30px] sm:text-[34px] font-semibold text-[#801322] px-1 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">&amp;</span>
+          <span className="font-heading italic text-[26px] xs:text-[30px] sm:text-[34px] font-semibold text-[#801322] px-1 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">&amp;</span>
           <span className="text-[13px] opacity-90">🌹</span>
           <span className="h-px w-14 bg-gradient-to-l from-transparent via-[#8A5A30] to-[#8A5A30]" />
         </motion.div>

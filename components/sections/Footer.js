@@ -18,7 +18,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-wine px-6 pb-28 pt-20 text-center">
+    <footer className="relative overflow-hidden bg-wine px-4 xs:px-6 pb-28 pt-20 text-center">
       {/* Auspicious golden mandala arch in background */}
       <div className="pointer-events-none absolute inset-x-0 -top-6 flex justify-center opacity-25" aria-hidden="true">
         <svg width="260" height="130" viewBox="0 0 260 130" fill="none" stroke="#D4AF37">
@@ -32,12 +32,12 @@ export default function Footer() {
 
       {/* Monogram Logo2 */}
       <Reveal>
-        <div className="relative mx-auto w-[275px] sm:w-[330px] aspect-[2041/2803]">
+        <div className="relative mx-auto w-[240px] xs:w-[275px] sm:w-[330px] aspect-[2041/2803]">
           <Image
             src="/images/logo2.png"
             alt="Aashutosh & Atisha Monogram Logo"
             fill
-            sizes="(max-width: 640px) 280px, 340px"
+            sizes="(max-width: 640px) 275px, 340px"
             className="object-contain drop-shadow-[0_6px_28px_rgba(0,0,0,0.5)]"
             priority
           />
@@ -47,10 +47,10 @@ export default function Footer() {
       {/* With Love & We await your noble presence */}
       <Reveal delay={0.1}>
         <div className="mt-8 text-center">
-          <p className="font-heading font-serif italic text-[26px] sm:text-[30px] leading-tight text-gold-light drop-shadow-sm">
+          <p className="font-heading font-serif italic text-[24px] xs:text-[26px] sm:text-[30px] leading-tight text-gold-light drop-shadow-sm">
             With Love
           </p>
-          <p className="mt-1 font-serif text-[15px] sm:text-[16px] italic text-[#FDF4E7]/90 tracking-wide">
+          <p className="mt-1 font-serif text-[14px] xs:text-[15px] sm:text-[16px] italic text-[#FDF4E7]/90 tracking-wide px-2">
             We await your noble presence
           </p>
           <div className="mx-auto mt-3 flex w-32 items-center gap-1.5 opacity-60" aria-hidden="true">
@@ -65,7 +65,7 @@ export default function Footer() {
       <Reveal delay={0.2}>
         <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[600px] text-center">
           {/* Groom Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-3.5 py-4 xs:px-4 xs:py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -82,7 +82,7 @@ export default function Footer() {
             </span>
 
             {/* Groom Name (First & Last name on balanced lines to prevent overflow) */}
-            <h4 className="relative z-10 mt-2.5 font-names text-[28px] sm:text-[32px] leading-[1.08] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            <h4 className="relative z-10 mt-2.5 font-names text-[26px] xs:text-[28px] sm:text-[32px] leading-[1.08] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
               <span className="block">{wedding.groom.name.split(" ")[0]}</span>
               {wedding.groom.name.split(" ").length > 1 && (
                 <span className="block mt-0.5">{wedding.groom.name.split(" ").slice(1).join(" ")}</span>
@@ -97,13 +97,13 @@ export default function Footer() {
             </div>
 
             {/* Parents Line */}
-            <p className="relative z-10 font-serif text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
+            <p className="relative z-10 font-serif text-[12.5px] xs:text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
               {wedding.groom.parents}
             </p>
           </div>
 
           {/* Bride Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-3.5 py-4 xs:px-4 xs:py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -120,7 +120,7 @@ export default function Footer() {
             </span>
 
             {/* Bride Name (First & Last name on balanced lines to prevent overflow) */}
-            <h4 className="relative z-10 mt-2.5 font-names text-[28px] sm:text-[32px] leading-[1.08] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            <h4 className="relative z-10 mt-2.5 font-names text-[26px] xs:text-[28px] sm:text-[32px] leading-[1.08] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
               <span className="block">{wedding.bride.name.split(" ")[0]}</span>
               {wedding.bride.name.split(" ").length > 1 && (
                 <span className="block mt-0.5">{wedding.bride.name.split(" ").slice(1).join(" ")}</span>
@@ -135,7 +135,7 @@ export default function Footer() {
             </div>
 
             {/* Parents Line */}
-            <p className="relative z-10 font-serif text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
+            <p className="relative z-10 font-serif text-[12.5px] xs:text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
               {wedding.bride.parents}
             </p>
           </div>

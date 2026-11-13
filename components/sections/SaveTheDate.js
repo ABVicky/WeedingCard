@@ -195,17 +195,17 @@ function Countdown() {
       </div>
 
       {/* Countdown Digits in Royal Indian Hero-BG Aesthetic */}
-      <div className="flex justify-center gap-2.5 sm:gap-3.5">
+      <div className="flex justify-center gap-1.5 xs:gap-2.5 sm:gap-3.5">
         {Object.entries(t).map(([k, v], i) => (
           <motion.div
             key={k}
-            className="relative flex h-[74px] w-[66px] sm:h-[82px] sm:w-[72px] flex-col items-center justify-center rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-1.5 shadow-[0_8px_24px_-8px_rgba(140,40,30,0.3),0_0_12px_rgba(226,188,114,0.2)] border border-gold/60"
+            className="relative flex h-[68px] w-[58px] xs:h-[74px] xs:w-[66px] sm:h-[82px] sm:w-[72px] flex-col items-center justify-center rounded-[12px] xs:rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-1 xs:p-1.5 shadow-[0_8px_24px_-8px_rgba(140,40,30,0.3),0_0_12px_rgba(226,188,114,0.2)] border border-gold/60"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 + i * 0.1, duration: 0.6, ease: EASE }}
           >
             {/* Inner fine gold filigree border */}
-            <div className="pointer-events-none absolute inset-[3px] rounded-[10px] border border-gold/30" />
+            <div className="pointer-events-none absolute inset-[3px] rounded-[8px] xs:rounded-[10px] border border-gold/30" />
 
             {/* Corner gold brackets */}
             <span className="pointer-events-none absolute top-1.5 left-1.5 h-1.5 w-1.5 border-t border-l border-gold/80" />
@@ -214,12 +214,12 @@ function Countdown() {
             <span className="pointer-events-none absolute bottom-1.5 right-1.5 h-1.5 w-1.5 border-b border-r border-gold/80" />
 
             {/* Digit value */}
-            <span className="relative z-10 font-serif text-[27px] sm:text-[30px] font-bold leading-none text-[#7D1422] lining-nums drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            <span className="relative z-10 font-serif text-[24px] xs:text-[27px] sm:text-[30px] font-bold leading-none text-[#7D1422] lining-nums drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
               {String(v).padStart(2, "0")}
             </span>
 
             {/* Unit label */}
-            <span className="relative z-10 mt-1 font-caps text-[8.5px] sm:text-[9px] uppercase tracking-[0.18em] font-semibold text-[#8C5832]">
+            <span className="relative z-10 mt-1 font-caps text-[8px] xs:text-[8.5px] sm:text-[9px] uppercase tracking-[0.14em] xs:tracking-[0.18em] font-semibold text-[#8C5832]">
               {k}
             </span>
           </motion.div>
@@ -246,7 +246,7 @@ export default function SaveTheDate() {
   }, [allDone]);
 
   return (
-    <section id="save-the-date" className="relative bg-blush-50/80 px-5 pb-20 pt-20">
+    <section id="save-the-date" className="relative bg-blush-50/80 px-4 xs:px-5 pb-20 pt-20">
       {/* shared heart clip-path */}
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
@@ -256,7 +256,7 @@ export default function SaveTheDate() {
 
       <SectionTitle label="Save The Date" lines={["Reveal Our", "Big Day"]} sub="Scratch the hearts to reveal" divider emoji="💐" />
 
-      <Reveal delay={0.25} className="mt-8 flex justify-center gap-3">
+      <Reveal delay={0.25} className="mt-8 flex justify-center items-center gap-1.5 xs:gap-2.5 sm:gap-3 scale-[0.88] xs:scale-[0.96] sm:scale-100 origin-center">
         {wedding.scratch.map((s) => (
           <ScratchHeart key={s.label} label={s.label} value={s.value} done={allDone} onRevealed={() => setCount((c) => c + 1)} />
         ))}
@@ -268,30 +268,30 @@ export default function SaveTheDate() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE }}
-            className="mt-8 flex flex-col items-center text-center"
+            className="mt-8 flex flex-col items-center text-center px-2"
           >
             {/* Couple Monogram Logo2 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.8, ease: EASE }}
-              className="relative mx-auto w-[135px] sm:w-[155px] aspect-[2041/2803]"
+              className="relative mx-auto w-[125px] xs:w-[135px] sm:w-[155px] aspect-[2041/2803]"
             >
               <Image
                 src="/images/logo2.png"
                 alt="Aashutosh & Atisha Monogram"
                 fill
-                sizes="155px"
+                sizes="(max-width: 640px) 135px, 155px"
                 className="object-contain drop-shadow-[0_4px_16px_rgba(180,120,40,0.35)]"
                 priority
               />
             </motion.div>
 
             {/* Journey Line with Floral Accents */}
-            <p className="mt-4 whitespace-nowrap font-heading font-serif italic text-[22px] sm:text-[25px] leading-tight text-terra flex items-center justify-center gap-2">
-              <span className="text-[17px]">🌷</span>
-              <span>{wedding.journeyLine}</span>
-              <span className="text-[17px]">🌷</span>
+            <p className="mt-4 text-center font-heading font-serif italic text-[20px] xs:text-[22px] sm:text-[25px] leading-snug text-terra flex items-center justify-center gap-1.5 xs:gap-2">
+              <span className="text-[15px] xs:text-[17px] shrink-0">🌷</span>
+              <span className="break-words">{wedding.journeyLine}</span>
+              <span className="text-[15px] xs:text-[17px] shrink-0">🌷</span>
             </p>
 
             {/* Countdown Styled in Royal Hero-BG Aesthetic */}
