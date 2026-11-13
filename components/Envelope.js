@@ -242,11 +242,11 @@ function PreviewCard({ fading }) {
 
         {/* Center: Couple Names */}
         <div className="flex flex-col items-center my-auto w-full px-2">
-          <p className="gold-gradient-text font-heading italic text-[20px] sm:text-[23px] font-semibold leading-tight">
+          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight">
             {wedding.groom.name}
           </p>
           <span className="font-serif italic text-gold text-[14px] leading-none my-0.5">&amp;</span>
-          <p className="gold-gradient-text font-heading italic text-[20px] sm:text-[23px] font-semibold leading-tight">
+          <p className="gold-gradient-text font-names text-[24px] sm:text-[27px] font-normal leading-tight">
             {wedding.bride.name}
           </p>
           <div className="mt-1 flex items-center justify-center gap-2" aria-hidden="true">
