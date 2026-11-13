@@ -185,7 +185,7 @@ function RoyalWaxSeal() {
 }
 
 // Opening timeline (seconds after the tap).
-const T = { flap: 0.5, card: 1.8, reveal: 5.4, done: 6.8 };
+const T = { flap: 0.5, card: 1.9, reveal: 6.8, done: 8.2 };
 const GLIDE = [0.22, 1, 0.36, 1];
 
 const rand = (i, salt) => {
@@ -373,7 +373,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         style={{ top: "22%", background: "radial-gradient(closest-side, rgba(255,236,214,0.95), rgba(255,236,214,0))" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: cardOut ? 0.9 : 0, ...drop }}
-        transition={{ opacity: { duration: 0.9 }, ...dropTransition }}
+        transition={{ opacity: { duration: 1.8 }, ...dropTransition }}
       />
 
       {/* Invitation card, tucked inside the pocket until it slides out */}
@@ -381,7 +381,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
         className="absolute left-[7.5%] right-[7.5%]"
         style={{ top: "55%", height: "42%", zIndex: 2, transformOrigin: "50% 0%" }}
         animate={revealing ? { y: "-116%", scaleX: 1.12, scaleY: 1.9 } : { y: cardOut ? "-102%" : 0, scaleX: 1, scaleY: 1 }}
-        transition={revealing ? { duration: 1.1, ease: GLIDE } : { duration: 1.9, ease: [0.22, 1, 0.36, 1] }}
+        transition={revealing ? { duration: 1.1, ease: GLIDE } : { duration: 3.2, ease: [0.22, 1, 0.36, 1] }}
       >
         <PreviewCard fading={revealing} />
       </motion.div>
@@ -431,7 +431,7 @@ export default function Envelope({ onOpen, onReveal, onDone }) {
           willChange: "transform",
         }}
         animate={{ rotateX: opened ? 180 : 0, ...drop }}
-        transition={{ rotateX: { duration: 1.8, delay: opened ? T.flap : 0, ease: [0.33, 1, 0.68, 1] }, ...dropTransition }}
+        transition={{ rotateX: { duration: 2.2, delay: opened ? T.flap : 0, ease: [0.33, 1, 0.68, 1] }, ...dropTransition }}
       >
         <div
           className="absolute inset-0 overflow-hidden"
