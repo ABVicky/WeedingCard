@@ -224,7 +224,7 @@ function Person({ person, revealed, delay, relation }) {
 
 export default function Hero({ revealed }) {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden px-4 pb-16 pt-20 flex flex-col items-center justify-between text-center">
+    <section id="hero" className="relative min-h-[100svh] overflow-hidden px-4 pb-16 pt-20 flex flex-col items-center justify-between text-center">
       <Backdrop />
       <CornerBrackets inset={16} size={48} className="border-gold/60" />
 

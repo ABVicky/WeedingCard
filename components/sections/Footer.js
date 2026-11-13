@@ -1,7 +1,21 @@
+"use client";
+
 import Image from "next/image";
+import { sfx } from "../audio";
 import { HeartDivider, Reveal } from "../ornaments";
 
 export default function Footer() {
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    sfx.click();
+    const heroEl = document.getElementById("hero");
+    if (heroEl) {
+      heroEl.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="relative overflow-hidden bg-wine px-6 pb-28 pt-20 text-center">
       {/* Auspicious golden mandala arch in background */}
@@ -28,6 +42,21 @@ export default function Footer() {
       </Reveal>
       <Reveal delay={0.15}>
         <HeartDivider className="mt-6" />
+      </Reveal>
+
+      {/* Tap button to directly go to the hero section */}
+      <Reveal delay={0.25}>
+        <a
+          href="#hero"
+          onClick={scrollToTop}
+          className="mt-8 inline-flex items-center gap-2 rounded-full border border-gold/60 bg-gold/15 px-6 py-2.5 font-caps text-[11px] font-semibold uppercase tracking-[0.24em] text-gold-light shadow-[0_4px_16px_rgba(0,0,0,0.35)] backdrop-blur transition-all duration-300 hover:bg-gold/25 hover:border-gold hover:scale-105 active:scale-95"
+          aria-label="Back to invitation hero section"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+          </svg>
+          <span>Back to Top</span>
+        </a>
       </Reveal>
     </footer>
   );
