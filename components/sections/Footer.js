@@ -30,14 +30,14 @@ export default function Footer() {
         </svg>
       </div>
 
-      {/* Monogram Logo2 */}
+      {/* Monogram Logo1 */}
       <Reveal>
-        <div className="relative mx-auto w-[240px] xs:w-[275px] sm:w-[330px] aspect-[2041/2803]">
+        <div className="relative mx-auto w-[200px] xs:w-[230px] sm:w-[270px] aspect-[828/1103]">
           <Image
-            src="/images/logo2.png"
-            alt="Aashutosh & Atisha Monogram Logo"
+            src="/images/logo1.png"
+            alt="Aashutosh & Atisha Logo"
             fill
-            sizes="(max-width: 640px) 275px, 340px"
+            sizes="(max-width: 640px) 230px, 270px"
             className="object-contain drop-shadow-[0_6px_28px_rgba(0,0,0,0.5)]"
             priority
           />
