@@ -15,7 +15,7 @@ const wedding = {
   },
 
   // ── 1. Hero / blessings ──
-  shloka: ["वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ", "निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा"],
+  shloka: ["श्री गणेशाय नमः"],
   blessingLine:
     "Your love, blessings and presence mean the world to us. We can't wait to celebrate this beautiful chapter together.",
   groom: {

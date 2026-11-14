@@ -49,9 +49,9 @@ export default function Footer() {
 
       {/* 2 Family Cards: Groom's Family & Bride's Family in Royal Ivory & Gold Silk Stationery (Above Logo1) */}
       <Reveal delay={0.1}>
-        <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[600px] text-center">
+        <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[620px] text-center items-stretch">
           {/* Groom's Family Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 xs:px-5 xs:py-6 sm:px-6 sm:py-7 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
+          <div className="relative h-full flex flex-col justify-between rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-3.5 py-4 xs:px-4 xs:py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -62,28 +62,27 @@ export default function Footer() {
             <span className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-gold/90" />
 
             {/* Card Heading */}
-            <div className="relative z-10 flex items-center justify-center gap-1.5">
-              {/* <span className="text-[14px]">👑</span> */}
-              <h4 className="font-heading italic text-[20px] xs:text-[22px] sm:text-[24px] font-semibold text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            <div className="relative z-10 flex items-center justify-center">
+              <h4 className="font-heading italic text-[17px] xs:text-[18.5px] sm:text-[20px] font-semibold text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)] whitespace-nowrap">
                 Groom&apos;s Family
               </h4>
             </div>
 
             {/* Small Gold Divider */}
-            <div className="relative z-10 my-3 mx-auto flex w-24 items-center gap-1 opacity-60" aria-hidden="true">
+            <div className="relative z-10 my-2.5 xs:my-3 mx-auto flex w-24 items-center gap-1 opacity-60" aria-hidden="true">
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
               <span className="text-[8px] text-gold">✦</span>
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
             </div>
 
             {/* Family Members' Names */}
-            <div className="relative z-10 space-y-1.5 px-1">
+            <div className="relative z-10 my-auto space-y-1.5 px-1 py-1">
               {(wedding.groom.familyMembers || [wedding.groom.parents.replace(/^Son of\s+/i, "")]).map((member, i) => (
                 <div key={member}>
                   {i > 0 && (
                     <p className="font-serif italic text-[13px] text-gold-deep leading-none my-1">&amp;</p>
                   )}
-                  <p className="font-serif text-[15px] xs:text-[16px] sm:text-[17px] font-semibold leading-relaxed text-[#3D241E]">
+                  <p className="font-serif text-[14.5px] xs:text-[15.5px] sm:text-[16px] font-semibold leading-snug text-[#3D241E]">
                     {member}
                   </p>
                 </div>
@@ -92,7 +91,7 @@ export default function Footer() {
           </div>
 
           {/* Bride's Family Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 xs:px-5 xs:py-6 sm:px-6 sm:py-7 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
+          <div className="relative h-full flex flex-col justify-between rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-3.5 py-4 xs:px-4 xs:py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -103,28 +102,27 @@ export default function Footer() {
             <span className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-gold/90" />
 
             {/* Card Heading */}
-            <div className="relative z-10 flex items-center justify-center gap-1.5">
-              {/* <span className="text-[14px]">👰</span> */}
-              <h4 className="font-heading italic text-[20px] xs:text-[22px] sm:text-[24px] font-semibold text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+            <div className="relative z-10 flex items-center justify-center">
+              <h4 className="font-heading italic text-[17px] xs:text-[18.5px] sm:text-[20px] font-semibold text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)] whitespace-nowrap">
                 Bride&apos;s Family
               </h4>
             </div>
 
             {/* Small Gold Divider */}
-            <div className="relative z-10 my-3 mx-auto flex w-24 items-center gap-1 opacity-60" aria-hidden="true">
+            <div className="relative z-10 my-2.5 xs:my-3 mx-auto flex w-24 items-center gap-1 opacity-60" aria-hidden="true">
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
               <span className="text-[8px] text-gold">✦</span>
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
             </div>
 
             {/* Family Members' Names */}
-            <div className="relative z-10 space-y-1.5 px-1">
+            <div className="relative z-10 my-auto space-y-1.5 px-1 py-1">
               {(wedding.bride.familyMembers || [wedding.bride.parents.replace(/^Daughter of\s+/i, "")]).map((member, i) => (
                 <div key={member}>
                   {i > 0 && (
                     <p className="font-serif italic text-[13px] text-gold-deep leading-none my-1">&amp;</p>
                   )}
-                  <p className="font-serif text-[15px] xs:text-[16px] sm:text-[17px] font-semibold leading-relaxed text-[#3D241E]">
+                  <p className="font-serif text-[14.5px] xs:text-[15.5px] sm:text-[16px] font-semibold leading-snug text-[#3D241E]">
                     {member}
                   </p>
                 </div>
