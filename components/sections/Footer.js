@@ -47,11 +47,11 @@ export default function Footer() {
         </div>
       </Reveal>
 
-      {/* 2 Cards: Groom & Bride in Royal Ivory & Gold Silk Stationery (Above Logo1) */}
+      {/* 2 Family Cards: Groom's Family & Bride's Family in Royal Ivory & Gold Silk Stationery (Above Logo1) */}
       <Reveal delay={0.1}>
         <div className="mx-auto mt-7 flex flex-col sm:grid sm:grid-cols-2 gap-4 w-full max-w-[340px] sm:max-w-[600px] text-center">
-          {/* Groom Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-3.5 py-4 xs:px-4 xs:py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
+          {/* Groom's Family Card */}
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 xs:px-5 xs:py-6 sm:px-6 sm:py-7 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -61,35 +61,38 @@ export default function Footer() {
             <span className="pointer-events-none absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-gold/90" />
             <span className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-gold/90" />
 
-            {/* Role Badge */}
-            <span className="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-[#F4E6D2]/80 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] font-semibold text-[#8C5832]">
-              <span>👑</span>
-              <span>The Groom</span>
-            </span>
-
-            {/* Groom Name (First & Last name on balanced lines to prevent overflow) */}
-            <h4 className="relative z-10 mt-2.5 font-names text-[26px] xs:text-[28px] sm:text-[32px] font-normal leading-[1.12] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-              <span className="block">{wedding.groom.name.split(" ")[0]}</span>
-              {wedding.groom.name.split(" ").length > 1 && (
-                <span className="block mt-0.5">{wedding.groom.name.split(" ").slice(1).join(" ")}</span>
-              )}
-            </h4>
+            {/* Card Heading */}
+            <div className="relative z-10 flex items-center justify-center gap-1.5">
+              <span className="text-[14px]">👑</span>
+              <h4 className="font-heading italic text-[20px] xs:text-[22px] sm:text-[24px] font-semibold text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+                Groom&apos;s Family
+              </h4>
+            </div>
 
             {/* Small Gold Divider */}
-            <div className="relative z-10 my-2.5 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
+            <div className="relative z-10 my-3 mx-auto flex w-24 items-center gap-1 opacity-60" aria-hidden="true">
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
               <span className="text-[8px] text-gold">✦</span>
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
             </div>
 
-            {/* Parents Line */}
-            <p className="relative z-10 font-serif text-[12.5px] xs:text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
-              {wedding.groom.parents}
-            </p>
+            {/* Family Members' Names */}
+            <div className="relative z-10 space-y-1.5 px-1">
+              {(wedding.groom.familyMembers || [wedding.groom.parents.replace(/^Son of\s+/i, "")]).map((member, i) => (
+                <div key={member}>
+                  {i > 0 && (
+                    <p className="font-serif italic text-[13px] text-gold-deep leading-none my-1">&amp;</p>
+                  )}
+                  <p className="font-serif text-[15px] xs:text-[16px] sm:text-[17px] font-semibold leading-relaxed text-[#3D241E]">
+                    {member}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Bride Card */}
-          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-3.5 py-4 xs:px-4 xs:py-5 sm:px-5 sm:py-6 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
+          {/* Bride's Family Card */}
+          <div className="relative rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] px-4 py-5 xs:px-5 xs:py-6 sm:px-6 sm:py-7 text-center border border-gold/70 shadow-[0_12px_32px_rgba(0,0,0,0.35),0_2px_12px_rgba(226,188,114,0.2)] overflow-hidden">
             {/* Inner fine gold filigree border */}
             <div className="pointer-events-none absolute inset-[4px] rounded-[16px] border border-gold/35" />
 
@@ -99,31 +102,34 @@ export default function Footer() {
             <span className="pointer-events-none absolute bottom-2 left-2 h-2.5 w-2.5 border-b border-l border-gold/90" />
             <span className="pointer-events-none absolute bottom-2 right-2 h-2.5 w-2.5 border-b border-r border-gold/90" />
 
-            {/* Role Badge */}
-            <span className="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-[#F4E6D2]/80 px-3 py-0.5 font-caps text-[9px] uppercase tracking-[0.24em] font-semibold text-[#8C5832]">
-              <span>👰</span>
-              <span>The Bride</span>
-            </span>
-
-            {/* Bride Name (First & Last name on balanced lines to prevent overflow) */}
-            <h4 className="relative z-10 mt-2.5 font-names text-[26px] xs:text-[28px] sm:text-[32px] font-normal leading-[1.12] text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
-              <span className="block">{wedding.bride.name.split(" ")[0]}</span>
-              {wedding.bride.name.split(" ").length > 1 && (
-                <span className="block mt-0.5">{wedding.bride.name.split(" ").slice(1).join(" ")}</span>
-              )}
-            </h4>
+            {/* Card Heading */}
+            <div className="relative z-10 flex items-center justify-center gap-1.5">
+              {/* <span className="text-[14px]">👰</span> */}
+              <h4 className="font-heading italic text-[20px] xs:text-[22px] sm:text-[24px] font-semibold text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+                Bride&apos;s Family
+              </h4>
+            </div>
 
             {/* Small Gold Divider */}
-            <div className="relative z-10 my-2.5 mx-auto flex w-24 items-center gap-1 opacity-50" aria-hidden="true">
+            <div className="relative z-10 my-3 mx-auto flex w-24 items-center gap-1 opacity-60" aria-hidden="true">
               <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
               <span className="text-[8px] text-gold">✦</span>
               <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
             </div>
 
-            {/* Parents Line */}
-            <p className="relative z-10 font-serif text-[12.5px] xs:text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#4A281E] px-1">
-              {wedding.bride.parents}
-            </p>
+            {/* Family Members' Names */}
+            <div className="relative z-10 space-y-1.5 px-1">
+              {(wedding.bride.familyMembers || [wedding.bride.parents.replace(/^Daughter of\s+/i, "")]).map((member, i) => (
+                <div key={member}>
+                  {i > 0 && (
+                    <p className="font-serif italic text-[13px] text-gold-deep leading-none my-1">&amp;</p>
+                  )}
+                  <p className="font-serif text-[15px] xs:text-[16px] sm:text-[17px] font-semibold leading-relaxed text-[#3D241E]">
+                    {member}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Reveal>
