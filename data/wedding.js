@@ -4,7 +4,7 @@
 
 const wedding = {
   title: "Aashutosh & Atisha — A Sacred Union",
-  description: "With the blessings of the Almighty & our respected elders, Aashutosh & Atisha invite you to celebrate their wedding.",
+  description: "Your love, blessings and presence mean the world to us. We can't wait to celebrate this beautiful chapter together.",
   // Public URL after deploying (used for WhatsApp / social link previews).
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 
@@ -17,7 +17,7 @@ const wedding = {
   // ── 1. Hero / blessings ──
   shloka: ["वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ", "निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा"],
   blessingLine:
-    "With the blessings of the Almighty & our respected elders, we joyfully request your gracious presence on the wedding celebration of",
+    "Your love, blessings and presence mean the world to us. We can't wait to celebrate this beautiful chapter together.",
   groom: {
     name: "Aashutosh Jaiswal",
     parents: "Son of Late Dilip Kumar Jaiswal & Mrs. Lakhi Devi Jaiswal",
