@@ -63,7 +63,7 @@ export default function Footer() {
 
             {/* Card Heading */}
             <div className="relative z-10 flex items-center justify-center gap-1.5">
-              <span className="text-[14px]">👑</span>
+              {/* <span className="text-[14px]">👑</span> */}
               <h4 className="font-heading italic text-[20px] xs:text-[22px] sm:text-[24px] font-semibold text-[#7D1422] drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
                 Groom&apos;s Family
               </h4>

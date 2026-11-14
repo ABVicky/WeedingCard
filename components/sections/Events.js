@@ -146,28 +146,6 @@ export default function Events() {
                 <span className="pointer-events-none absolute bottom-2 left-2 h-2 w-2 border-b border-l border-gold/70" />
                 <span className="pointer-events-none absolute bottom-2 right-2 h-2 w-2 border-b border-r border-gold/70" />
 
-                {/* Date, Weekday & Time */}
-                <div className="flex flex-col items-center justify-center">
-                  <div className="flex items-center justify-center gap-1.5 xs:gap-2 font-serif text-[14px] xs:text-[15.5px] font-bold text-[#5C2418]">
-                    <span className="text-[13px] xs:text-[14px]">🗓️</span>
-                    <span>{ev.date}</span>
-                    <span className="text-[12px] xs:text-[13px] font-normal text-[#8A5A48]">({ev.weekday})</span>
-                  </div>
-                  {ev.time && (
-                    <div className="mt-1 flex items-center justify-center gap-1.5 font-serif text-[13px] xs:text-[14px] font-medium text-terra">
-                      <span className="text-[12px] xs:text-[13px]">⏰</span>
-                      <span>{ev.time}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Ornate Gold Divider */}
-                <div className="my-2.5 xs:my-3 mx-auto flex w-32 xs:w-36 items-center gap-1.5 opacity-60" aria-hidden="true">
-                  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
-                  <span className="text-[10px] text-gold">✦</span>
-                  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
-                </div>
-
                 {/* Location / Venue Mention */}
                 <div className="flex flex-col items-center">
                   <div className="flex items-center justify-center gap-1.5 font-serif text-[14.5px] xs:text-[15px] sm:text-[16px] font-semibold text-[#4A2618]">
