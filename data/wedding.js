@@ -18,16 +18,16 @@ const wedding = {
   shloka: ["श्री गणेशाय नमः"],
   blessingLine:
     "We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of",
-  groom: {
-    name: "Aashutosh Jaiswal",
-    parents: "Son of Late Dilip Kumar Jaiswal & Mrs. Lakhi Devi Jaiswal",
-    familyMembers: ["Late Dilip Kumar Jaiswal", "Mrs. Lakhi Devi Jaiswal"],
-    grandparents: null,
-  },
   bride: {
-    name: "Atisha Tibrewal",
+    name: "Atisha",
     parents: "Daughter of Mr. Krishna Gopal Tibrewal & Mrs. Uma Devi Tibrewal",
     familyMembers: ["Mr. Krishna Gopal Tibrewal", "Mrs. Uma Devi Tibrewal"],
+    grandparents: null,
+  },
+  groom: {
+    name: "Aashutosh",
+    parents: "Son of Late Dilip Kumar Jaiswal & Mrs. Lakhi Devi Jaiswal",
+    familyMembers: ["Late Dilip Kumar Jaiswal", "Mrs. Lakhi Devi Jaiswal"],
     grandparents: null,
   },
 
