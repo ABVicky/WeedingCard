@@ -41,7 +41,7 @@ function CardText({ ev, light }) {
 
 function EventMapViewer({ ev }) {
   const [showMap, setShowMap] = useState(true);
-  const embedQuery = ev.venue || `${ev.name} Wedding Ceremony`;
+  const embedQuery = ev.mapUrl || ev.venue || `${ev.name} Wedding Ceremony`;
   const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(embedQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
   const targetUrl = mapsUrl(ev);
 
