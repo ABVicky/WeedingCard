@@ -344,9 +344,9 @@ export default function Hero({ revealed }) {
           {wedding.blessingLine}
         </motion.p>
 
-        {/* Groom */}
+        {/* Bride */}
         <div className="w-full">
-          <Person person={wedding.groom} revealed={revealed} delay={0.75} relation="Groom" />
+          <Person person={wedding.bride} revealed={revealed} delay={0.75} relation="Bride" />
         </div>
 
         {/* & Connector */}
@@ -360,9 +360,9 @@ export default function Hero({ revealed }) {
           <span className="h-px w-14 bg-gradient-to-l from-transparent via-gold to-gold/70" />
         </motion.div>
 
-        {/* Bride */}
+        {/* Groom */}
         <div className="w-full">
-          <Person person={wedding.bride} revealed={revealed} delay={1.2} relation="Bride" />
+          <Person person={wedding.groom} revealed={revealed} delay={1.2} relation="Groom" />
         </div>
 
         {/* Bold scroll indicator pointing to Save The Date */}
