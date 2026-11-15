@@ -344,14 +344,14 @@ export default function Hero({ revealed }) {
           {wedding.blessingLine}
         </motion.p>
 
-        {/* Flower & Gold Filigree Ornament */}
+        {/* Elegant Gold Filigree Divider */}
         <motion.div
           {...show(revealed, 0.65)}
-          className="my-3.5 xs:my-4 flex items-center justify-center gap-2.5 opacity-70"
+          className="my-3 xs:my-3.5 flex items-center justify-center gap-1.5 opacity-70"
           aria-hidden="true"
         >
           <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold" />
-          <span className="text-[17px] leading-none">🪷</span>
+          <span className="text-[9px] text-gold">✦</span>
           <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
         </motion.div>
 
