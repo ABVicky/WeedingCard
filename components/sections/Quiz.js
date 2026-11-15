@@ -38,7 +38,8 @@ export default function Quiz({ onFinish }) {
 
   const choose = (i) => {
     if (picked !== null) return;
-    const correct = i === questions[qi].answer;
+    const isOpinion = questions[qi].answer === null || questions[qi].answer === undefined;
+    const correct = isOpinion || i === questions[qi].answer;
     setPicked(i);
     if (correct) {
       setScore((s) => s + 1);
@@ -53,7 +54,7 @@ export default function Quiz({ onFinish }) {
         sfx.success();
         confetti({ particleCount: 120, spread: 90, startVelocity: 35, origin: { y: 0.6 }, scalar: 0.85, colors: ["#A8472F", "#E0A96D", "#D4A256", "#F2D2C4"], disableForReducedMotion: true });
       }
-    }, 1300);
+    }, 1100);
   };
 
   const q = questions[qi];
@@ -100,15 +101,16 @@ export default function Quiz({ onFinish }) {
                 <p className="mt-6 text-center font-serif text-[22px] font-semibold leading-snug text-[#3B2A22]">{q.question}</p>
                 <div className="mt-6 space-y-3">
                   {q.options.map((opt, i) => {
-                    const isAnswer = i === q.answer;
+                    const isOpinion = q.answer === null || q.answer === undefined;
+                    const isAnswer = isOpinion ? i === picked : i === q.answer;
                     const show = picked !== null;
                     const style = !show
-                      ? "border-[#EED7CB] bg-blush-50 text-[#4A3328]"
+                      ? "border-[#EED7CB] bg-blush-50 text-[#4A3328] hover:border-gold hover:bg-[#FFF8F3]"
                       : isAnswer
-                        ? "border-terra-btn bg-terra-btn text-white"
+                        ? "border-terra-btn bg-terra-btn text-white shadow-md"
                         : i === picked
                           ? "border-[#E6B9AE] bg-[#FBE9E4] text-[#B07A6E] line-through"
-                          : "border-[#F1E2DA] bg-white text-[#B9A399]";
+                          : "border-[#F1E2DA] bg-white text-[#B9A399] opacity-70";
                     return (
                       <motion.button
                         key={opt}

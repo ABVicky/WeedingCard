@@ -186,7 +186,7 @@ function Person({ person, revealed, delay, relation }) {
     <div className="flex flex-col items-center">
       <motion.h2
         {...show(revealed, delay)}
-        className="gold-gradient-text font-names text-[42px] xs:text-[48px] sm:text-[56px] font-normal leading-[1.2] drop-shadow-[0_2px_12px_rgba(226,188,114,0.3)] px-2"
+        className="gold-gradient-text font-names text-[44px] xs:text-[50px] sm:text-[58px] font-normal leading-[1.22] drop-shadow-[0_2px_12px_rgba(226,188,114,0.3)] px-2"
       >
         {person.name}
       </motion.h2>

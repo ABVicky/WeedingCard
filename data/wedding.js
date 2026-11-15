@@ -97,35 +97,73 @@ const wedding = {
     intro: "How well do you know Aashutosh & Atisha?",
     questions: [
       {
-        question: "Where did Aashutosh & Atisha first meet?",
-        options: ["At college", "At a friend's wedding", "On a trip to Goa", "At work"],
-        answer: 1,
+        question: "Which side are you from?",
+        options: [
+          "Aashutosh's Side",
+          "Atisha's Side",
+          "Both Sides",
+          "Neither 😄"
+        ],
+        answer: null,
       },
       {
-        question: "Who said “I love you” first?",
-        options: ["Aashutosh", "Atisha", "Both at the same time", "Still waiting!"],
-        answer: 0,
+        question: "How do you know the couple?",
+        options: [
+          "Friend",
+          "Relative",
+          "Family",
+          "Colleague / Acquaintance"
+        ],
+        answer: null,
       },
       {
-        question: "What is their favourite date-night food?",
-        options: ["Pizza", "Pani puri", "Biryani", "Dosa"],
+        question: "Where did the couple first meet?",
+        options: [
+          "At college",
+          "At a friend's wedding",
+          "With family",
+          "At work"
+        ],
         answer: 2,
       },
       {
-        question: "Where did Aashutosh propose?",
-        options: ["On a beach", "In the mountains", "At home", "At a rooftop café"],
-        answer: 3,
+        question: "Who made the first move?",
+        options: [
+          "Aashutosh",
+          "Atisha",
+          "Both made a move",
+          "It's a secret! 🤫"
+        ],
+        answer: null,
       },
       {
-        question: "Who is the better dancer?",
-        options: ["Aashutosh", "Atisha", "Neither 😄", "We'll find out at the Sangeet!"],
-        answer: 3,
+        question: "Your wish for the couple ❤️",
+        options: [
+          "Wishing you a lifetime of love & happiness! ❤️",
+          "Stay blessed and keep smiling together! 🥰",
+          "May your love grow stronger every day! 💕",
+          "Lots of laughter, adventures & beautiful memories! 🎉",
+          "Happily Ever After! 💍"
+        ],
+        answer: null,
       },
     ],
     results: [
-      { min: 5, title: "Soulmate Squad!", message: "You know us better than we know ourselves!" },
-      { min: 3, title: "True Friend!", message: "You clearly pay attention. We love that!" },
-      { min: 0, title: "Let's Catch Up!", message: "Come to the wedding and we'll tell you all our stories." },
+      {
+        min: 5,
+        title: "Soulmate Squad! ❤️",
+        message: "You know the couple so well!"
+      },
+      {
+        min: 3,
+        title: "True Friend! 🥰",
+        message: "You clearly share a special bond with the couple!"
+      },
+      {
+        min: 0,
+        title: "Wedding Vibes! 🎉",
+        message: "Your presence and blessings mean the world to us!"
+      },
     ],
   },
 
