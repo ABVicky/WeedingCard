@@ -131,66 +131,53 @@ export default function Events() {
               <h3 className="mt-1 text-center font-heading font-serif text-[30px] xs:text-[34px] sm:text-[38px] italic leading-tight text-terra font-semibold">{ev.name}</h3>
             </Reveal>
 
-            <Reveal delay={0.1} y={40} scale={0.97} className="mx-auto mt-5 w-full max-w-[340px] px-1.5 xs:px-0">
-              <div className="relative overflow-hidden rounded-[24px] border border-gold/70 bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] shadow-[0_16px_40px_rgba(74,15,26,0.2),0_2px_12px_rgba(226,188,114,0.25)]">
-                {/* Inner fine gold filigree border */}
-                <div className="pointer-events-none absolute inset-[4px] rounded-[20px] border border-gold/35 z-20" />
+            {/* 1. Ceremony Video Card */}
+            <Reveal delay={0.1} y={45} scale={0.96} className="mx-auto mt-5 w-full max-w-[340px] px-1.5 xs:px-0">
+              <div className="relative aspect-[9/14] overflow-hidden rounded-[24px] border-2 border-gold/40 shadow-card bg-black">
+                {ev.media ? <Media media={ev.media} /> : <EventScene scene={ev.scene} />}
+                {ev.showOverlay && <CardText ev={ev} light={ev.scene === "day" && !ev.media} />}
+              </div>
+            </Reveal>
 
-                {/* Corner gold brackets */}
-                <span className="pointer-events-none absolute top-2.5 left-2.5 h-3 w-3 border-t-2 border-l-2 border-gold/85 z-20" />
-                <span className="pointer-events-none absolute top-2.5 right-2.5 h-3 w-3 border-t-2 border-r-2 border-gold/85 z-20" />
-                <span className="pointer-events-none absolute bottom-2.5 left-2.5 h-3 w-3 border-b-2 border-l-2 border-gold/85 z-20" />
-                <span className="pointer-events-none absolute bottom-2.5 right-2.5 h-3 w-3 border-b-2 border-r-2 border-gold/85 z-20" />
+            {/* 2. Venue & Map Card */}
+            <Reveal delay={0.15} className="mx-auto mt-4 w-full max-w-[340px] px-1.5 xs:px-0">
+              <div className="relative rounded-2xl border border-gold/50 bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-3.5 xs:p-4 text-center shadow-soft">
+                {/* Corner gold brackets matching royal theme */}
+                <span className="pointer-events-none absolute top-2 left-2 h-2 w-2 border-t border-l border-gold/70" />
+                <span className="pointer-events-none absolute top-2 right-2 h-2 w-2 border-t border-r border-gold/70" />
+                <span className="pointer-events-none absolute bottom-2 left-2 h-2 w-2 border-b border-l border-gold/70" />
+                <span className="pointer-events-none absolute bottom-2 right-2 h-2 w-2 border-b border-r border-gold/70" />
 
-                {/* Top Section: Ceremony Video */}
-                <div className="relative aspect-[9/13] w-full overflow-hidden rounded-t-[22px] bg-black">
-                  {ev.media ? <Media media={ev.media} /> : <EventScene scene={ev.scene} />}
-                  {ev.showOverlay && <CardText ev={ev} light={ev.scene === "day" && !ev.media} />}
-
-                  {/* Soft bottom gradient feather to transition seamlessly into the stationery card */}
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#FFFDF9] to-transparent opacity-95" />
-                </div>
-
-                {/* Subtle ornamental bridge */}
-                <div className="relative z-10 -mt-2 mb-2.5 mx-auto flex w-32 items-center gap-1 opacity-70" aria-hidden="true">
-                  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gold" />
-                  <span className="text-[9px] text-gold">✦</span>
-                  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gold" />
-                </div>
-
-                {/* Bottom Section: Venue & Map */}
-                <div className="relative z-10 px-3.5 pb-4 pt-0.5 text-center">
-                  {/* Location / Venue Mention */}
-                  <div className="flex flex-col items-center">
-                    <div className="flex items-center justify-center gap-1.5 font-serif text-[14.5px] xs:text-[15px] sm:text-[16px] font-semibold text-[#4A2618]">
-                      <span className="text-[15px] xs:text-[16px] text-terra">📍</span>
-                      <span>{ev.venue || `${ev.name} Venue`}</span>
-                    </div>
-                    {ev.address && (
-                      <p className="mt-0.5 font-serif text-[11.5px] xs:text-[12px] italic text-[#7C5A48] max-w-[280px]">
-                        {ev.address}
-                      </p>
-                    )}
+                {/* Location / Venue Mention */}
+                <div className="flex flex-col items-center">
+                  <div className="flex items-center justify-center gap-1.5 font-serif text-[14.5px] xs:text-[15px] sm:text-[16px] font-semibold text-[#4A2618]">
+                    <span className="text-[15px] xs:text-[16px] text-terra">📍</span>
+                    <span>{ev.venue || `${ev.name} Venue`}</span>
                   </div>
-
-                  {/* Short Map Viewer */}
-                  <EventMapViewer ev={ev} />
-
-                  {/* Action Button: Location Mentioned with the Button */}
-                  <a
-                    href={mapsUrl(ev)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => sfx.click()}
-                    className="pill mt-3 inline-flex w-full items-center justify-center gap-1.5 xs:gap-2 px-3 py-2.5 text-[10.5px] xs:text-[11px] font-medium shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                  >
-                    <svg className="h-3.5 w-3.5 xs:h-4 xs:w-4 text-gold-light shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span className="truncate">View {ev.venue ? ev.venue : `${ev.name} Location`} on Google Maps</span>
-                    <span className="text-gold-light text-[10px] xs:text-[11px] shrink-0">↗</span>
-                  </a>
+                  {ev.address && (
+                    <p className="mt-0.5 font-serif text-[11.5px] xs:text-[12px] italic text-[#7C5A48] max-w-[280px]">
+                      {ev.address}
+                    </p>
+                  )}
                 </div>
+
+                {/* Short Map Viewer */}
+                <EventMapViewer ev={ev} />
+
+                {/* Action Button: Location Mentioned with the Button */}
+                <a
+                  href={mapsUrl(ev)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sfx.click()}
+                  className="pill mt-3 inline-flex w-full items-center justify-center gap-1.5 xs:gap-2 px-3 py-2.5 text-[10.5px] xs:text-[11px] font-medium shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <svg className="h-3.5 w-3.5 xs:h-4 xs:w-4 text-gold-light shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span className="truncate">View {ev.venue ? ev.venue : `${ev.name} Location`} on Google Maps</span>
+                  <span className="text-gold-light text-[10px] xs:text-[11px] shrink-0">↗</span>
+                </a>
               </div>
             </Reveal>
           </article>
