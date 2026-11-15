@@ -210,15 +210,43 @@ export default function Hero({ revealed }) {
       {/* Aesthetic Indian Wedding Background */}
       <HeroBackdrop />
 
-      {/* ── Screen 1: Grand Royal Monogram Screen (When card opens, only logo2 is on the hero screen) ── */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-4 pb-8 xs:pb-10 pt-[6svh] xs:pt-[8svh]">
-        {/* Invisible spacer for vertical balance */}
-        <div className="h-2" />
+      {/* ── Screen 1: Grand Royal Monogram Screen (When card opens, Ganesh icon & invocation at top, logo2 in center) ── */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-4 pb-7 xs:pb-9 pt-[3.5svh] xs:pt-[4.5svh]">
+        {/* Top: Auspicious Shri Ganesh Icon & Invocation */}
+        <motion.div
+          {...show(revealed, 0.15)}
+          className="flex flex-col items-center pt-1"
+        >
+          <motion.div
+            className="relative h-[44px] w-[40px] xs:h-[50px] xs:w-[46px]"
+            animate={{
+              y: [0, -2, 0],
+              filter: [
+                "drop-shadow(0 0 0 rgba(226,188,114,0))",
+                "drop-shadow(0 0 8px rgba(226,188,114,0.8))",
+                "drop-shadow(0 0 0 rgba(226,188,114,0))",
+              ],
+            }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Image
+              src="/images/ganesh.png"
+              alt="Shri Ganesh"
+              fill
+              sizes="48px"
+              priority
+              className="object-contain"
+            />
+          </motion.div>
+          <p className="mt-1 font-deva text-[13px] xs:text-[14px] font-bold tracking-[0.14em] text-[#9E242B] drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
+            ॥ श्री गणेशाय नमः ॥
+          </p>
+        </motion.div>
 
-        {/* Only Logo2 on the Hero Screen */}
+        {/* Logo2 in Center */}
         <motion.div
           {...show(revealed, 0.2)}
-          className="relative mx-auto w-[295px] xs:w-[340px] sm:w-[400px] max-w-[88vw] max-h-[62svh] aspect-[2041/2803] my-auto"
+          className="relative mx-auto w-[275px] xs:w-[315px] sm:w-[365px] max-w-[86vw] max-h-[58svh] aspect-[2041/2803] my-auto"
         >
           <Image
             src="/images/logo2.png"
