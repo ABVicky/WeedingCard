@@ -63,10 +63,10 @@ function HeroBackdrop() {
 
         {/* 2. Top Royal Rajput Jharokha Arch Framing */}
         <g stroke="url(#goldArchGrad)" strokeWidth="1.2">
-          <path d="M-10 120 C60 110 120 70 160 55 C180 40 200 15 200 10 C200 15 220 40 240 55 C280 70 340 110 410 120" />
-          <path d="M-10 135 C60 125 120 85 160 70 C180 55 200 30 200 25 C200 30 220 55 240 70 C280 85 340 125 410 135" strokeDasharray="3 4" strokeWidth="0.8" opacity="0.6" />
-          <circle cx="200" cy="10" r="3" fill="#C49A4A" fillOpacity="0.6" />
-          <path d="M197 6 L203 6 L200 0 Z" fill="#E2BC72" fillOpacity="0.8" />
+          <path d="M-10 115 C60 100 120 60 160 45 C180 30 200 10 200 6 C200 10 220 30 240 45 C280 60 340 100 410 115" />
+          <path d="M-10 130 C60 115 120 75 160 60 C180 45 200 24 200 20 C200 24 220 45 240 60 C280 75 340 115 410 130" strokeDasharray="3 4" strokeWidth="0.8" opacity="0.6" />
+          <circle cx="200" cy="6" r="3" fill="#C49A4A" fillOpacity="0.6" />
+          <path d="M197 2 L203 2 L200 -4 Z" fill="#E2BC72" fillOpacity="0.8" />
         </g>
 
         {/* 3. Subtle hanging marigold & jasmine garlands with temple bells */}
@@ -211,11 +211,11 @@ export default function Hero({ revealed }) {
       <HeroBackdrop />
 
       {/* ── Screen 1: Grand Royal Monogram Screen (When card opens, Ganesh icon & invocation at top, logo2 in center) ── */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-4 pb-7 xs:pb-9 pt-[3.5svh] xs:pt-[4.5svh]">
-        {/* Top: Auspicious Shri Ganesh Icon & Invocation */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-4 pb-6 xs:pb-8 pt-[72px] xs:pt-[80px] sm:pt-[86px]">
+        {/* Top: Auspicious Shri Ganesh Icon & Invocation (Placed gracefully below the background arch) */}
         <motion.div
           {...show(revealed, 0.15)}
-          className="flex flex-col items-center pt-1"
+          className="flex flex-col items-center"
         >
           <motion.div
             className="relative h-[44px] w-[40px] xs:h-[50px] xs:w-[46px]"
@@ -246,7 +246,7 @@ export default function Hero({ revealed }) {
         {/* Logo2 in Center */}
         <motion.div
           {...show(revealed, 0.2)}
-          className="relative mx-auto w-[275px] xs:w-[315px] sm:w-[365px] max-w-[86vw] max-h-[58svh] aspect-[2041/2803] my-auto"
+          className="relative mx-auto w-[275px] xs:w-[315px] sm:w-[365px] max-w-[86vw] max-h-[50svh] xs:max-h-[53svh] aspect-[2041/2803] my-auto"
         >
           <Image
             src="/images/logo2.png"
@@ -339,21 +339,10 @@ export default function Hero({ revealed }) {
         {/* Blessing Line */}
         <motion.p
           {...show(revealed, 0.55)}
-          className="mt-3.5 xs:mt-4 max-w-[340px] font-serif text-[14.5px] xs:text-[15.5px] font-medium italic leading-[1.6] text-[#4A2F27] px-2"
+          className="mt-3.5 xs:mt-4 mb-3.5 xs:mb-4 max-w-[340px] font-serif text-[14.5px] xs:text-[15.5px] font-medium italic leading-[1.6] text-[#4A2F27] px-2"
         >
           {wedding.blessingLine}
         </motion.p>
-
-        {/* Elegant Gold Filigree Divider */}
-        <motion.div
-          {...show(revealed, 0.65)}
-          className="my-3 xs:my-3.5 flex items-center justify-center gap-1.5 opacity-70"
-          aria-hidden="true"
-        >
-          <span className="h-px w-12 bg-gradient-to-r from-transparent to-gold" />
-          <span className="text-[9px] text-gold">✦</span>
-          <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold" />
-        </motion.div>
 
         {/* Groom */}
         <div className="w-full">
