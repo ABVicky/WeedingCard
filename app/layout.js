@@ -30,6 +30,11 @@ export const metadata = {
   metadataBase: new URL(wedding.siteUrl),
   title: wedding.title,
   description: wedding.description,
+  icons: {
+    icon: "/images/logo1.png",
+    shortcut: "/images/logo1.png",
+    apple: "/images/logo1.png",
+  },
   openGraph: { title: wedding.title, description: wedding.description, type: "website", locale: "en_IN" },
   twitter: { card: "summary_large_image", title: wedding.title, description: wedding.description },
 };
