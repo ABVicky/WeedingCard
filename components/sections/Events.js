@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import wedding from "@/data/wedding";
 import { sfx } from "../audio";
@@ -39,75 +38,6 @@ function CardText({ ev, light }) {
   );
 }
 
-function EventMapViewer({ ev }) {
-  const [showMap, setShowMap] = useState(true);
-  const embedQuery = ev.mapUrl || ev.venue || `${ev.name} Wedding Ceremony`;
-  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(embedQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
-  const targetUrl = mapsUrl(ev);
-
-  return (
-    <div className="mt-3.5 w-full text-left">
-      <div className="mb-1.5 flex items-center justify-between px-1">
-        <span className="font-caps text-[9.5px] xs:text-[10px] uppercase tracking-[0.16em] xs:tracking-[0.2em] text-[#8C5832] font-semibold flex items-center gap-1.5">
-          <span>🗺️</span>
-          <span>Venue Map</span>
-        </span>
-        <button
-          type="button"
-          onClick={() => {
-            sfx.click();
-            setShowMap((prev) => !prev);
-          }}
-          className="font-caps text-[9px] uppercase tracking-wider text-[#A26D3E] hover:text-terra transition-colors underline underline-offset-2"
-        >
-          {showMap ? "Hide Map" : "Show Map"}
-        </button>
-      </div>
-
-      {showMap && (
-        <a
-          href={targetUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => sfx.click()}
-          className="group relative block h-[155px] xs:h-[165px] sm:h-[185px] w-full overflow-hidden rounded-xl border border-gold/50 bg-[#FAF4EB] shadow-[inset_0_2px_8px_rgba(0,0,0,0.06)] cursor-pointer transition-transform hover:scale-[1.01] active:scale-[0.99]"
-          title="Click to open venue in Google Maps"
-        >
-          <iframe
-            title={`${ev.name} Location Map`}
-            src={embedUrl}
-            className="pointer-events-none h-full w-full border-0 scale-105"
-            loading="lazy"
-            tabIndex={-1}
-            aria-hidden="true"
-          />
-
-          {/* Hover / Tap shimmer overlay */}
-          <div className="absolute inset-0 bg-transparent group-hover:bg-black/10 transition-colors pointer-events-none" />
-
-          {/* Top-right "Open Map ↗" badge */}
-          <div className="pointer-events-none absolute top-2 right-2 rounded-full bg-white/95 backdrop-blur-sm px-2 py-0.5 xs:px-2.5 xs:py-1 text-[9px] xs:text-[9.5px] font-caps font-semibold tracking-wider text-[#7D1422] border border-gold/50 shadow-sm flex items-center gap-1">
-            <span>Open Map</span>
-            <span className="text-[10px]">↗</span>
-          </div>
-
-          {/* Bottom Badge Bar */}
-          <div className="pointer-events-none absolute bottom-1.5 inset-x-2 flex items-center justify-between rounded-lg bg-white/95 px-2 xs:px-2.5 py-1 xs:py-1.5 text-[10.5px] xs:text-[11px] font-serif text-[#4A2618] border border-gold/40 shadow-sm backdrop-blur-sm">
-            <span className="truncate flex items-center gap-1 font-semibold">
-              <span className="text-[12px] xs:text-[13px] text-terra">📍</span>
-              <span className="truncate">{ev.venue || `${ev.name} Location`}</span>
-            </span>
-            <span className="shrink-0 ml-1 text-[9px] xs:text-[9.5px] uppercase font-caps font-semibold tracking-wider text-[#8C5832] flex items-center gap-0.5">
-              <span>Directions</span>
-              <span>↗</span>
-            </span>
-          </div>
-        </a>
-      )}
-    </div>
-  );
-}
-
 const EVENT_FLOWERS = {
   "Tilak & Sangeet": { left: "🌼", right: "🪻" },
   Wedding: { left: "🌹", right: "🪷" },
@@ -139,9 +69,16 @@ export default function Events() {
               </div>
             </Reveal>
 
-            {/* 2. Venue & Map Card */}
+            {/* 2. Venue Card: directly opens Google Maps when tapped */}
             <Reveal delay={0.15} className="mx-auto mt-4 w-full max-w-[340px] px-1.5 xs:px-0">
-              <div className="relative rounded-2xl border border-gold/50 bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-3.5 xs:p-4 text-center shadow-soft">
+              <a
+                href={mapsUrl(ev)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => sfx.click()}
+                className="group relative block rounded-2xl border border-gold/50 bg-gradient-to-b from-[#FFFDF9] via-[#FAF4E8] to-[#F5E9D8] p-4 text-center shadow-soft transition-transform hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+                title={`Open ${ev.venue || `${ev.name} Venue`} in Google Maps`}
+              >
                 {/* Corner gold brackets matching royal theme */}
                 <span className="pointer-events-none absolute top-2 left-2 h-2 w-2 border-t border-l border-gold/70" />
                 <span className="pointer-events-none absolute top-2 right-2 h-2 w-2 border-t border-r border-gold/70" />
@@ -150,8 +87,8 @@ export default function Events() {
 
                 {/* Location / Venue Mention */}
                 <div className="flex flex-col items-center">
-                  <div className="flex items-center justify-center gap-1.5 font-serif text-[14.5px] xs:text-[15px] sm:text-[16px] font-semibold text-[#4A2618]">
-                    <span className="text-[15px] xs:text-[16px] text-terra">📍</span>
+                  <div className="flex items-center justify-center gap-1.5 font-serif text-[15px] xs:text-[16px] font-semibold text-[#4A2618]">
+                    <span className="text-[16px] text-terra">📍</span>
                     <span>{ev.venue || `${ev.name} Venue`}</span>
                   </div>
                   {ev.address && (
@@ -161,24 +98,15 @@ export default function Events() {
                   )}
                 </div>
 
-                {/* Short Map Viewer */}
-                <EventMapViewer ev={ev} />
-
-                {/* Action Button: Location Mentioned with the Button */}
-                <a
-                  href={mapsUrl(ev)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => sfx.click()}
-                  className="pill mt-3 inline-flex w-full items-center justify-center gap-1.5 xs:gap-2 px-3 py-2.5 text-[10.5px] xs:text-[11px] font-medium shadow-md transition-transform hover:scale-[1.02] active:scale-[0.98]"
-                >
+                {/* Direct Action Button */}
+                <div className="pill mt-3.5 inline-flex w-full items-center justify-center gap-2 px-3.5 py-2.5 text-[10.5px] xs:text-[11px] font-medium shadow-md transition-transform group-hover:scale-[1.02]">
                   <svg className="h-3.5 w-3.5 xs:h-4 xs:w-4 text-gold-light shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5z" />
                   </svg>
-                  <span className="truncate">View {ev.venue ? ev.venue : `${ev.name} Location`} on Google Maps</span>
+                  <span className="truncate">View on Google Maps</span>
                   <span className="text-gold-light text-[10px] xs:text-[11px] shrink-0">↗</span>
-                </a>
-              </div>
+                </div>
+              </a>
             </Reveal>
           </article>
         ))}
