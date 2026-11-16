@@ -195,7 +195,7 @@ function Person({ person, revealed, delay, relation }) {
           {person.parents}
         </p>
         {person.grandparents && (
-          <p className="mt-1 font-serif text-[13px] xs:text-[13.5px] sm:text-[14px] italic leading-snug text-[#5A382E]" aria-label={relation}>
+          <p className="mt-1 font-serif text-[14.5px] xs:text-[15.5px] sm:text-[16px] font-medium leading-relaxed text-[#3D241E]" aria-label={relation}>
             {person.grandparents}
           </p>
         )}
