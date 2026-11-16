@@ -22,13 +22,13 @@ const wedding = {
     name: "Atisha",
     parents: "Daughter of Mr. Krishna Gopal Tibrewal & Mrs. Uma Devi Tibrewal",
     familyMembers: ["Mr. Krishna Gopal Tibrewal", "Mrs. Uma Devi Tibrewal"],
-    grandparents: null,
+    grandparents: "Granddaughter of Late Motilal Tibrewal & Late Rama Devi Tibrewal",
   },
   groom: {
     name: "Aashutosh",
     parents: "Son of Late Dilip Kumar Jaiswal & Mrs. Lakhi Devi Jaiswal",
     familyMembers: ["Late Dilip Kumar Jaiswal", "Mrs. Lakhi Devi Jaiswal"],
-    grandparents: null,
+    grandparents: "Grandson of Late Hanuman Prasad Jaiswal & Late Dhanpati Devi Jaiswal",
   },
 
   // ── 2. Save the date (scratch hearts + countdown) ──
