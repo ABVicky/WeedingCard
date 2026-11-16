@@ -21,7 +21,12 @@ const wedding = {
   bride: {
     name: "Atisha",
     parents: "Daughter of Mr. Krishna Gopal Tibrewal & Mrs. Uma Devi Tibrewal",
-    familyMembers: ["Mr. Krishna Gopal Tibrewal", "Mrs. Uma Devi Tibrewal"],
+    familyMembers: [
+      "Mr. Krishna Gopal Tibrewal",
+      "Mrs. Uma Devi Tibrewal",
+      "Ankit Tibrewal",
+      "Khushboo Tibrewal",
+    ],
     grandparents: "Granddaughter of Late Motilal Tibrewal & Late Rama Devi Tibrewal",
   },
   groom: {
