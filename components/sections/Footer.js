@@ -164,6 +164,27 @@ export default function Footer() {
           <span>Back to Top</span>
         </a>
       </Reveal>
+
+      {/* Footer Watermark */}
+      <Reveal delay={0.35}>
+        <div className="mt-10 pt-5 border-t border-gold/15">
+          <a
+            href="https://gajarhalwa.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => sfx.click()}
+            className="group inline-flex items-center justify-center gap-1.5 font-serif text-[11.5px] xs:text-[12.5px] italic text-gold-light/75 hover:text-gold-light transition-colors duration-200"
+          >
+            <span className="not-italic text-[12px]">🧡</span>
+            <span>
+              Made with Pyaar, Served with Mithaas —{" "}
+              <span className="font-semibold text-gold underline underline-offset-4 decoration-gold/40 group-hover:decoration-gold transition-colors">
+                Gajar Halwa
+              </span>
+            </span>
+          </a>
+        </div>
+      </Reveal>
     </footer>
   );
 }
