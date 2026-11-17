@@ -129,7 +129,7 @@ const wedding = {
           "With family",
           "At work"
         ],
-        answer: 2,
+        answer: 3,
       },
       {
         question: "Who made the first move?",
