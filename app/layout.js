@@ -46,8 +46,28 @@ export const metadata = {
     shortcut: "/images/logo1.png",
     apple: "/images/logo1.png",
   },
-  openGraph: { title: wedding.title, description: wedding.description, type: "website", locale: "en_IN" },
-  twitter: { card: "summary_large_image", title: wedding.title, description: wedding.description },
+  openGraph: {
+    title: wedding.title,
+    description: wedding.description,
+    type: "website",
+    locale: "en_IN",
+    url: wedding.siteUrl,
+    siteName: wedding.title,
+    images: [
+      {
+        url: "/images/og-logo2.png",
+        width: 1200,
+        height: 630,
+        alt: wedding.title,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: wedding.title,
+    description: wedding.description,
+    images: ["/images/og-logo2.png"],
+  },
   other: {
     developer: "Vicky Prasad Mahato - abvicky.in",
   },
