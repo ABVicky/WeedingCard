@@ -159,6 +159,7 @@ export default function Footer() {
       </Reveal>
 
       {/* Footer Watermark */}
+      {/* Developer Credit (Code-only): Vicky Prasad Mahato - abvicky.in */}
       <Reveal delay={0.35}>
         <div className="mt-10 pt-5 border-t border-gold/15">
           <a

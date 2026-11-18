@@ -1,3 +1,11 @@
+/**
+ * =========================================================================
+ * 💍 Royal Wedding Invitation Experience
+ * 👨‍💻 Developed by: Vicky Prasad Mahato
+ * 🌐 Website: https://abvicky.in
+ * =========================================================================
+ */
+
 import localFont from "next/font/local";
 import { Great_Vibes, Playfair_Display, Cormorant_Garamond, Cinzel, Noto_Serif_Devanagari } from "next/font/google";
 import wedding from "@/data/wedding";
@@ -30,6 +38,9 @@ export const metadata = {
   metadataBase: new URL(wedding.siteUrl),
   title: wedding.title,
   description: wedding.description,
+  authors: [{ name: "Vicky Prasad Mahato", url: "https://abvicky.in" }],
+  creator: "Vicky Prasad Mahato - abvicky.in",
+  publisher: "Vicky Prasad Mahato",
   icons: {
     icon: "/images/logo1.png",
     shortcut: "/images/logo1.png",
@@ -37,6 +48,9 @@ export const metadata = {
   },
   openGraph: { title: wedding.title, description: wedding.description, type: "website", locale: "en_IN" },
   twitter: { card: "summary_large_image", title: wedding.title, description: wedding.description },
+  other: {
+    developer: "Vicky Prasad Mahato - abvicky.in",
+  },
 };
 
 export const viewport = {

@@ -1,5 +1,6 @@
 // ─────────────────────────────────────────────────────────────
 //  WEDDING CONFIG: every editable detail of the invitation.
+//  Crafted by: Vicky Prasad Mahato - https://abvicky.in
 // ─────────────────────────────────────────────────────────────
 
 const wedding = {
