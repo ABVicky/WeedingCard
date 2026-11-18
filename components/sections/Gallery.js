@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import wedding from "@/data/wedding";
+import { sfx } from "../audio";
 import { Reveal, SectionTitle } from "../ornaments";
 
 const { photos, caption, autoplayMs } = wedding.gallery;
@@ -101,26 +102,13 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Navigation Dots */}
-        <div className="mt-5 flex items-center justify-center gap-2">
-          {photos.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setState([i, i > index ? 1 : -1])}
-              className={`h-2 transition-all duration-300 rounded-full ${
-                i === index
-                  ? "w-7 bg-gold shadow-[0_0_8px_rgba(226,188,114,0.7)]"
-                  : "w-2 bg-[#D9C4B5]/70 hover:bg-[#D9C4B5]"
-              }`}
-              aria-label={`Go to photo ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Prev / Next controls */}
-        <div className="mt-4 flex items-center justify-center gap-5">
+        {/* Prev / Dots / Next controls (number counter removed) */}
+        <div className="mt-5 flex items-center justify-center gap-3.5">
           <button
-            onClick={() => go(-1)}
+            onClick={() => {
+              sfx?.click?.();
+              go(-1);
+            }}
             className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 bg-white/85 text-gold shadow-sm backdrop-blur transition-transform active:scale-90 hover:bg-gold/10"
             aria-label="Previous photo"
           >
@@ -128,11 +116,30 @@ export default function Gallery() {
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
-          <span className="font-caps text-[11px] tracking-[0.25em] text-[#8A6A5A]">
-            {index + 1} / {photos.length}
-          </span>
+
+          <div className="flex items-center gap-1.5">
+            {photos.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  sfx?.click?.();
+                  setState([i, i > index ? 1 : -1]);
+                }}
+                className={`h-2 transition-all duration-300 rounded-full ${
+                  i === index
+                    ? "w-6 bg-gold shadow-[0_0_8px_rgba(226,188,114,0.7)]"
+                    : "w-2 bg-[#D9C4B5]/70 hover:bg-[#D9C4B5]"
+                }`}
+                aria-label={`Go to photo ${i + 1}`}
+              />
+            ))}
+          </div>
+
           <button
-            onClick={() => go(1)}
+            onClick={() => {
+              sfx?.click?.();
+              go(1);
+            }}
             className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 bg-white/85 text-gold shadow-sm backdrop-blur transition-transform active:scale-90 hover:bg-gold/10"
             aria-label="Next photo"
           >
