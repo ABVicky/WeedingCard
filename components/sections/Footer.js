@@ -166,12 +166,11 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => sfx.click()}
-            className="group inline-flex items-center justify-center gap-1.5 font-serif text-[11.5px] xs:text-[12.5px] italic text-gold-light/75 hover:text-gold-light transition-colors duration-200"
+            className="group inline-flex items-center justify-center font-serif text-[12px] xs:text-[13px] font-bold text-gold-light/85 hover:text-gold transition-colors duration-200 tracking-wide"
           >
-            <span className="not-italic text-[12px]">🧡</span>
             <span>
               Made with Pyaar, Served with Mithaas —{" "}
-              <span className="font-semibold text-gold underline underline-offset-4 decoration-gold/40 group-hover:decoration-gold transition-colors">
+              <span className="underline underline-offset-4 decoration-gold/50 group-hover:decoration-gold transition-colors">
                 Gajar Halwa
               </span>
             </span>
