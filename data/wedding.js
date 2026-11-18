@@ -7,7 +7,7 @@ const wedding = {
   title: "Aashutosh & Atisha — A Sacred Union",
   description: "We cordially invite you to witness the beginning of our forever and celebrate the wedding ceremony of",
   // Public URL after deploying (used for WhatsApp / social link previews).
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.aashukaatipyaar.in",
 
   // ── Opening envelope ──
   envelope: {

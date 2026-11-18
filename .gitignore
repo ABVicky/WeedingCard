@@ -1,6 +1,8 @@
 node_modules
 .next
 out
+Weeding-Web/
+Weeding-Web.zip
 .env*.local
 .vercel
 .DS_Store
