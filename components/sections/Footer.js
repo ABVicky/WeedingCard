@@ -143,6 +143,45 @@ export default function Footer() {
         <HeartDivider className="mt-9" />
       </Reveal>
 
+      {/* Instagram Wedding Handle */}
+      {wedding.social?.instagram && (
+        <Reveal delay={0.28}>
+          <div className="mt-8 flex flex-col items-center justify-center">
+            <a
+              href={wedding.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => sfx.click()}
+              className="group inline-flex items-center gap-2.5 rounded-full border border-gold/60 bg-gradient-to-r from-gold/10 via-gold/20 to-gold/10 px-5 py-2 text-gold-light shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur transition-all duration-300 hover:border-gold hover:bg-gold/30 hover:scale-105 active:scale-95"
+              aria-label={`Follow wedding memories on Instagram ${wedding.social.handle || ""}`}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-gold group-hover:text-gold-light transition-colors"
+                aria-hidden="true"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+              <span className="font-serif italic text-[15px] sm:text-[16px] font-semibold tracking-wide text-gold-light group-hover:text-gold transition-colors">
+                {wedding.social.handle || "@aashukaatipyaar"}
+              </span>
+            </a>
+            <p className="mt-1.5 font-serif text-[12px] xs:text-[13px] italic text-[#FDF4E7]/75">
+              Follow our wedding journey on Instagram
+            </p>
+          </div>
+        </Reveal>
+      )}
+
       {/* Tap button to directly go to the hero section */}
       <Reveal delay={0.3}>
         <a

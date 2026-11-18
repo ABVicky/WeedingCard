@@ -181,6 +181,12 @@ const wedding = {
     message: "We can't wait to celebrate with you!",
   },
 
+  // ── Social & Instagram ──
+  social: {
+    instagram: "https://www.instagram.com/aashukaatipyaar/",
+    handle: "@aashukaatipyaar",
+  },
+
   // ── Images & audio ──
   images: {
     ganesh: "/images/ganesh.png", // a transparent PNG works too
