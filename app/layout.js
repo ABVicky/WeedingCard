@@ -55,18 +55,26 @@ export const metadata = {
     siteName: wedding.title,
     images: [
       {
-        url: "/images/og-logo2.png",
-        width: 1200,
-        height: 630,
+        url: "/images/og-logo2.jpg",
+        width: 1080,
+        height: 1080,
         alt: wedding.title,
+        type: "image/jpeg",
+      },
+      {
+        url: "/images/og-logo2.png",
+        width: 1080,
+        height: 1080,
+        alt: wedding.title,
+        type: "image/png",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: wedding.title,
     description: wedding.description,
-    images: ["/images/og-logo2.png"],
+    images: ["/images/og-logo2.jpg"],
   },
   other: {
     developer: "Vicky Prasad Mahato - abvicky.in",
