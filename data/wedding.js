@@ -22,8 +22,8 @@ const wedding = {
     name: "Atisha",
     parents: "Daughter of Mr. Krishna Gopal Tibrewal & Mrs. Uma Devi Tibrewal",
     familyMembers: [
-      "Mr. Krishna Gopal Tibrewal",
-      "Mrs. Uma Devi Tibrewal",
+      "Krishna Gopal Tibrewal",
+      "Uma Devi Tibrewal",
       "Ankit Tibrewal",
       "Khushboo Tibrewal",
     ],
@@ -32,7 +32,7 @@ const wedding = {
   groom: {
     name: "Aashutosh",
     parents: "Son of Late Dilip Kumar Jaiswal & Mrs. Lakhi Devi Jaiswal",
-    familyMembers: ["Late Dilip Kumar Jaiswal", "Mrs. Lakhi Devi Jaiswal"],
+    familyMembers: ["Late Dilip Kumar Jaiswal", "Lakhi Devi Jaiswal"],
     grandparents: "Grandson of Late Hanuman Prasad Jaiswal & Late Dhanpati Devi Jaiswal",
   },
 
