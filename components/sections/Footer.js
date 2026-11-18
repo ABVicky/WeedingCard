@@ -76,16 +76,11 @@ export default function Footer() {
             </div>
 
             {/* Family Members' Names */}
-            <div className="relative z-10 my-auto space-y-1.5 px-1 py-1">
-              {(wedding.groom.familyMembers || [wedding.groom.parents.replace(/^Son of\s+/i, "")]).map((member, i) => (
-                <div key={member}>
-                  {i > 0 && (
-                    <p className="font-serif italic text-[13px] text-gold-deep leading-none my-1">&amp;</p>
-                  )}
-                  <p className="font-serif text-[14.5px] xs:text-[15.5px] sm:text-[16px] font-semibold leading-snug text-[#3D241E]">
-                    {member}
-                  </p>
-                </div>
+            <div className="relative z-10 my-auto space-y-2 px-1 py-1">
+              {(wedding.groom.familyMembers || [wedding.groom.parents.replace(/^Son of\s+/i, "")]).map((member) => (
+                <p key={member} className="font-serif text-[14.5px] xs:text-[15.5px] sm:text-[16px] font-semibold leading-snug text-[#3D241E]">
+                  {member}
+                </p>
               ))}
             </div>
           </div>
@@ -116,16 +111,14 @@ export default function Footer() {
             </div>
 
             {/* Family Members' Names */}
-            <div className="relative z-10 my-auto space-y-1.5 px-1 py-1">
+            <div className="relative z-10 my-auto space-y-2 px-1 py-1">
               {(wedding.bride.familyMembers || [wedding.bride.parents.replace(/^Daughter of\s+/i, "")]).map((member, i) => (
-                <div key={member} className={i === 2 ? "pt-2" : ""}>
-                  {i === 1 && (
-                    <p className="font-serif italic text-[13px] text-gold-deep leading-none my-1">&amp;</p>
-                  )}
-                  <p className="font-serif text-[14.5px] xs:text-[15.5px] sm:text-[16px] font-semibold leading-snug text-[#3D241E]">
-                    {member}
-                  </p>
-                </div>
+                <p
+                  key={member}
+                  className={`font-serif text-[14.5px] xs:text-[15.5px] sm:text-[16px] font-semibold leading-snug text-[#3D241E] ${i === 2 ? "pt-1.5" : ""}`}
+                >
+                  {member}
+                </p>
               ))}
             </div>
           </div>
